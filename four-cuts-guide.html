@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>오늘의 네컷 사용 설명서 · 목양 데스크</title>
+<meta name="description" content="오늘의 네컷 포토부스 사용 설명서. 태블릿 설치, 행사 전 설정, 촬영, 사진 앱 저장, 인터넷 없이 인쇄하기, 나만의 프레임 만들기까지 차례대로 안내합니다.">
+<meta name="keywords" content="오늘의 네컷 사용법, 네컷 포토부스 설명서, 교회 포토부스, 포토부스 프레임 만들기, 4x6 인화, 목양 데스크">
+<meta name="author" content="이세진 목사">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://mokyangdesk.com/four-cuts-guide.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="목양 데스크">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="오늘의 네컷 사용 설명서 · 목양 데스크">
+<meta property="og:description" content="태블릿 설치부터 인화까지, 교회 행사에서 네컷 포토부스를 운영하는 방법을 차례대로 안내합니다.">
+<meta property="og:url" content="https://mokyangdesk.com/four-cuts-guide.html">
+<meta property="og:image" content="https://mokyangdesk.com/four-cuts-booth.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  /* 목양 데스크 공통 스타일 */
+  --bg:#ffffff; --soft:#f5f5f7; --ink:#111113; --muted:#6b6b73; --line:#e8e8ec;
+  --lexio:#4257b2; --desk:#2c7a5f; --cuts:#c0566a; --pray:#a97d27;
+  --sans:"Pretendard","Pretendard Variable","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --serif:"Instrument Serif","Times New Roman",serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.7;letter-spacing:-.01em;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-weight:800;line-height:1.18;letter-spacing:-.035em;text-wrap:balance;margin:0}
+p{margin:0}
+.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+:focus-visible{outline:3px solid var(--accent,var(--lexio));outline-offset:3px;border-radius:6px}
+
+/* 상단 바 */
+.nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:30px;height:30px;border-radius:9px;background:var(--ink);color:#fff;display:grid;place-items:center;flex:none}
+.brand-mark svg{width:20px;height:20px}
+.brand-text{font-weight:700;font-size:16px;line-height:1.1}
+.brand-text .it{font-size:15px;color:var(--muted);margin-left:4px}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{font-size:14.5px;font-weight:500;text-decoration:none;color:var(--muted);padding:8px 12px;border-radius:99px}
+.nav-links a:hover{color:var(--ink);background:var(--soft)}
+
+/* 버튼 */
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 15.5px/1 var(--sans);letter-spacing:-.01em;padding:15px 22px;border-radius:99px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -10px rgba(12,14,19,.35)}
+.btn svg{width:18px;height:18px}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-line{border-color:var(--line);color:var(--ink);background:#fff}
+.btn-line:hover{border-color:var(--ink)}
+.btn.pending{background:var(--soft);color:var(--muted);border:1.5px dashed #cfd3da;cursor:default;transform:none;box-shadow:none}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:13px;font-weight:600;padding:5px 12px;border-radius:99px;background:#fff;color:var(--muted);border:1px solid var(--line)}
+
+/* 앱 아이콘 타일 */
+.app{--c:var(--accent);width:64px;height:64px;border-radius:18px;display:grid;place-items:center;color:var(--c);flex:none;
+  background:color-mix(in srgb,var(--c) 9%,#fff);border:1px solid color-mix(in srgb,var(--c) 16%,#fff)}
+.app svg{width:52%;height:52%}
+
+section{padding:96px 0}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.kicker::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent,var(--ink))}
+.sec-head{display:grid;gap:14px;margin-bottom:44px;max-width:680px}
+.sec-head h2{font-size:clamp(30px,4.4vw,48px)}
+.sec-head p{color:var(--muted);font-size:18px}
+
+footer{border-top:1px solid var(--line);padding:36px 0 56px;color:var(--muted);font-size:14.5px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}
+footer strong{color:var(--ink);font-weight:700}
+
+@media (max-width:640px){
+  .nav-links a.hide-m{display:none}
+  section{padding:68px 0}
+  .wrap{padding:0 18px}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+:root{--accent:var(--cuts)}
+
+/* 설명서 페이지 */
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding-top:72px;padding-bottom:88px}
+.hero .app{width:76px;height:76px;border-radius:22px}
+.hero h1{font-size:clamp(40px,5.8vw,72px);font-weight:800;letter-spacing:-.055em;line-height:1.08;margin:26px 0 8px}
+.hero .en{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.4vw,30px);color:#9a9aa2;margin-bottom:22px;display:block}
+.hero .lead{font-size:clamp(17px,1.9vw,20px);color:var(--muted);max-width:30em}
+.hero .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.photo{margin:0;border-radius:28px;overflow:hidden;background:var(--soft);box-shadow:0 30px 60px -34px rgba(17,17,19,.45)}
+.photo img{display:block;width:100%;height:auto;aspect-ratio:1024/559;object-fit:cover}
+.photo figcaption{font-size:13px;color:var(--muted);text-align:center;padding:12px 16px;font-weight:500;background:#fff}
+
+/* 앱 주소 상자 */
+.addr{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:16px 18px;border-radius:18px;background:color-mix(in srgb,var(--accent) 7%,#fff);border:1px solid color-mix(in srgb,var(--accent) 22%,#fff)}
+.addr small{display:block;font-size:12.5px;font-weight:700;color:var(--accent);letter-spacing:.04em}
+.addr code{font:700 clamp(15px,1.8vw,18px)/1.3 var(--sans);letter-spacing:-.01em;word-break:break-all}
+.addr button{margin-left:auto;font:700 14px/1 var(--sans);padding:11px 16px;border-radius:99px;border:1.5px solid var(--line);background:#fff;cursor:pointer;color:var(--ink)}
+.addr button:hover{border-color:var(--ink)}
+
+/* 목차 */
+.toc{position:sticky;top:64px;z-index:9;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
+.toc .wrap::-webkit-scrollbar{display:none}
+.toc a{flex:none;font-size:14px;font-weight:600;text-decoration:none;color:var(--muted);padding:7px 14px;border-radius:99px;border:1px solid var(--line);background:#fff}
+.toc a:hover{color:var(--ink);border-color:var(--ink)}
+section[id]{scroll-margin-top:120px}
+
+.cards{display:grid;gap:18px}
+.cards.c4{grid-template-columns:repeat(4,1fr)}
+.cards.c3{grid-template-columns:repeat(3,1fr)}
+.cards.c2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--soft);border-radius:24px;padding:28px 26px;display:grid;gap:10px;align-content:start}
+.card .n{width:38px;height:38px;border-radius:12px;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:16px;margin-bottom:6px}
+.card h3{font-size:21px;letter-spacing:-.03em}
+.card p,.card li{color:var(--muted);font-size:15.5px}
+.card b{color:var(--ink)}
+.card ol,.card ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.card .tag{justify-self:start;font-size:12.5px;font-weight:700;padding:4px 10px;border-radius:99px;background:#fff;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 25%,#fff)}
+
+.note{margin-top:20px;display:grid;grid-template-columns:28px 1fr;gap:10px;padding:18px 20px;border-radius:18px;background:#fff7f8;border:1px solid #f3d6dc;font-size:15.5px;color:#5b3a41}
+.note.info{background:var(--soft);border-color:var(--line);color:var(--muted)}
+.note b{color:var(--ink)}
+.note .i{font-size:18px;line-height:1.5}
+
+/* 홈 화면 추가: 기기 탭과 단계 */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tabs button{font:700 15px/1 var(--sans);padding:13px 18px;border-radius:99px;border:1.5px solid var(--line);background:#fff;color:var(--muted);cursor:pointer}
+.tabs button:hover{color:var(--ink);border-color:var(--ink)}
+.tabs button[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.steps li{background:var(--soft);border-radius:22px;padding:24px 24px;display:grid;grid-template-columns:34px 1fr;gap:16px;align-content:start}
+.steps .sn{width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800;font-size:15px}
+.steps h3{font-size:18px;letter-spacing:-.03em;margin-bottom:6px}
+.steps p{color:var(--muted);font-size:15px}
+.steps b{color:var(--ink)}
+.key{display:inline-flex;align-items:center;gap:4px;padding:1px 9px;border-radius:8px;background:#fff;border:1px solid var(--line);color:var(--ink);font-weight:700;font-size:14px;white-space:nowrap;vertical-align:baseline}
+.key svg{width:15px;height:15px}
+@media (max-width:760px){
+  .steps{grid-template-columns:1fr}
+  .steps li{gap:14px;padding:20px 18px}
+  .tabs button{flex:1 1 auto}
+}
+
+/* 표 */
+.tbl{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;font-size:15.5px}
+.tbl th,.tbl td{padding:16px 18px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.tbl tr:last-child td{border-bottom:none}
+.tbl th{background:var(--soft);font-size:13.5px;color:var(--muted);font-weight:700}
+.tbl td:first-child{font-weight:700;white-space:nowrap}
+.tbl-scroll{overflow-x:auto}
+
+/* 프레임 크기 그림 */
+.frames{display:flex;gap:28px;align-items:flex-end;justify-content:center;padding:34px 20px 26px;background:var(--soft);border-radius:24px}
+.fr{display:grid;gap:10px;justify-items:center;font-size:13.5px;color:var(--muted);font-weight:600;text-align:center}
+.fr .sheet{background:#fff;border-radius:4px;box-shadow:0 14px 30px -18px rgba(17,17,19,.45);display:grid;padding:6%;gap:4%}
+.fr .sheet i{display:block;background:#d5d5da;border-radius:2px}
+.fr .strip{width:64px;height:192px;grid-template-rows:repeat(4,1fr) 1.2fr}
+.fr .grid{width:128px;height:192px;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr .55fr}
+.fr .grid i:nth-child(5){grid-column:1/3;background:transparent;border:1.5px dashed #c6c6cc}
+.fr .strip i:nth-child(5){background:transparent;border:1.5px dashed #c6c6cc}
+.fr b{color:var(--ink);font-size:15px}
+
+/* 자주 묻는 질문 */
+.faq{display:grid;gap:12px}
+.faq details{background:var(--soft);border-radius:20px;padding:4px 24px}
+.faq summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:700;font-size:17.5px;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-weight:500;font-size:24px;line-height:1;color:var(--muted);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--muted);padding-bottom:20px;font-size:16px}
+.faq details p b{color:var(--ink)}
+
+/* 체크리스트 */
+.check{list-style:none;margin:0;padding:10px 26px;background:#fff;border-radius:22px;display:grid}
+.check li{border-bottom:1px solid var(--line)}
+.check li:last-child{border-bottom:none}
+.check label{display:grid;grid-template-columns:26px 1fr;gap:14px;align-items:center;padding:16px 0;cursor:pointer;font-size:16px}
+.check input{width:22px;height:22px;accent-color:var(--accent);margin:0}
+.check input:checked + span{color:var(--muted);text-decoration:line-through}
+
+.get{border-radius:32px;padding:48px;display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;background:var(--soft)}
+.get h2{font-size:clamp(30px,4vw,42px);font-weight:800;letter-spacing:-.05em;margin:12px 0 14px}
+.get p{color:var(--muted);font-size:17px}
+.get .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;padding-top:52px;padding-bottom:64px;gap:40px}
+  .cards.c4{grid-template-columns:1fr 1fr}
+  .cards.c3{grid-template-columns:1fr}
+  .get{grid-template-columns:1fr;padding:32px 24px}
+}
+@media (max-width:560px){
+  .cards.c4,.cards.c2{grid-template-columns:1fr}
+  .addr button{margin-left:0}
+  /* 휴대폰에서는 표를 기기별 카드로 */
+  .tbl thead{display:none}
+  .tbl tr{display:block;padding:14px 18px;border-bottom:1px solid var(--line)}
+  .tbl tr:last-child{border-bottom:none}
+  .tbl td{display:grid;grid-template-columns:84px 1fr;gap:10px;padding:5px 0;border:none;white-space:normal}
+  .tbl td::before{content:attr(data-label);font-size:13px;font-weight:700;color:var(--muted)}
+  .tbl td:first-child{display:block;font-size:17px;padding-bottom:8px}
+  .tbl td:first-child::before{content:none}
+}
+@media print{
+  .nav,.toc,.cta,.addr button{display:none!important}
+  section{padding:36px 0}
+  .faq details{break-inside:avoid}
+}
+
+</style></head>
+<body>
+<nav class="nav" aria-label="상단 메뉴"><div class="wrap">
+  <a class="brand" data-link="home" href="#"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M8 21V8a4 4 0 0 1 8 0"/></svg></span><span class="brand-text">목양 데스크<span class="it">Mokyang Desk</span></span></a>
+  <div class="nav-links"><a class="hide-m" data-link="intro" href="#"><span class="t">오늘의 네컷 소개</span></a><a data-link="home" href="#"><span class="t">← 모든 도구</span></a></div>
+</div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="app"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="15" y="5" width="18" height="38" rx="2"/><path d="M15 14h18M15 23h18M15 32h18"/></svg></div>
+      <h1>오늘의 네컷<br>사용 설명서</h1>
+      <span class="en">How to run your Four Cuts booth</span>
+      <p class="lead">태블릿 한 대로 행사장에 포토부스를 차리는 방법입니다. 설치부터 촬영, 저장, 인화, 우리 행사만의 프레임 만들기까지 차례대로 따라 하시면 됩니다.</p>
+      <div class="addr">
+        <div><small>앱 주소</small><code id="app-addr">https://shepherdsdesk.github.io/photobooth/</code></div>
+        <button type="button" id="copy-btn">주소 복사</button>
+      </div>
+      <div class="cta">
+        <a class="btn btn-dark" data-link="app" data-pending="주소 준비 중" href="#"><span class="t">포토부스 바로 열기</span><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
+        <a class="btn btn-line" href="#install">홈 화면에 추가하는 법</a>
+      </div>
+    </div>
+    <figure class="photo">
+      <img src="four-cuts-booth.webp" alt="나무 거치대에 세운 태블릿 앞에서 성도들이 웃으며 네 컷 사진을 찍는 모습" width="1024" height="559">
+      <figcaption>나무 거치대에 태블릿을 세워 두면 성도님들이 스스로 찍을 수 있습니다</figcaption>
+    </figure>
+  </div>
+</header>
+
+<nav class="toc" aria-label="설명서 목차"><div class="wrap">
+  <a href="#ready">준비물</a><a href="#install">설치</a><a href="#setup">행사 전 설정</a><a href="#shoot">촬영</a><a href="#save">저장</a><a href="#print">인쇄</a><a href="#frame">프레임 만들기</a><a href="#faq">자주 묻는 질문</a><a href="#checklist">체크리스트</a>
+</div></nav>
+
+<main>
+  <!-- 1. 준비물 -->
+  <section id="ready">
+    <div class="wrap">
+      <div class="sec-head"><span class="kicker">1 · 준비물</span><h2>이것만 있으면 됩니다</h2><p>프로그램 값은 들지 않습니다. 결제나 회원 가입도 없습니다.</p></div>
+      <div class="cards c4">
+        <div class="card"><h3>태블릿</h3><p>아이패드 또는 갤럭시탭. 앞 카메라가 있는 기기면 됩니다. 휴대폰이나 노트북으로도 열립니다.</p></div>
+        <div class="card"><h3>거치대</h3><p>사람 눈높이에 화면이 오도록 세웁니다. 서서 찍을 때는 가슴 높이 정도가 좋습니다.</p></div>
+        <div class="card"><h3>사진 프린터</h3><p>4×6(10×15cm) 인화가 되고 <b>AirPrint</b>(아이패드)나 <b>Mopria</b>(갤럭시탭)를 지원하는 프린터입니다.</p></div>
+        <div class="card"><h3>인화지·충전기</h3><p>예상 인원보다 넉넉한 인화지와 잉크, 태블릿 충전기와 멀티탭을 챙깁니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 설치 -->
+  <section id="install" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><span class="kicker">2 · 설치</span><h2>내 휴대폰·태블릿 홈 화면에 추가하기</h2><p>앱 스토어에서 받는 앱이 아니라, 주소를 <b>홈 화면에 아이콘으로 저장</b>해 앱처럼 쓰는 방식입니다. 무료이고 1분이면 됩니다. 인터넷이 되는 곳에서 한 번 해 두면 행사 당일에는 인터넷 없이도 열립니다.</p></div>
+
+      <div class="tabs" role="tablist" aria-label="기기 선택">
+        <button role="tab" aria-selected="true" data-tab="ios">아이폰 · 아이패드</button>
+        <button role="tab" aria-selected="false" data-tab="chrome">갤럭시 · 안드로이드 (크롬)</button>
+        <button role="tab" aria-selected="false" data-tab="samsung">삼성 인터넷</button>
+      </div>
+
+      <div class="tab-panel" data-panel="ios">
+        <ol class="steps">
+          <li><span class="sn">1</span><div><h3>사파리로 주소 열기</h3><p>반드시 <b>사파리(Safari)</b>로 엽니다. 카카오톡이나 네이버 앱 안에서 열렸다면 오른쪽 아래·위 메뉴에서 <b>“Safari로 열기”</b>를 누르세요.</p></div></li>
+          <li><span class="sn">2</span><div><h3>공유 버튼 누르기</h3><p><span class="key"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M6.5 6.5 10 3l3.5 3.5"/><path d="M6 9H4.5v8h11V9H14"/></svg> 공유</span> 버튼을 누릅니다. <b>아이폰</b>은 화면 아래쪽, <b>아이패드</b>는 주소창 오른쪽에 있습니다. 공유 버튼이 안 보이면 주소창 옆 <span class="key">•••</span>을 먼저 누르세요.</p></div></li>
+          <li><span class="sn">3</span><div><h3>“홈 화면에 추가” 누르기</h3><p>목록을 아래로 내리면 <span class="key">⊞ 홈 화면에 추가</span>가 있습니다. <b>“웹 앱으로 열기”</b> 스위치가 보이면 켜 둡니다.</p></div></li>
+          <li><span class="sn">4</span><div><h3>이름 확인 후 “추가”</h3><p>이름은 <b>네컷부스</b>로 두고 오른쪽 위 <b>추가</b>를 누르면 홈 화면에 아이콘이 생깁니다.</p></div></li>
+          <li><span class="sn">5</span><div><h3>아이콘으로 열고 카메라 허용</h3><p>앞으로는 사파리가 아니라 <b>홈 화면 아이콘</b>으로 엽니다. 처음 촬영할 때 카메라 권한을 묻으면 <b>허용</b>을 누르세요.</p></div></li>
+        </ol>
+      </div>
+
+      <div class="tab-panel" data-panel="chrome" hidden>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><h3>크롬으로 주소 열기</h3><p><b>크롬(Chrome)</b>으로 엽니다. 카카오톡 안에서 열렸다면 오른쪽 위 메뉴에서 <b>“다른 브라우저로 열기”</b>를 누르고 크롬을 고르세요.</p></div></li>
+          <li><span class="sn">2</span><div><h3>메뉴 누르기</h3><p>주소창 오른쪽의 <span class="key">⋮</span> 메뉴를 누릅니다.</p></div></li>
+          <li><span class="sn">3</span><div><h3>“홈 화면에 추가” 누르기</h3><p><span class="key">홈 화면에 추가</span> 또는 <span class="key">앱 설치</span>를 누릅니다. 이어서 나오는 창에서 <b>설치</b> 또는 <b>추가</b>를 고릅니다.</p></div></li>
+          <li><span class="sn">4</span><div><h3>아이콘 위치 정하기</h3><p>“홈 화면에 추가” 창이 한 번 더 나오면 <b>추가</b>를 누르거나 아이콘을 끌어다 원하는 자리에 놓습니다.</p></div></li>
+          <li><span class="sn">5</span><div><h3>아이콘으로 열고 카메라 허용</h3><p>홈 화면의 <b>네컷부스</b> 아이콘으로 열고, 카메라 권한을 묻으면 <b>앱 사용 중에만 허용</b>을 누르세요.</p></div></li>
+        </ol>
+      </div>
+
+      <div class="tab-panel" data-panel="samsung" hidden>
+        <ol class="steps">
+          <li><span class="sn">1</span><div><h3>삼성 인터넷으로 주소 열기</h3><p>갤럭시에 기본으로 깔린 <b>삼성 인터넷</b>으로 엽니다.</p></div></li>
+          <li><span class="sn">2</span><div><h3>메뉴 누르기</h3><p>화면 아래쪽의 <span class="key">≡</span> 메뉴를 누릅니다. 주소창에 <span class="key">⤓</span> 설치 아이콘이 보이면 그것을 눌러도 됩니다.</p></div></li>
+          <li><span class="sn">3</span><div><h3>“현재 페이지 추가” → “홈 화면”</h3><p><span class="key">＋ 현재 페이지 추가</span>를 누르고 <span class="key">홈 화면</span>을 고릅니다.</p></div></li>
+          <li><span class="sn">4</span><div><h3>“추가” 누르기</h3><p>이름을 확인하고 <b>추가</b>를 누르면 홈 화면에 아이콘이 생깁니다.</p></div></li>
+          <li><span class="sn">5</span><div><h3>아이콘으로 열고 카메라 허용</h3><p>아이콘으로 열고, 카메라 권한을 묻으면 <b>허용</b>을 누르세요.</p></div></li>
+        </ol>
+      </div>
+
+      <div class="cards c3" style="margin-top:18px">
+        <div class="card"><h3>잘 되었는지 확인</h3><p>아이콘으로 열었을 때 <b>주소창 없이 화면 전체</b>가 앱처럼 보이면 성공입니다.</p></div>
+        <div class="card"><h3>새 버전 받기</h3><p>앱이 고쳐지면 인터넷이 되는 곳에서 아이콘을 <b>한두 번 다시 열면</b> 저절로 새 버전으로 바뀝니다.</p></div>
+        <div class="card"><h3>지우고 싶을 때</h3><p>홈 화면 아이콘을 <b>길게 눌러</b> 삭제합니다. 다른 앱이나 사진에는 아무 영향이 없습니다.</p></div>
+      </div>
+      <div class="note"><span class="i">✅</span><div>첫 화면 오른쪽 위에 <b>“✓ 오프라인 사용 가능”</b>이 보이면 준비가 끝났습니다. 행사 전에 <b>비행기 모드</b>로 바꾸고 앱을 열어 촬영이 되는지 꼭 시험해 보세요.</div></div>
+      <div class="note info"><span class="i">ℹ️</span><div>앱 파일만 내려받아 태블릿에서 열면 카메라가 켜지지 않습니다. 카메라는 보안상 <b>https:// 주소</b>에서만 켜지므로, 반드시 앱 주소로 열어서 홈 화면에 추가하세요.</div></div>
+    </div>
+  </section>
+
+  <!-- 3. 설정 -->
+  <section id="setup" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><span class="kicker">3 · 행사 전 설정</span><h2>우리 행사에 맞게 꾸미기</h2><p>첫 화면 오른쪽 위 <b>⚙️</b>를 누릅니다. 고른 내용은 자동으로 저장되고, 오른쪽 미리보기에 인쇄될 모습이 바로 나옵니다.</p></div>
+      <div class="cards c3">
+        <div class="card"><h3>⏱️ 촬영 타이머</h3><p>한 컷마다 기다리는 시간입니다. <b>3초 · 5초 · 8초 · 10초</b> 중에서 고릅니다. 아이들이나 단체 사진은 8초 이상을 권합니다.</p></div>
+        <div class="card"><h3>🧩 레이아웃</h3><p><b>스트립 2줄</b>은 한 장에 같은 사진이 두 줄로 나와, 가운데를 잘라 2명이 나눠 갖습니다. <b>2×2 그리드</b>는 한 장 전체를 쓰는 큰 사진입니다.</p></div>
+        <div class="card"><h3>🎨 프레임 색상</h3><p>화이트, 블랙, 핑크, 하늘, 크림, 민트 중에서 고릅니다. 직접 만든 프레임 이미지를 넣을 수도 있습니다. <a href="#frame">프레임 만들기 →</a></p></div>
+        <div class="card"><h3>✏️ 하단 문구</h3><p>큰 문구에는 행사 이름을, 작은 문구에는 말씀 구절을 넣습니다. 날짜는 자동으로 들어가고, 끌 수도 있습니다.</p></div>
+        <div class="card"><h3>📷 카메라</h3><p>성도님이 스스로 찍을 때는 <b>앞 카메라</b>를, 봉사자가 찍어 줄 때는 <b>뒤 카메라</b>를 고릅니다. 거울처럼 좌우반전도 켤 수 있습니다.</p></div>
+        <div class="card"><h3>🔧 기타</h3><p>사진 모서리 둥글게, 가운데 자르는 선, 카운트다운 효과음을 켜고 끌 수 있습니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 촬영 -->
+  <section id="shoot" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><span class="kicker">4 · 촬영</span><h2>네 번 웃으면 한 장이 됩니다</h2><p>화면에 보이는 그대로 사진에 담깁니다.</p></div>
+      <div class="cards c4">
+        <div class="card"><div class="n">1</div><h3>촬영 시작</h3><p>첫 화면의 <b>📸 촬영 시작</b>을 누릅니다.</p></div>
+        <div class="card"><div class="n">2</div><h3>카운트다운</h3><p>숫자와 소리에 맞춰 포즈를 잡으면 네 장을 차례로 찍습니다.</p></div>
+        <div class="card"><div class="n">3</div><h3>한 컷만 다시</h3><p>사진 확인 화면에서 마음에 안 드는 컷을 눌러 <b>그 한 장만</b> 다시 찍습니다.</p></div>
+        <div class="card"><div class="n">4</div><h3>완성하기</h3><p><b>✨ 완성하기</b>를 누르면 4×6 사진 한 장이 됩니다. 이어서 저장하거나 인쇄합니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 저장 -->
+  <section id="save" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><span class="kicker">5 · 저장</span><h2>사진 앱에 저장하기</h2><p>완성 화면에서 <b>📥 사진 앱에 저장</b>을 누릅니다. 기기마다 저장되는 곳이 조금 다릅니다.</p></div>
+      <div class="tbl-scroll"><table class="tbl">
+        <thead><tr><th>기기</th><th>누르는 순서</th><th>저장되는 곳</th></tr></thead>
+        <tbody>
+          <tr><td>아이패드 · 아이폰</td><td data-label="누르는 순서"><span>저장 버튼 → 공유 창에서 <b>“이미지 저장”</b></span></td><td data-label="저장되는 곳"><span><b>사진 앱</b>의 최근 항목</span></td></tr>
+          <tr><td>갤럭시탭 · 안드로이드</td><td data-label="누르는 순서"><span>저장 버튼을 누르면 바로 저장</span></td><td data-label="저장되는 곳"><span><b>갤러리 앱</b>의 Download 앨범</span></td></tr>
+        </tbody>
+      </table></div>
+      <div class="note info"><span class="i">ℹ️</span><div>아이패드는 보안 정책 때문에 웹앱이 사진 앱에 바로 저장할 수 없습니다. 그래서 매번 공유 창에서 <b>“이미지 저장”</b>을 한 번 눌러야 합니다.</div></div>
+    </div>
+  </section>
+
+  <!-- 6. 인쇄 -->
+  <section id="print" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><span class="kicker">6 · 인쇄</span><h2>인터넷 없이 인화하기</h2><p>인쇄에는 인터넷이 필요 없습니다. 태블릿과 프린터가 <b>같은 Wi‑Fi</b>에 있기만 하면 됩니다.</p></div>
+      <div class="cards c3">
+        <div class="card"><span class="tag">방법 A</span><h3>같은 공유기에 연결</h3><p>인터넷이 안 되는 공유기라도 괜찮습니다. 태블릿과 프린터를 같은 Wi‑Fi에 연결합니다.</p></div>
+        <div class="card"><span class="tag">방법 B</span><h3>프린터 Wi‑Fi에 직접</h3><p>프린터가 자체 Wi‑Fi를 만드는 다이렉트 모드를 지원하면, 태블릿을 그 Wi‑Fi에 바로 연결합니다.</p></div>
+        <div class="card"><span class="tag">인쇄 창 설정</span><h3>4×6 · 여백 없음</h3><p>완성 화면에서 <b>🖨️ 인쇄하기</b>를 누르고, 용지 <b>4×6(10×15cm)</b>, 여백 <b>없음</b>을 고릅니다.</p></div>
+      </div>
+      <div class="note"><span class="i">💡</span><div>아이패드에서 인쇄 버튼을 눌러도 창이 안 열리면 <b>📥 저장 버튼 → 공유 창의 “프린트”</b>를 쓰세요. 가장 확실한 방법입니다.</div></div>
+    </div>
+  </section>
+
+  <!-- 7. 프레임 -->
+  <section id="frame" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><span class="kicker">7 · 프레임 만들기</span><h2>우리 행사만의 프레임</h2><p>JPG나 PNG 이미지로 프레임을 직접 꾸밀 수 있습니다. 캔바, 미리캔버스, 파워포인트 어디서 만들어도 됩니다.</p></div>
+      <div class="frames" role="img" aria-label="프레임 크기: 스트립 600×1800픽셀, 그리드 1200×1800픽셀">
+        <div class="fr"><div class="sheet strip"><i></i><i></i><i></i><i></i><i></i></div><b>스트립</b>600 × 1800 px<br>한 줄만 만들면 두 줄로 복사됩니다</div>
+        <div class="fr"><div class="sheet grid"><i></i><i></i><i></i><i></i><i></i></div><b>2×2 그리드</b>1200 × 1800 px</div>
+      </div>
+      <div class="cards c4" style="margin-top:18px">
+        <div class="card"><div class="n">1</div><h3>템플릿 받기</h3><p>⚙️ 설정에서 레이아웃을 고르고 <b>“템플릿 받기”</b>를 누릅니다. 사진 칸이 회색으로 표시된 가이드가 받아집니다.</p></div>
+        <div class="card"><div class="n">2</div><h3>같은 크기로 꾸미기</h3><p>템플릿을 바탕에 깔고, 위 그림과 <b>같은 크기</b>로 디자인합니다. 회색 칸에 사진이 들어갑니다.</p></div>
+        <div class="card"><div class="n">3</div><h3>이미지 넣기</h3><p>설정의 <b>“이미지 선택”</b>으로 만든 프레임을 고릅니다.</p></div>
+        <div class="card"><div class="n">4</div><h3>적용 방식 고르기</h3><p><b>배경으로 깔기</b>(쉬움, JPG 가능) 또는 <b>사진 위에 덮기</b>(사진 칸을 투명하게 뚫은 PNG)를 고릅니다.</p></div>
+      </div>
+      <div class="note info"><span class="i">ℹ️</span><div>처음이라면 <b>배경으로 깔기</b>를 권합니다. 투명 처리 없이 디자인만 하면 사진이 그 위에 올라갑니다. 프레임에 행사 이름을 이미 넣었다면 설정에서 <b>“문구 표시”</b>를 끄세요. 프레임은 레이아웃마다 따로 태블릿에 저장되어 인터넷 없이도 유지됩니다.</div></div>
+    </div>
+  </section>
+
+  <!-- 8. FAQ -->
+  <section id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><span class="kicker">8 · 자주 묻는 질문</span><h2>이럴 땐 이렇게</h2></div>
+      <div class="faq">
+        <details><summary>카메라 화면이 까맣게 나와요</summary><p>카메라 권한이 막혀 있을 수 있습니다. <b>아이패드</b>는 설정 → Safari → 카메라를 <b>허용</b>으로 바꿉니다. <b>갤럭시탭</b>은 주소창 왼쪽 자물쇠 → 권한 → 카메라를 <b>허용</b>으로 바꿉니다. 다른 앱(카메라, 영상통화)이 카메라를 쓰고 있다면 닫아 주세요.</p></details>
+        <details><summary>“이 주소에서는 카메라를 쓸 수 없어요”라고 나와요</summary><p>앱 파일을 직접 열었거나 https가 아닌 주소로 열었을 때 나오는 안내입니다. 위에 있는 <b>앱 주소</b>로 다시 열고 홈 화면에 추가하세요.</p></details>
+        <details><summary>사진이 사진 앱에 안 보여요</summary><p><b>아이패드</b>는 공유 창에서 “이미지 저장”을 눌러야 사진 앱에 들어갑니다. <b>갤럭시탭</b>은 갤러리 앱의 <b>Download</b> 앨범을 확인하세요.</p></details>
+        <details><summary>인쇄 창에 프린터가 안 보여요</summary><p>태블릿과 프린터가 <b>같은 Wi‑Fi</b>에 연결되어 있는지 확인하세요. 프린터가 AirPrint(아이패드) 또는 Mopria(갤럭시탭)를 지원하는지도 확인해 주세요. 프린터를 껐다 켜면 보이는 경우도 많습니다.</p></details>
+        <details><summary>인쇄했더니 여백이 생기거나 사진이 작아요</summary><p>인쇄 창에서 용지를 <b>4×6(10×15cm)</b>, 여백을 <b>없음(테두리 없음)</b>으로 고르세요. 프린터 앱에 따로 용지 설정이 있다면 그곳도 4×6으로 맞춥니다.</p></details>
+        <details><summary>넣어 둔 프레임이 사라졌어요</summary><p>브라우저의 방문 기록이나 웹사이트 데이터를 지우면 프레임과 설정도 함께 지워집니다. 프레임 이미지 원본을 태블릿 사진 앱이나 파일 앱에 보관해 두었다가 다시 넣으세요.</p></details>
+        <details><summary>화면이 자꾸 꺼져요</summary><p>앱이 켜져 있는 동안 화면 꺼짐을 막지만, 기기에 따라 안 될 수 있습니다. 행사 중에는 기기 설정에서 <b>자동 잠금</b>을 “안 함”으로 바꿔 두세요.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. 체크리스트 -->
+  <section id="checklist" style="padding-top:0">
+    <div class="wrap">
+      <div class="get">
+        <div>
+          <span class="kicker">9 · 행사 전날 체크리스트</span>
+          <h2>하루 전에<br>한 번만 확인하세요</h2>
+          <p>하나씩 눌러 표시해 보세요. 이 목록은 체크 표시용이며 따로 저장되지 않습니다.</p>
+          <div class="cta">
+            <a class="btn btn-dark" data-link="app" data-pending="주소 준비 중" href="#"><span class="t">포토부스 바로 열기</span><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
+            <a class="btn btn-line" data-link="intro" href="#"><span class="t">오늘의 네컷 소개</span></a>
+          </div>
+        </div>
+        <ul class="check" aria-label="행사 전날 체크리스트">
+          <li><label><input type="checkbox"><span>태블릿 홈 화면에 앱을 추가했다</span></label></li>
+          <li><label><input type="checkbox"><span>첫 화면에 “✓ 오프라인 사용 가능”이 보인다</span></label></li>
+          <li><label><input type="checkbox"><span>비행기 모드에서 촬영이 된다</span></label></li>
+          <li><label><input type="checkbox"><span>행사 이름, 말씀, 프레임을 설정했다</span></label></li>
+          <li><label><input type="checkbox"><span>4×6 여백 없이 시험 인쇄를 했다</span></label></li>
+          <li><label><input type="checkbox"><span>사진 앱(갤러리)에 저장되는 것을 확인했다</span></label></li>
+          <li><label><input type="checkbox"><span>충전기, 거치대, 인화지, 잉크 여분을 챙겼다</span></label></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span>오늘의 네컷 사용 설명서 · <a data-link='home' href='#' style='text-decoration:none'><span class='t'>목양 데스크</span></a>의 도구</span><span>만든 사람 <strong>이세진 목사</strong></span></div></footer>
+<script>
+/* 주소는 이곳에서만 바꾸면 됩니다 */
+var LINKS = {
+  home: "index.html",
+  intro: "four-cuts.html",
+  app: "https://shepherdsdesk.github.io/photobooth/"
+};
+</script>
+
+<script>
+(function(){
+  document.querySelectorAll('[data-link]').forEach(function(a){
+    var url = (LINKS[a.getAttribute('data-link')] || '').trim();
+    if(url){ a.href = url; return; }
+    a.removeAttribute('href'); a.setAttribute('aria-disabled','true');
+    if(a.classList.contains('btn')) a.classList.add('pending');
+    var t = a.querySelector('.t'), p = a.getAttribute('data-pending'); if(t && p){ t.textContent = p; }
+    var i = a.querySelector('.ico'); if(i){ i.remove(); }
+  });
+
+  // 홈 화면 추가: 기기별 탭 (보고 있는 기기를 먼저 보여 줌)
+  var tabs = document.querySelectorAll('.tabs [data-tab]');
+  function pick(name){
+    tabs.forEach(function(b){ b.setAttribute('aria-selected', b.getAttribute('data-tab') === name ? 'true' : 'false'); });
+    document.querySelectorAll('.tab-panel').forEach(function(p){ p.hidden = p.getAttribute('data-panel') !== name; });
+  }
+  tabs.forEach(function(b){ b.addEventListener('click', function(){ pick(b.getAttribute('data-tab')); }); });
+  var ua = navigator.userAgent;
+  if(/SamsungBrowser/i.test(ua)) pick('samsung');
+  else if(/Android/i.test(ua)) pick('chrome');
+
+  // 앱 주소 표시와 복사
+  var addr = document.getElementById('app-addr'), btn = document.getElementById('copy-btn');
+  if(LINKS.app) addr.textContent = LINKS.app;
+  btn.addEventListener('click', function(){
+    var done = function(){ btn.textContent = '복사됨 ✓'; setTimeout(function(){ btn.textContent = '주소 복사'; }, 1800); };
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(addr.textContent).then(done, function(){ selectAddr(); });
+    } else { selectAddr(); }
+  });
+  function selectAddr(){
+    var r = document.createRange(); r.selectNodeContents(addr);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    btn.textContent = '선택됨 · 길게 눌러 복사';
+  }
+})();
+</script>
+
+</body></html>
