@@ -2,226 +2,218 @@
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>목회자의 책상</title>
 <meta name="description" content="Shepherd's Desk · 목회 현장에서 만든 네 가지 도구: 렉시오, 쉐퍼드 데스크, 오늘의 네컷, 365 기도동행">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 
 :root{
-  /* 목회자의 책상: 짙은 가죽 책상판 위에 놓인 종이, 놋쇠 문진 한 점 */
-  --bg:#eceee8; --surface:#fafaf6; --ink:#1a221f; --muted:#56625c; --line:#d3d9d0;
-  --desk:#1c2824; --desk-2:#24332e; --desk-ink:#edf0e9; --desk-muted:#a9b6ae;
-  --brass:#977331; --brass-soft:#c7a463;
-  --display:"Gowun Batang","Noto Serif KR","AppleMyungjo",serif;
-  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  /* 밝은 흰 바탕 + 프로그램별 선명한 색 네 가지. 굵은 고딕 제목, 영문은 이탤릭 세리프로 포인트 */
+  --bg:#ffffff; --soft:#f4f5f7; --ink:#0c0e13; --muted:#5c6370; --line:#e6e8ec;
+  --lexio:#3156ff; --desk:#0b9a63; --cuts:#ff5440; --pray:#e07d06;
+  --sans:"Pretendard","Pretendard Variable","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --serif:"Instrument Serif","Times New Roman",serif;
   color-scheme:light;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#121916; --surface:#1a231f; --ink:#e5eae3; --muted:#9aa79f; --line:#2c3833;
-    --desk:#0d1311; --desk-2:#16201c; --desk-ink:#edf0e9; --desk-muted:#93a199;
-    --brass:#cfa95c; --brass-soft:#e0c07f; color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#121916; --surface:#1a231f; --ink:#e5eae3; --muted:#9aa79f; --line:#2c3833;
-  --desk:#0d1311; --desk-2:#16201c; --desk-ink:#edf0e9; --desk-muted:#93a199;
-  --brass:#cfa95c; --brass-soft:#e0c07f; color-scheme:dark;
-}
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.75;word-break:keep-all;overflow-wrap:break-word}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.7;letter-spacing:-.01em;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
 img,svg{max-width:100%}
 a{color:inherit}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.3;text-wrap:balance;margin:0}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-weight:800;line-height:1.18;letter-spacing:-.035em;text-wrap:balance;margin:0}
 p{margin:0}
-:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:4px}
+.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+:focus-visible{outline:3px solid var(--accent,var(--lexio));outline-offset:3px;border-radius:6px}
 
-/* 책상판 */
-.desk{background:
-  radial-gradient(120% 90% at 85% 0%, rgba(199,164,99,.10), transparent 55%),
-  repeating-linear-gradient(90deg, rgba(255,255,255,.018) 0 2px, transparent 2px 7px),
-  linear-gradient(180deg,var(--desk-2),var(--desk));
-  color:var(--desk-ink);border-bottom:3px solid var(--brass)}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:18px;letter-spacing:.01em}
-.brand svg{width:30px;height:30px;flex:none}
-.brand small{display:block;font-family:var(--body);font-size:11.5px;color:var(--desk-muted);letter-spacing:.08em;line-height:1.2}
-.toplink{font-size:14px;color:var(--desk-muted);text-decoration:none;border:1px solid rgba(237,240,233,.2);padding:6px 14px;border-radius:99px}
-.toplink:hover{color:var(--desk-ink);border-color:var(--brass-soft)}
-.eyebrow{font-size:13px;letter-spacing:.14em;color:var(--brass-soft);font-weight:500}
+/* 상단 바 */
+.nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:30px;height:30px;display:grid;grid-template-columns:1fr 1fr;gap:3px;flex:none}
+.brand-mark i{border-radius:4px}
+.brand-mark i:nth-child(1){background:var(--lexio)}.brand-mark i:nth-child(2){background:var(--desk)}
+.brand-mark i:nth-child(3){background:var(--cuts)}.brand-mark i:nth-child(4){background:var(--pray)}
+.brand-text{font-weight:700;font-size:16px;line-height:1.1}
+.brand-text .it{font-size:15px;color:var(--muted);margin-left:4px}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{font-size:14.5px;font-weight:500;text-decoration:none;color:var(--muted);padding:8px 12px;border-radius:99px}
+.nav-links a:hover{color:var(--ink);background:var(--soft)}
 
-.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px/1 var(--body);padding:14px 20px;border-radius:10px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s ease, background .15s ease}
-.btn:hover{transform:translateY(-1px)}
+/* 버튼 */
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 15.5px/1 var(--sans);letter-spacing:-.01em;padding:15px 22px;border-radius:99px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -10px rgba(12,14,19,.35)}
 .btn svg{width:18px;height:18px}
-.btn-primary{background:var(--accent,var(--brass));color:#fff}
-.btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
-.desk .btn-ghost{border-color:rgba(237,240,233,.25);color:var(--desk-ink)}
-.btn.pending{background:transparent;color:var(--muted);border:1px dashed var(--line);cursor:default;transform:none}
-.desk .btn.pending{color:var(--desk-muted);border-color:rgba(237,240,233,.3)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-color{background:var(--accent);color:#fff}
+.btn-line{border-color:var(--line);color:var(--ink);background:#fff}
+.btn-line:hover{border-color:var(--ink)}
+.btn.pending{background:var(--soft);color:var(--muted);border:1.5px dashed #cfd3da;cursor:default;transform:none;box-shadow:none}
 
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-size:12.5px;font-weight:500;padding:3px 10px;border-radius:99px;border:1px solid var(--line);color:var(--muted);background:var(--surface)}
+.chip{font-size:13px;font-weight:600;padding:5px 12px;border-radius:99px;background:#fff;color:var(--muted);border:1px solid var(--line)}
 
-section{padding:72px 0}
-.sec-head{display:grid;gap:10px;margin-bottom:32px;max-width:640px}
-.sec-head h2{font-size:clamp(24px,3.2vw,32px)}
-.sec-head p{color:var(--muted)}
-.label{font-size:13px;letter-spacing:.12em;color:var(--brass);font-weight:600}
+/* 앱 아이콘 타일 */
+.app{--c:var(--accent);width:72px;height:72px;border-radius:20px;display:grid;place-items:center;color:#fff;flex:none;
+  background:linear-gradient(150deg,color-mix(in srgb,var(--c) 78%,#fff),var(--c) 55%,color-mix(in srgb,var(--c) 82%,#000));
+  box-shadow:0 14px 30px -12px color-mix(in srgb,var(--c) 70%,transparent), inset 0 1px 0 rgba(255,255,255,.35)}
+.app svg{width:58%;height:58%}
 
-footer{border-top:1px solid var(--line);padding:32px 0 48px;color:var(--muted);font-size:14px}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
-footer strong{color:var(--ink);font-weight:600}
+section{padding:96px 0}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--accent,var(--ink));letter-spacing:-.005em}
+.kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.sec-head{display:grid;gap:14px;margin-bottom:44px;max-width:680px}
+.sec-head h2{font-size:clamp(30px,4.4vw,48px)}
+.sec-head p{color:var(--muted);font-size:18px}
 
-@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+footer{border-top:1px solid var(--line);padding:36px 0 56px;color:var(--muted);font-size:14.5px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}
+footer strong{color:var(--ink);font-weight:700}
 
-.hero{padding:56px 0 64px;display:grid;gap:22px}
-.hero h1{font-size:clamp(46px,8vw,88px);letter-spacing:-.02em;line-height:1.1}
-.hero h1 .en{display:block;font-family:var(--body);font-size:clamp(14px,1.6vw,17px);font-weight:500;letter-spacing:.32em;color:var(--brass-soft);margin-top:14px}
-.lead{font-size:clamp(17px,2vw,19px);color:var(--desk-muted);max-width:34em}
-.lead b{color:var(--desk-ink);font-weight:500}
-
-/* 책상 위의 네 물건 */
-.objs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
-.obj{display:grid;gap:4px;text-decoration:none;padding:18px 16px 16px;border-radius:12px;border:1px solid rgba(237,240,233,.12);background:rgba(255,255,255,.035);transition:border-color .2s ease, background .2s ease, transform .2s ease}
-.obj:hover{border-color:var(--accent-d);background:rgba(255,255,255,.06);transform:translateY(-2px)}
-.obj-icon svg{width:34px;height:34px;color:var(--accent-d)}
-.obj-name{font-family:var(--display);font-weight:700;font-size:18px;margin-top:6px}
-.obj-role{font-size:13px;color:var(--desk-muted)}
-
-.tools{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.tool{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px 26px 24px;display:grid;grid-template-rows:auto 1fr auto;gap:18px;position:relative;overflow:hidden}
-.tool::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--accent)}
-.tool-top{display:flex;justify-content:space-between;align-items:flex-start}
-.tool-icon{width:60px;height:60px;border-radius:14px;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent)}
-.tool-icon svg{width:38px;height:38px}
-.tool-n{font-family:var(--display);font-size:15px;color:var(--muted);font-variant-numeric:tabular-nums}
-.tool-body{display:grid;gap:10px;align-content:start}
-.tool-role{font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--accent)}
-.tool h3{font-size:26px}
-.tool h3 .en{font-family:var(--body);font-size:14px;font-weight:500;color:var(--muted);margin-left:6px;letter-spacing:.02em}
-.tool p{color:var(--muted);font-size:15.5px}
-.tool .btn{justify-self:start}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tool{--accent:var(--accent-d)!important}}
-:root[data-theme="dark"] .tool{--accent:var(--accent-d)!important}
-:root:not([data-theme="light"]) .tool .btn-primary{color:#fff}
-
-.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start;border-top:1px solid var(--line);padding-top:48px}
-.about h2{font-size:clamp(24px,3vw,30px)}
-.about-text{display:grid;gap:14px;color:var(--muted);max-width:36em}
-.about-text p:first-child{color:var(--ink);font-family:var(--display);font-size:19px;line-height:1.7}
-
-@media (max-width:860px){
-  .objs{grid-template-columns:1fr 1fr}
-  .tools{grid-template-columns:1fr}
-  .about{grid-template-columns:1fr;gap:20px}
+@media (max-width:640px){
+  .nav-links a.hide-m{display:none}
+  section{padding:68px 0}
+  .wrap{padding:0 18px}
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tool .btn-primary{color:#10201c}}
-:root[data-theme="dark"] .tool .btn-primary{color:#10201c}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* 히어로: 왼쪽 큰 제목, 오른쪽 네 개의 앱 아이콘 */
+.hero{position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:720px;height:720px;border-radius:50%;
+  background:conic-gradient(from 200deg,color-mix(in srgb,var(--lexio) 18%,#fff),color-mix(in srgb,var(--desk) 16%,#fff),color-mix(in srgb,var(--pray) 20%,#fff),color-mix(in srgb,var(--cuts) 16%,#fff),color-mix(in srgb,var(--lexio) 18%,#fff));
+  filter:blur(70px);opacity:.75;pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding-top:88px;padding-bottom:100px}
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:7px 14px 7px 8px;border-radius:99px;background:#fff;border:1px solid var(--line);box-shadow:0 4px 14px -8px rgba(0,0,0,.2)}
+.badge b{background:var(--ink);color:#fff;font-size:12px;padding:3px 9px;border-radius:99px;font-weight:700}
+.hero h1{font-size:clamp(46px,7.4vw,96px);letter-spacing:-.055em;line-height:1.04;margin:26px 0 26px;font-weight:900}
+.hero h1 .it{font-weight:400;letter-spacing:-.01em;background:linear-gradient(90deg,var(--lexio),var(--desk) 35%,var(--pray) 70%,var(--cuts));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.hero .lead{font-size:clamp(17px,1.9vw,20px);color:var(--muted);max-width:30em}
+.hero .lead b{color:var(--ink);font-weight:700}
+.hero .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:380px;justify-self:end;width:100%}
+.tile{display:grid;justify-items:center;gap:12px;padding:26px 12px 20px;background:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.9);border-radius:28px;text-decoration:none;
+  box-shadow:0 24px 50px -28px rgba(12,14,19,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .25s ease}
+.tile .app{width:84px;height:84px;border-radius:24px}
+.tile-name{font-weight:700;font-size:15.5px}
+.tile:hover{transform:translateY(-6px) rotate(-1.5deg)}
+.t1,.t3{margin-top:34px}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -8px}}
+.tile .app{animation:float 5s ease-in-out infinite}
+.t1 .app{animation-delay:-1.2s}.t2 .app{animation-delay:-2.5s}.t3 .app{animation-delay:-3.7s}
+
+/* 도구 카드 */
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.tool{border-radius:30px;padding:34px 34px 32px;display:grid;gap:14px;align-content:start;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 9%,#fff),#fff 70%);border:1px solid color-mix(in srgb,var(--accent) 18%,var(--line));transition:transform .25s ease, box-shadow .25s ease}
+.tool:hover{transform:translateY(-4px);box-shadow:0 30px 60px -36px color-mix(in srgb,var(--accent) 60%,transparent)}
+.tool-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.tool-role{font-size:13.5px;font-weight:700;color:var(--accent);background:#fff;border:1px solid color-mix(in srgb,var(--accent) 25%,var(--line));padding:6px 12px;border-radius:99px}
+.tool-name{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px}
+.tool-name h3{font-size:clamp(30px,3.4vw,40px);font-weight:900;letter-spacing:-.05em}
+.tool-name .it{font-size:24px;color:var(--accent)}
+.tool-head{font-size:19px;font-weight:700;letter-spacing:-.02em}
+.tool-desc{color:var(--muted);font-size:16px;max-width:34em}
+.tool .btn{justify-self:start;margin-top:10px}
+
+/* 소개 */
+.about{background:var(--soft)}
+.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about h2{font-size:clamp(30px,4.2vw,46px);font-weight:900;letter-spacing:-.05em}
+.about-text{display:grid;gap:16px;color:var(--muted);font-size:17.5px}
+.about-text p:first-child{color:var(--ink);font-weight:600;font-size:19px}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;padding-top:56px;padding-bottom:72px}
+  .tiles{justify-self:start;max-width:none;grid-template-columns:repeat(4,1fr);gap:10px}
+  .tile{padding:16px 6px 12px;border-radius:20px}.tile .app{width:56px;height:56px;border-radius:16px}.tile-name{font-size:13px}
+  .t1,.t3{margin-top:0}
+  .tools{grid-template-columns:1fr}
+  .about .wrap{grid-template-columns:1fr;gap:20px}
+}
+@media (max-width:520px){.tiles{grid-template-columns:1fr 1fr}.tool{padding:26px 22px}}
 </style></head>
 <body>
-<header class="desk">
+<nav class="nav" aria-label="상단 메뉴"><div class="wrap">
+  <a class="brand" data-link="home" href="#"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-text">목회자의 책상<span class="it">Shepherd's Desk</span></span></a>
+  <div class="nav-links"><a href="#tools">도구</a><a class="hide-m" href="#about">소개</a></div>
+</div></nav>
+
+<header class="hero">
   <div class="wrap">
-    <div class="topbar">
-      <a class="brand" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-opacity=".35"/><path d="M11 25V11.5a4 4 0 0 1 8 0" fill="none" stroke="#c7a463" stroke-width="2" stroke-linecap="round"/><ellipse cx="20" cy="20.5" rx="4.6" ry="3.4" fill="currentColor" fill-opacity=".9"/><circle cx="24" cy="18.6" r="1.8" fill="currentColor"/></svg><span>목회자의 책상<small>SHEPHERD'S DESK</small></span></a>
-      <a class="toplink" href="#tools">도구 모두 보기</a>
+    <div>
+      <span class="badge"><b>4</b>목회 현장에서 만든 도구</span>
+      <h1>목회의 하루를<br>한 책상 위에 <span class="it">Desk.</span></h1>
+      <p class="lead">설교를 준비하고, 성도를 기억하고, 함께 웃고, 함께 기도하는 일. 교구 목회자가 <b>매일의 사역에 필요해서 만든 도구</b>들을 한자리에 모았습니다.</p>
+      <div class="cta">
+        <a class="btn btn-dark" href="#tools">도구 둘러보기<svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
+        <a class="btn btn-line" href="#about">만든 이야기</a>
+      </div>
     </div>
-    <div class="hero">
-      <div class="eyebrow">목회 현장에서 만든 네 가지 도구</div>
-      <h1>목회자의 책상<span class="en">SHEPHERD'S DESK</span></h1>
-      <p class="lead">설교를 준비하고, 성도를 기억하고, 함께 웃고, 함께 기도하는 일. 한 교구 목회자가 <b>매일의 사역에 필요해서 만든 도구</b>들을 한 책상 위에 모았습니다.</p>
-      <nav class="objs" aria-label="프로그램 바로가기"><a class="obj" href="#lexio" style="--accent-d:#8f9de0"><span class="obj-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 13c-4-3-10-4-17-3v25c7-1 13 0 17 3 4-3 10-4 17-3V10c-7-1-13 0-17 3z"/><path d="M24 13v25"/><path d="M11 17h8M11 22h8M29 17h8M29 22h5"/></svg></span><span class="obj-name">렉시오</span><span class="obj-role">설교 작성 · 성경 연구</span></a><a class="obj" href="#desk" style="--accent-d:#9cbf78"><span class="obj-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="7" width="26" height="34" rx="2"/><path d="M10 13h-3M10 21h-3M10 29h-3M10 37h-3"/><path d="M16 16h14M16 22h14M16 28h8"/><path d="M40 41V20a4 4 0 0 0-8 0" stroke-width="2"/></svg></span><span class="obj-name">쉐퍼드 데스크</span><span class="obj-role">목회 메모 · 일정 · 심방 기록</span></a><a class="obj" href="#nekeot" style="--accent-d:#d9837d"><span class="obj-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="15" y="4" width="18" height="40" rx="1.5"/><rect x="18" y="7" width="12" height="7"/><rect x="18" y="16" width="12" height="7"/><rect x="18" y="25" width="12" height="7"/><path d="M19 38h10"/></svg></span><span class="obj-name">오늘의 네컷</span><span class="obj-role">교회 포토부스</span></a><a class="obj" href="#prayer" style="--accent-d:#79abae"><span class="obj-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6c3 4 5 7 5 10a5 5 0 0 1-10 0c0-3 2-6 5-10z"/><rect x="19" y="24" width="10" height="16" rx="1"/><path d="M14 40h20"/><path d="M24 21v3"/></svg></span><span class="obj-name">365 기도동행</span><span class="obj-role">기도제목 창구</span></a></nav>
-    </div>
+    <nav class="tiles" aria-label="프로그램 바로가기"><a class="tile t0" href="#lexio" style="--accent:var(--lexio)"><span class="app"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 13c-4-3-10-4-17-3v25c7-1 13 0 17 3 4-3 10-4 17-3V10c-7-1-13 0-17 3z"/><path d="M24 13v25"/></svg></span><span class="tile-name">렉시오</span></a><a class="tile t1" href="#desk" style="--accent:var(--desk)"><span class="app"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 41V16a7 7 0 0 1 14 0"/><ellipse cx="30" cy="32" rx="8" ry="6" fill="currentColor" stroke="none"/><circle cx="37" cy="28.5" r="3.2" fill="currentColor" stroke="none"/></svg></span><span class="tile-name">쉐퍼드 데스크</span></a><a class="tile t2" href="#nekeot" style="--accent:var(--cuts)"><span class="app"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="15" y="5" width="18" height="38" rx="2"/><path d="M15 14h18M15 23h18M15 32h18"/></svg></span><span class="tile-name">오늘의 네컷</span></a><a class="tile t3" href="#prayer" style="--accent:var(--pray)"><span class="app"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 5c4 5 6 8 6 11.5a6 6 0 0 1-12 0C18 13 20 10 24 5z" fill="currentColor" stroke="none"/><rect x="18" y="25" width="12" height="16" rx="2"/><path d="M13 41h22"/></svg></span><span class="tile-name">365 기도동행</span></a></nav>
   </div>
 </header>
 
 <main>
-  <section id="tools">
+  <section id="tools" style="padding-top:40px">
     <div class="wrap">
       <div class="sec-head">
-        <div class="label">책상 위의 도구</div>
-        <h2>필요한 도구를 골라 둘러보세요</h2>
-        <p>각 프로그램의 홈페이지에서 자세한 소개를 보고 내려받으실 수 있습니다.</p>
+        <span class="kicker">책상 위의 도구</span>
+        <h2>필요한 도구를 골라 보세요</h2>
+        <p>각 프로그램 홈페이지에서 자세한 소개를 보고 내려받으실 수 있습니다.</p>
       </div>
       <div class="tools">
-    <article class="tool" id="lexio" style="--accent:#3c4a86;--accent-d:#8f9de0">
-      <div class="tool-top">
-        <div class="tool-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 13c-4-3-10-4-17-3v25c7-1 13 0 17 3 4-3 10-4 17-3V10c-7-1-13 0-17 3z"/><path d="M24 13v25"/><path d="M11 17h8M11 22h8M29 17h8M29 22h5"/></svg></div>
-        <span class="tool-n">01</span>
-      </div>
-      <div class="tool-body">
-        <div class="tool-role">설교 작성 · 성경 연구</div>
-        <h3>렉시오 <span class="en">Lexio</span></h3>
-        <p>설교 종류와 구조를 고르고, 본문과 문맥, 원어와 관주를 옆에 펼쳐 둔 채 설교문을 씁니다. AI와 함께 쓰면 묵상과 원고가 한층 깊어집니다.</p>
+      <article class="tool" id="lexio" style="--accent:var(--lexio)">
+        <div class="tool-top"><div class="app"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 13c-4-3-10-4-17-3v25c7-1 13 0 17 3 4-3 10-4 17-3V10c-7-1-13 0-17 3z"/><path d="M24 13v25"/></svg></div><div class="tool-role">설교 작성 · 성경 연구</div></div>
+        <div class="tool-name"><h3>렉시오</h3><span class="it">Lexio</span></div>
+        <p class="tool-head">본문 곁에서 쓰는 설교</p>
+        <p class="tool-desc">설교 종류와 구조를 고르고, 본문·문맥·원어·관주를 옆에 펼쳐 둔 채 설교문을 씁니다. AI와 함께 쓰면 묵상과 원고가 한층 깊어집니다.</p>
         <div class="chips"><span class="chip">웹앱</span><span class="chip">맥 앱</span><span class="chip">AI와 함께</span></div>
-      </div>
-      <a class="btn btn-primary" data-link="lexio" data-pending="홈페이지 준비 중" href="#"><span class="t">렉시오 둘러보기</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
-    </article>
-    <article class="tool" id="desk" style="--accent:#55703a;--accent-d:#9cbf78">
-      <div class="tool-top">
-        <div class="tool-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="7" width="26" height="34" rx="2"/><path d="M10 13h-3M10 21h-3M10 29h-3M10 37h-3"/><path d="M16 16h14M16 22h14M16 28h8"/><path d="M40 41V20a4 4 0 0 0-8 0" stroke-width="2"/></svg></div>
-        <span class="tool-n">02</span>
-      </div>
-      <div class="tool-body">
-        <div class="tool-role">목회 메모 · 일정 · 심방 기록</div>
-        <h3>쉐퍼드 데스크 <span class="en">Shepherd's Desk</span></h3>
-        <p>전화나 회의 중에도 바로 적고, 심방과 일정을 기억합니다. 출근과 퇴근 시간에는 오늘 하루를 함께 점검해 줍니다.</p>
+        <a class="btn btn-color" data-link="lexio" data-pending="홈페이지 준비 중" href="#"><span class="t">자세히 보기</span><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
+      </article>
+      <article class="tool" id="desk" style="--accent:var(--desk)">
+        <div class="tool-top"><div class="app"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 41V16a7 7 0 0 1 14 0"/><ellipse cx="30" cy="32" rx="8" ry="6" fill="currentColor" stroke="none"/><circle cx="37" cy="28.5" r="3.2" fill="currentColor" stroke="none"/></svg></div><div class="tool-role">메모 · 일정 · 심방 기록</div></div>
+        <div class="tool-name"><h3>쉐퍼드 데스크</h3><span class="it">Shepherd's Desk</span></div>
+        <p class="tool-head">성도를 기억하는 메모장</p>
+        <p class="tool-desc">전화나 회의 중에도 바로 적고, 심방과 일정을 기억합니다. 출근과 퇴근 시간에는 오늘 하루를 함께 점검해 줍니다.</p>
         <div class="chips"><span class="chip">맥 앱</span><span class="chip">웹앱</span><span class="chip">아이폰·아이패드</span></div>
-      </div>
-      <a class="btn btn-primary" data-link="desk" data-pending="홈페이지 준비 중" href="#"><span class="t">쉐퍼드 데스크 둘러보기</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
-    </article>
-    <article class="tool" id="nekeot" style="--accent:#b04e48;--accent-d:#d9837d">
-      <div class="tool-top">
-        <div class="tool-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="15" y="4" width="18" height="40" rx="1.5"/><rect x="18" y="7" width="12" height="7"/><rect x="18" y="16" width="12" height="7"/><rect x="18" y="25" width="12" height="7"/><path d="M19 38h10"/></svg></div>
-        <span class="tool-n">03</span>
-      </div>
-      <div class="tool-body">
-        <div class="tool-role">교회 포토부스</div>
-        <h3>오늘의 네컷 <span class="en">Four Cuts Today</span></h3>
-        <p>교구 모임과 여름성경학교에서 네 컷 사진을 찍어, 행사 이름과 말씀이 담긴 한 장으로 인화해 나눕니다.</p>
+        <a class="btn btn-color" data-link="desk" data-pending="홈페이지 준비 중" href="#"><span class="t">자세히 보기</span><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
+      </article>
+      <article class="tool" id="nekeot" style="--accent:var(--cuts)">
+        <div class="tool-top"><div class="app"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="15" y="5" width="18" height="38" rx="2"/><path d="M15 14h18M15 23h18M15 32h18"/></svg></div><div class="tool-role">교회 포토부스</div></div>
+        <div class="tool-name"><h3>오늘의 네컷</h3><span class="it">Four Cuts</span></div>
+        <p class="tool-head">함께 웃은 날을 한 장에</p>
+        <p class="tool-desc">교구 모임과 여름성경학교에서 네 컷 사진을 찍어, 행사 이름과 말씀이 담긴 한 장으로 인화해 나눕니다.</p>
         <div class="chips"><span class="chip">행사·모임</span><span class="chip">바로 인화</span></div>
-      </div>
-      <a class="btn btn-primary" data-link="nekeot" data-pending="홈페이지 준비 중" href="#"><span class="t">오늘의 네컷 둘러보기</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
-    </article>
-    <article class="tool" id="prayer" style="--accent:#3f6f73;--accent-d:#79abae">
-      <div class="tool-top">
-        <div class="tool-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6c3 4 5 7 5 10a5 5 0 0 1-10 0c0-3 2-6 5-10z"/><rect x="19" y="24" width="10" height="16" rx="1"/><path d="M14 40h20"/><path d="M24 21v3"/></svg></div>
-        <span class="tool-n">04</span>
-      </div>
-      <div class="tool-body">
-        <div class="tool-role">기도제목 창구</div>
-        <h3>365 기도동행 <span class="en">365 Prayer Walk</span></h3>
-        <p>성도가 링크나 QR로 기도제목을 올리면, 목회자가 기억하고 기도하며 성도가 원하는 방식으로 찾아갑니다.</p>
+        <a class="btn btn-color" data-link="nekeot" data-pending="홈페이지 준비 중" href="#"><span class="t">자세히 보기</span><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
+      </article>
+      <article class="tool" id="prayer" style="--accent:var(--pray)">
+        <div class="tool-top"><div class="app"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 5c4 5 6 8 6 11.5a6 6 0 0 1-12 0C18 13 20 10 24 5z" fill="currentColor" stroke="none"/><rect x="18" y="25" width="12" height="16" rx="2"/><path d="M13 41h22"/></svg></div><div class="tool-role">기도제목 창구</div></div>
+        <div class="tool-name"><h3>365 기도동행</h3><span class="it">Prayer Walk</span></div>
+        <p class="tool-head">끝까지 함께하는 기도</p>
+        <p class="tool-desc">성도가 링크나 QR로 기도제목을 올리면, 목회자가 기억하고 기도하며 성도가 원하는 방식으로 찾아갑니다.</p>
         <div class="chips"><span class="chip">웹앱</span><span class="chip">구글 시트</span><span class="chip">QR 접수</span></div>
-      </div>
-      <a class="btn btn-primary" data-link="prayer" data-pending="홈페이지 준비 중" href="#"><span class="t">365 기도동행 둘러보기</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
-    </article>
+        <a class="btn btn-color" data-link="prayer" data-pending="홈페이지 준비 중" href="#"><span class="t">자세히 보기</span><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
+      </article>
       </div>
     </div>
   </section>
 
-  <section style="padding-top:0">
+  <section class="about" id="about">
     <div class="wrap">
-      <div class="about">
-        <h2>이 책상에 대하여</h2>
-        <div class="about-text">
-          <p>심방 가는 길에 떠오른 기도제목, 금요예배를 앞두고 붙든 본문, 교구 모임에서 함께 웃던 얼굴들. 목회자의 하루는 책상 위에서 정리되고 다시 현장으로 이어집니다.</p>
-          <p>여기 있는 프로그램은 모두 할렐루야교회 교구 사역 현장에서 직접 쓰며 다듬었습니다. 같은 길을 걷는 동역자들의 책상에도 작은 도움이 되기를 바랍니다.</p>
-        </div>
+      <h2>현장에서 쓰며<br>다듬은 도구들</h2>
+      <div class="about-text">
+        <p>심방 가는 길에 떠오른 기도제목, 금요예배를 앞두고 붙든 본문, 교구 모임에서 함께 웃던 얼굴들. 목회자의 하루는 책상 위에서 정리되고 다시 현장으로 이어집니다.</p>
+        <p>여기 있는 프로그램은 모두 할렐루야교회 교구 사역 현장에서 직접 쓰며 다듬었습니다. 같은 길을 걷는 동역자들의 책상에도 작은 도움이 되기를 바랍니다.</p>
       </div>
     </div>
   </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <span>목회자의 책상 · Shepherd's Desk</span>
-    <span>만든 사람 <strong>이세진 목사</strong></span>
-  </div>
-</footer>
+<footer><div class="wrap"><span>목회자의 책상 · <span class='it'>Shepherd's Desk</span></span><span>만든 사람 <strong>이세진 목사</strong></span></div></footer>
 
 <script>
 /* 각 프로그램 주소는 이곳에서만 바꾸면 됩니다 */
 var LINKS = {
+  home: "index.html",
   lexio: "https://shepherdsdesk.github.io/lexio/",
   desk: "https://shepherdsdesk.github.io/shepherds-desk/",
   nekeot: "four-cuts.html",
@@ -233,12 +225,11 @@ var LINKS = {
 (function(){
   document.querySelectorAll('[data-link]').forEach(function(a){
     var url = (LINKS[a.getAttribute('data-link')] || '').trim();
-    if(url){ a.href = url; }
-    else{
-      a.removeAttribute('href'); a.classList.add('pending'); a.setAttribute('aria-disabled','true');
-      var t = a.querySelector('.t'), p = a.getAttribute('data-pending'); if(t && p){ t.textContent = p; }
-      var i = a.querySelector('svg'); if(i){ i.remove(); }
-    }
+    if(url){ a.href = url; return; }
+    a.removeAttribute('href'); a.setAttribute('aria-disabled','true');
+    if(a.classList.contains('btn')) a.classList.add('pending');
+    var t = a.querySelector('.t'), p = a.getAttribute('data-pending'); if(t && p){ t.textContent = p; }
+    var i = a.querySelector('.ico'); if(i){ i.remove(); }
   });
 })();
 </script>

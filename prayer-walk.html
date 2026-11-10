@@ -2,196 +2,191 @@
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>365 기도동행</title>
 <meta name="description" content="성도의 기도제목을 받고, 기억하고, 끝까지 함께 기도하는 웹앱, 365 기도동행">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 
 :root{
-  /* 목회자의 책상: 짙은 가죽 책상판 위에 놓인 종이, 놋쇠 문진 한 점 */
-  --bg:#eceee8; --surface:#fafaf6; --ink:#1a221f; --muted:#56625c; --line:#d3d9d0;
-  --desk:#1c2824; --desk-2:#24332e; --desk-ink:#edf0e9; --desk-muted:#a9b6ae;
-  --brass:#977331; --brass-soft:#c7a463;
-  --display:"Gowun Batang","Noto Serif KR","AppleMyungjo",serif;
-  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  /* 밝은 흰 바탕 + 프로그램별 선명한 색 네 가지. 굵은 고딕 제목, 영문은 이탤릭 세리프로 포인트 */
+  --bg:#ffffff; --soft:#f4f5f7; --ink:#0c0e13; --muted:#5c6370; --line:#e6e8ec;
+  --lexio:#3156ff; --desk:#0b9a63; --cuts:#ff5440; --pray:#e07d06;
+  --sans:"Pretendard","Pretendard Variable","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --serif:"Instrument Serif","Times New Roman",serif;
   color-scheme:light;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#121916; --surface:#1a231f; --ink:#e5eae3; --muted:#9aa79f; --line:#2c3833;
-    --desk:#0d1311; --desk-2:#16201c; --desk-ink:#edf0e9; --desk-muted:#93a199;
-    --brass:#cfa95c; --brass-soft:#e0c07f; color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#121916; --surface:#1a231f; --ink:#e5eae3; --muted:#9aa79f; --line:#2c3833;
-  --desk:#0d1311; --desk-2:#16201c; --desk-ink:#edf0e9; --desk-muted:#93a199;
-  --brass:#cfa95c; --brass-soft:#e0c07f; color-scheme:dark;
-}
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.75;word-break:keep-all;overflow-wrap:break-word}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.7;letter-spacing:-.01em;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
 img,svg{max-width:100%}
 a{color:inherit}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.3;text-wrap:balance;margin:0}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-weight:800;line-height:1.18;letter-spacing:-.035em;text-wrap:balance;margin:0}
 p{margin:0}
-:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:4px}
+.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+:focus-visible{outline:3px solid var(--accent,var(--lexio));outline-offset:3px;border-radius:6px}
 
-/* 책상판 */
-.desk{background:
-  radial-gradient(120% 90% at 85% 0%, rgba(199,164,99,.10), transparent 55%),
-  repeating-linear-gradient(90deg, rgba(255,255,255,.018) 0 2px, transparent 2px 7px),
-  linear-gradient(180deg,var(--desk-2),var(--desk));
-  color:var(--desk-ink);border-bottom:3px solid var(--brass)}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:18px;letter-spacing:.01em}
-.brand svg{width:30px;height:30px;flex:none}
-.brand small{display:block;font-family:var(--body);font-size:11.5px;color:var(--desk-muted);letter-spacing:.08em;line-height:1.2}
-.toplink{font-size:14px;color:var(--desk-muted);text-decoration:none;border:1px solid rgba(237,240,233,.2);padding:6px 14px;border-radius:99px}
-.toplink:hover{color:var(--desk-ink);border-color:var(--brass-soft)}
-.eyebrow{font-size:13px;letter-spacing:.14em;color:var(--brass-soft);font-weight:500}
+/* 상단 바 */
+.nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:30px;height:30px;display:grid;grid-template-columns:1fr 1fr;gap:3px;flex:none}
+.brand-mark i{border-radius:4px}
+.brand-mark i:nth-child(1){background:var(--lexio)}.brand-mark i:nth-child(2){background:var(--desk)}
+.brand-mark i:nth-child(3){background:var(--cuts)}.brand-mark i:nth-child(4){background:var(--pray)}
+.brand-text{font-weight:700;font-size:16px;line-height:1.1}
+.brand-text .it{font-size:15px;color:var(--muted);margin-left:4px}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{font-size:14.5px;font-weight:500;text-decoration:none;color:var(--muted);padding:8px 12px;border-radius:99px}
+.nav-links a:hover{color:var(--ink);background:var(--soft)}
 
-.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px/1 var(--body);padding:14px 20px;border-radius:10px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s ease, background .15s ease}
-.btn:hover{transform:translateY(-1px)}
+/* 버튼 */
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 15.5px/1 var(--sans);letter-spacing:-.01em;padding:15px 22px;border-radius:99px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -10px rgba(12,14,19,.35)}
 .btn svg{width:18px;height:18px}
-.btn-primary{background:var(--accent,var(--brass));color:#fff}
-.btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
-.desk .btn-ghost{border-color:rgba(237,240,233,.25);color:var(--desk-ink)}
-.btn.pending{background:transparent;color:var(--muted);border:1px dashed var(--line);cursor:default;transform:none}
-.desk .btn.pending{color:var(--desk-muted);border-color:rgba(237,240,233,.3)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-color{background:var(--accent);color:#fff}
+.btn-line{border-color:var(--line);color:var(--ink);background:#fff}
+.btn-line:hover{border-color:var(--ink)}
+.btn.pending{background:var(--soft);color:var(--muted);border:1.5px dashed #cfd3da;cursor:default;transform:none;box-shadow:none}
 
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-size:12.5px;font-weight:500;padding:3px 10px;border-radius:99px;border:1px solid var(--line);color:var(--muted);background:var(--surface)}
+.chip{font-size:13px;font-weight:600;padding:5px 12px;border-radius:99px;background:#fff;color:var(--muted);border:1px solid var(--line)}
 
-section{padding:72px 0}
-.sec-head{display:grid;gap:10px;margin-bottom:32px;max-width:640px}
-.sec-head h2{font-size:clamp(24px,3.2vw,32px)}
-.sec-head p{color:var(--muted)}
-.label{font-size:13px;letter-spacing:.12em;color:var(--brass);font-weight:600}
+/* 앱 아이콘 타일 */
+.app{--c:var(--accent);width:72px;height:72px;border-radius:20px;display:grid;place-items:center;color:#fff;flex:none;
+  background:linear-gradient(150deg,color-mix(in srgb,var(--c) 78%,#fff),var(--c) 55%,color-mix(in srgb,var(--c) 82%,#000));
+  box-shadow:0 14px 30px -12px color-mix(in srgb,var(--c) 70%,transparent), inset 0 1px 0 rgba(255,255,255,.35)}
+.app svg{width:58%;height:58%}
 
-footer{border-top:1px solid var(--line);padding:32px 0 48px;color:var(--muted);font-size:14px}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
-footer strong{color:var(--ink);font-weight:600}
+section{padding:96px 0}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--accent,var(--ink));letter-spacing:-.005em}
+.kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.sec-head{display:grid;gap:14px;margin-bottom:44px;max-width:680px}
+.sec-head h2{font-size:clamp(30px,4.4vw,48px)}
+.sec-head p{color:var(--muted);font-size:18px}
 
-@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+footer{border-top:1px solid var(--line);padding:36px 0 56px;color:var(--muted);font-size:14.5px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}
+footer strong{color:var(--ink);font-weight:700}
 
-:root{--accent:#3f6f73}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--accent:#6fa3a6}}
-:root[data-theme="dark"]{--accent:#6fa3a6}
-
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:36px 0 72px}
-.hero h1{font-size:clamp(40px,6vw,64px);letter-spacing:-.01em;margin:14px 0 18px}
-.hero h1 .num{color:var(--brass-soft);font-variant-numeric:tabular-nums}
-.lead{font-size:18px;color:var(--desk-muted);max-width:30em}
-.lead b{color:var(--desk-ink);font-weight:500}
-.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-
-/* 휴대폰 화면 견본 */
-.phone-stage{display:flex;justify-content:center}
-.phone{width:min(290px,78vw);background:#f6f7f4;color:#1d2422;border-radius:34px;padding:14px;box-shadow:0 26px 60px rgba(0,0,0,.5);border:6px solid #0b100e}
-.phone-in{background:#fff;border-radius:22px;padding:20px 16px 18px;display:grid;gap:12px}
-.p-title{font-family:var(--display);font-size:19px;font-weight:700;text-align:center}
-.p-sub{font-size:12px;color:#6b7672;text-align:center;margin-top:-8px}
-.p-field{border:1px solid #dfe4e1;border-radius:10px;padding:9px 11px;font-size:13px;line-height:1.55}
-.p-field small{display:block;font-size:11px;color:#7d8884;margin-bottom:2px}
-.p-q{font-size:12px;font-weight:600;color:#3a4542}
-.p-opts{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.p-opt{font-size:12px;border:1px solid #dfe4e1;border-radius:8px;padding:7px 6px;text-align:center}
-.p-opt.on{border-color:#3f6f73;background:#e7f0f0;color:#244d50;font-weight:600}
-.p-send{background:#3f6f73;color:#fff;text-align:center;border-radius:10px;padding:11px;font-size:14px;font-weight:600}
-.sample-note{text-align:center;font-size:12px;color:var(--desk-muted);margin-top:18px}
-
-.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--surface)}
-.flow > div{padding:28px 26px;display:grid;gap:10px;align-content:start;border-right:1px solid var(--line)}
-.flow > div:last-child{border-right:0}
-.who{font-size:12.5px;font-weight:600;letter-spacing:.08em;color:var(--accent)}
-.flow h3{font-size:20px}
-.flow p{color:var(--muted);font-size:15px}
-
-.care{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
-.care div{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:12px;padding:18px}
-.care b{display:block;font-family:var(--display);font-size:17px;margin-bottom:4px}
-.care span{color:var(--muted);font-size:14px}
-
-.feat{display:grid;grid-template-columns:1fr 1fr;gap:28px 40px}
-.feat div{display:grid;grid-template-columns:40px 1fr;gap:14px}
-.feat svg{width:30px;height:30px;color:var(--accent)}
-.feat h3{font-size:18px;margin-bottom:4px}
-.feat p{color:var(--muted);font-size:15px}
-
-.get{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:36px;display:grid;grid-template-columns:1fr 1.1fr;gap:36px;align-items:start}
-.get h2{font-size:28px;margin:8px 0 12px}
-.get p{color:var(--muted)}
-.get .cta{margin-top:22px}
-.install{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:i}
-.install li{counter-increment:i;display:grid;grid-template-columns:34px 1fr;gap:12px;font-size:15px}
-.install li::before{content:counter(i);width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font:600 14px/1 var(--body)}
-.install b{display:block;font-weight:600}
-.install span{color:var(--muted)}
-
-@media (max-width:860px){
-  .hero{grid-template-columns:1fr;gap:36px}
-  .flow{grid-template-columns:1fr}
-  .flow > div{border-right:0;border-bottom:1px solid var(--line)}
-  .flow > div:last-child{border-bottom:0}
-  .care{grid-template-columns:1fr 1fr}
-  .get{grid-template-columns:1fr;padding:26px 22px}
+@media (max-width:640px){
+  .nav-links a.hide-m{display:none}
+  section{padding:68px 0}
+  .wrap{padding:0 18px}
 }
-@media (max-width:560px){.feat{grid-template-columns:1fr}}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+:root{--accent:var(--pray)}
+
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 10%,#fff),#fff)}
+.hero::before{content:"";position:absolute;right:-180px;top:-140px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 30%,transparent),transparent 65%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-top:72px;padding-bottom:96px}
+.hero .app{width:76px;height:76px;border-radius:22px}
+.hero h1{font-size:clamp(46px,7vw,86px);font-weight:900;letter-spacing:-.055em;line-height:1.05;margin:26px 0 8px}
+.hero .en{font-family:var(--serif);font-style:italic;font-size:clamp(24px,2.6vw,32px);color:var(--accent);margin-bottom:22px;display:block}
+.hero .lead{font-size:clamp(17px,1.9vw,20px);color:var(--muted);max-width:30em}
+.hero .lead b{color:var(--ink);font-weight:700}
+.hero .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.sample-note{text-align:center;font-size:13px;color:var(--muted);margin-top:22px;font-weight:500}
+
+.cards{display:grid;gap:18px}
+.cards.c4{grid-template-columns:repeat(4,1fr)}
+.cards.c3{grid-template-columns:repeat(3,1fr)}
+.cards.c2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--soft);border-radius:24px;padding:28px 26px;display:grid;gap:10px;align-content:start}
+.card .n{width:38px;height:38px;border-radius:12px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800;font-size:16px;margin-bottom:6px}
+.card h3{font-size:21px;letter-spacing:-.03em}
+.card p{color:var(--muted);font-size:15.5px}
+.card svg.f{width:34px;height:34px;color:var(--accent);margin-bottom:4px}
+
+.get{border-radius:32px;padding:48px;display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;color:#fff;
+  background:linear-gradient(140deg,color-mix(in srgb,var(--accent) 85%,#fff),var(--accent) 45%,color-mix(in srgb,var(--accent) 75%,#000))}
+.get h2{font-size:clamp(30px,4vw,44px);font-weight:900;letter-spacing:-.05em;margin:12px 0 14px}
+.get p{color:rgba(255,255,255,.88);font-size:17px}
+.get .kicker{color:#fff}
+.get .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.get .btn-white{background:#fff;color:var(--ink)}
+.get .btn-glass{background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.4)}
+.get .btn.pending{background:rgba(255,255,255,.14);color:rgba(255,255,255,.85);border-color:rgba(255,255,255,.45)}
+.get-list{list-style:none;margin:0;padding:24px;display:grid;gap:16px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:22px}
+.get-list li{display:grid;grid-template-columns:34px 1fr;gap:12px;font-size:15.5px}
+.get-list .num{width:30px;height:30px;border-radius:50%;background:#fff;color:var(--accent);display:grid;place-items:center;font-weight:800;font-size:14px}
+.get-list b{display:block;font-weight:700}
+.get-list span{color:rgba(255,255,255,.85)}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;padding-top:52px;padding-bottom:72px}
+  .cards.c4{grid-template-columns:1fr 1fr}
+  .cards.c3{grid-template-columns:1fr}
+  .get{grid-template-columns:1fr;padding:32px 24px}
+}
+@media (max-width:560px){.cards.c4,.cards.c2{grid-template-columns:1fr}}
+
+
+.phone-stage{display:flex;justify-content:center}
+.phone{width:min(300px,80vw);background:#0c0e13;border-radius:44px;padding:10px;box-shadow:0 50px 80px -36px rgba(150,90,0,.55)}
+.phone-in{background:#fff;border-radius:35px;padding:26px 18px 20px;display:grid;gap:12px;position:relative}
+.phone-in::before{content:"";position:absolute;top:9px;left:50%;width:86px;height:22px;border-radius:99px;background:#0c0e13;transform:translateX(-50%)}
+.p-title{font-size:21px;font-weight:900;letter-spacing:-.04em;text-align:center;margin-top:14px}
+.p-sub{font-size:12px;color:#6b7280;text-align:center;margin-top:-8px}
+.p-field{background:#f4f5f7;border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.55}
+.p-field small{display:block;font-size:11px;color:#8a909c;margin-bottom:2px;font-weight:600}
+.p-q{font-size:12.5px;font-weight:700}
+.p-opts{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.p-opt{font-size:12px;font-weight:600;border:1.5px solid #e6e8ec;border-radius:10px;padding:8px 6px;text-align:center;color:#4b5260}
+.p-opt.on{border-color:var(--pray);background:color-mix(in srgb,var(--pray) 12%,#fff);color:#8a5400}
+.p-send{background:var(--pray);color:#fff;text-align:center;border-radius:12px;padding:12px;font-size:14px;font-weight:800}
+.care{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+.care div{border-radius:20px;padding:20px;border:1.5px solid color-mix(in srgb,var(--accent) 30%,var(--line));background:color-mix(in srgb,var(--accent) 6%,#fff)}
+.care b{display:block;font-size:18px;font-weight:800;letter-spacing:-.03em;margin-bottom:2px}
+.care span{color:var(--muted);font-size:14.5px}
+.who{font-size:13px;font-weight:800;color:var(--accent)}
+@media (max-width:900px){.care{grid-template-columns:1fr 1fr}}
+
 </style></head>
 <body>
-<header class="desk">
+<nav class="nav" aria-label="상단 메뉴"><div class="wrap">
+  <a class="brand" data-link="home" href="#"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-text">목회자의 책상<span class="it">Shepherd's Desk</span></span></a>
+  <div class="nav-links"><a data-link="home" href="#"><span class="t">← 모든 도구</span></a></div>
+</div></nav>
+
+<header class="hero">
   <div class="wrap">
-    <div class="topbar">
-      <a class="brand" data-link="home" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-opacity=".35"/><path d="M11 25V11.5a4 4 0 0 1 8 0" fill="none" stroke="#c7a463" stroke-width="2" stroke-linecap="round"/><ellipse cx="20" cy="20.5" rx="4.6" ry="3.4" fill="currentColor" fill-opacity=".9"/><circle cx="24" cy="18.6" r="1.8" fill="currentColor"/></svg><span>목회자의 책상<small>SHEPHERD'S DESK</small></span></a>
-      <a class="toplink" data-link="home" href="#"><span class="t">← 목회자의 책상</span></a>
-    </div>
-    <div class="hero">
-      <div>
-        <div class="eyebrow">기도제목 창구 웹앱</div>
-        <h1><span class="num">365</span> 기도동행</h1>
-        <p class="lead">성도가 링크나 QR로 기도제목을 올리면 목회자의 구글 시트에 차곡차곡 모입니다. 성도는 원하는 돌봄 방식을 고르고, 목회자는 그 기도제목을 <b>기억하고, 기도하고, 다시 찾아갑니다.</b></p>
-        <div class="cta">
-          <a class="btn btn-primary" data-link="copy" data-pending="배포 주소 준비 중" href="#"><span class="t">내 구글 드라이브에 사본 만들기</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
-          <a class="btn btn-ghost" href="#start">설치 방법 보기</a>
-        </div>
+    <div>
+      <div class="app"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 5c4 5 6 8 6 11.5a6 6 0 0 1-12 0C18 13 20 10 24 5z" fill="currentColor" stroke="none"/><rect x="18" y="25" width="12" height="16" rx="2"/><path d="M13 41h22"/></svg></div>
+      <h1>365 기도동행</h1>
+      <span class="en">365 Prayer Walk</span>
+      <p class="lead">성도가 링크나 QR로 기도제목을 올리면 목회자의 구글 시트에 차곡차곡 모입니다. 성도는 원하는 돌봄 방식을 고르고, 목회자는 그 기도제목을 <b>기억하고, 기도하고, 다시 찾아갑니다.</b></p>
+      <div class="cta">
+        <a class="btn btn-color" data-link="copy" data-pending="배포 주소 준비 중" href="#"><span class="t">내 드라이브에 사본 만들기</span><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
+        <a class="btn btn-line" href="#start">설치 방법</a>
       </div>
-      <div>
-        <div class="phone-stage">
-          <div class="phone" role="img" aria-label="성도가 보는 기도제목 접수 화면 견본">
-            <div class="phone-in">
-              <div class="p-title">함께 기도합니다</div>
-              <div class="p-sub">기도제목은 담당 목회자만 봅니다</div>
-              <div class="p-field"><small>이름</small>김은혜</div>
-              <div class="p-field"><small>기도제목</small>어머니 수술이 잘 마치고 회복되도록 기도 부탁드립니다.</div>
-              <div class="p-q">어떻게 돌봐 드릴까요?</div>
-              <div class="p-opts">
-                <div class="p-opt">기도만 부탁해요</div>
-                <div class="p-opt on">전화 주세요</div>
-                <div class="p-opt">만나고 싶어요</div>
-                <div class="p-opt">가정 심방</div>
-              </div>
-              <div class="p-send">기도제목 보내기</div>
-            </div>
+    </div>
+    <div>
+      <div class="phone-stage">
+        <div class="phone" role="img" aria-label="성도가 보는 기도제목 접수 화면 견본">
+          <div class="phone-in">
+            <div class="p-title">함께 기도합니다</div>
+            <div class="p-sub">기도제목은 담당 목회자만 봅니다</div>
+            <div class="p-field"><small>이름</small>김은혜</div>
+            <div class="p-field"><small>기도제목</small>어머니 수술이 잘 마치고 회복되도록 기도 부탁드립니다.</div>
+            <div class="p-q">어떻게 돌봐 드릴까요?</div>
+            <div class="p-opts"><div class="p-opt">기도만 부탁해요</div><div class="p-opt on">전화 주세요</div><div class="p-opt">만나고 싶어요</div><div class="p-opt">가정 심방</div></div>
+            <div class="p-send">기도제목 보내기</div>
           </div>
         </div>
-        <p class="sample-note">성도가 보는 화면 견본 · 예시 내용</p>
       </div>
+      <p class="sample-note">성도가 보는 화면 견본 · 예시 내용</p>
     </div>
   </div>
 </header>
-
 <main>
   <section>
     <div class="wrap">
-      <div class="sec-head">
-        <div class="label">이렇게 이어집니다</div>
-        <h2>받는 데서 끝나지 않는 기도제목</h2>
-        <p>모임에서 쪽지로 받은 기도제목은 금세 흩어집니다. 기도동행은 한 사람의 기도제목이 응답될 때까지 목회자 곁에 남아 있도록 돕습니다.</p>
-      </div>
-      <div class="flow">
-        <div><div class="who">성도</div><h3>기도제목을 올립니다</h3><p>앱을 깔 필요 없이 휴대폰으로 링크나 QR을 열고 적으면 됩니다.</p></div>
-        <div><div class="who">목회자</div><h3>시트에서 확인합니다</h3><p>접수된 기도제목이 목회자 개인 구글 드라이브의 시트에 날짜순으로 쌓입니다.</p></div>
-        <div><div class="who">함께</div><h3>기도하고 찾아갑니다</h3><p>성도가 고른 방식대로 기도하고, 전화하고, 만나고, 가정을 찾아갑니다.</p></div>
+      <div class="sec-head"><span class="kicker">이렇게 이어집니다</span><h2>받는 데서 끝나지 않는 기도제목</h2><p>모임에서 쪽지로 받은 기도제목은 금세 흩어집니다. 기도동행은 한 사람의 기도제목이 응답될 때까지 목회자 곁에 남아 있도록 돕습니다.</p></div>
+      <div class="cards c3">
+        <div class="card"><span class="who">성도</span><h3>기도제목을 올립니다</h3><p>앱을 깔 필요 없이 휴대폰으로 링크나 QR을 열고 적으면 됩니다.</p></div>
+        <div class="card"><span class="who">목회자</span><h3>시트에서 확인합니다</h3><p>접수된 기도제목이 목회자 개인 구글 드라이브의 시트에 날짜순으로 쌓입니다.</p></div>
+        <div class="card"><span class="who">함께</span><h3>기도하고 찾아갑니다</h3><p>성도가 고른 방식대로 기도하고, 전화하고, 만나고, 가정을 찾아갑니다.</p></div>
       </div>
       <div class="care" aria-label="성도가 고르는 네 가지 돌봄 방식">
         <div><b>기도만</b><span>조용히 기도해 주시길 원할 때</span></div>
@@ -201,52 +196,34 @@ footer strong{color:var(--ink);font-weight:600}
       </div>
     </div>
   </section>
-
   <section style="padding-top:0">
     <div class="wrap">
-      <div class="sec-head">
-        <div class="label">특징</div>
-        <h2>어느 교회, 어느 모임에서든</h2>
-        <p>할렐루야교회 중보기도팀과 각 교구에서 먼저 쓰고 있습니다. 교회 이름이나 교구 이름이 박혀 있지 않아 그대로 가져다 쓰실 수 있습니다.</p>
-      </div>
-      <div class="feat">
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg><div><h3>링크 하나, QR 하나</h3><p>주보, 단체 대화방, 행사 화면에 올려 두면 누구나 바로 열 수 있습니다.</p></div></div>
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><div><h3>목회자의 드라이브에만</h3><p>기도제목은 따로 서버 없이 목회자 본인의 구글 드라이브에 저장됩니다.</p></div></div>
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg><div><h3>모임마다 따로</h3><p>교회 전체 행사, 교구 모임, 수능기도회처럼 모임에 맞춰 열어 둘 수 있습니다.</p></div></div>
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg><div><h3>자라는 기도문</h3><p>함께 드리는 기도문을 계속 다듬고 새로 더할 수 있습니다.</p></div></div>
-      </div>
+      <div class="sec-head"><span class="kicker">특징</span><h2>어느 교회, 어느 모임에서든</h2><p>할렐루야교회 중보기도팀과 각 교구에서 먼저 쓰고 있습니다. 교회 이름이나 교구 이름이 박혀 있지 않아 그대로 가져다 쓰실 수 있습니다.</p></div>
+      <div class="cards c4"><div class="card"><svg class="f" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM14 20h.01M17 20h4v-3"/></svg><h3>링크 하나, QR 하나</h3><p>주보, 단체 대화방, 행사 화면에 올려 두면 누구나 바로 열 수 있습니다.</p></div><div class="card"><svg class="f" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><h3>목회자의 드라이브에만</h3><p>기도제목은 따로 서버 없이 목회자 본인의 구글 드라이브에 저장됩니다.</p></div><div class="card"><svg class="f" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg><h3>모임마다 따로</h3><p>교회 전체 행사, 교구 모임, 수능기도회처럼 모임에 맞춰 열어 둘 수 있습니다.</p></div><div class="card"><svg class="f" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg><h3>자라는 기도문</h3><p>함께 드리는 기도문을 계속 다듬고 새로 더할 수 있습니다.</p></div></div>
     </div>
   </section>
-
   <section style="padding-top:0" id="start">
     <div class="wrap">
       <div class="get">
         <div>
-          <div class="label">시작하기</div>
-          <h2>구글 계정만 있으면 됩니다</h2>
+          <span class="kicker">시작하기</span>
+          <h2>구글 계정만<br>있으면 됩니다</h2>
           <p>기도동행은 구글 시트와 앱스크립트로 움직입니다. 사본을 내 드라이브로 가져오면 우리 교회만의 기도제목 창구가 생깁니다.</p>
           <div class="cta">
-            <a class="btn btn-primary" data-link="copy" data-pending="배포 주소 준비 중" href="#"><span class="t">사본 만들기</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
-            <a class="btn btn-ghost" data-link="guide" data-pending="설명서 준비 중" href="#"><span class="t">설치 설명서</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
+            <a class="btn btn-white" data-link="copy" data-pending="배포 주소 준비 중" href="#"><span class="t">사본 만들기</span><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
+            <a class="btn btn-glass" data-link="guide" data-pending="설명서 준비 중" href="#"><span class="t">설치 설명서</span><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
           </div>
         </div>
-        <ol class="install">
-          <li><div><b>사본 만들기</b><span>위 버튼을 눌러 구글 시트 사본을 내 드라이브에 만듭니다.</span></div></li>
-          <li><div><b>웹앱으로 배포하기</b><span>시트 메뉴의 확장 프로그램 → Apps Script에서 ‘배포’를 눌러 접수 주소를 받습니다.</span></div></li>
-          <li><div><b>성도에게 알리기</b><span>받은 주소를 링크나 QR로 만들어 주보와 단체 대화방에 나눕니다.</span></div></li>
+        <ol class="get-list">
+          <li><span class="num">1</span><div><b>사본 만들기</b><span>버튼을 눌러 구글 시트 사본을 내 드라이브에 만듭니다.</span></div></li>
+          <li><span class="num">2</span><div><b>웹앱으로 배포하기</b><span>확장 프로그램 → Apps Script에서 ‘배포’를 눌러 접수 주소를 받습니다.</span></div></li>
+          <li><span class="num">3</span><div><b>성도에게 알리기</b><span>받은 주소를 링크나 QR로 만들어 주보와 단체 대화방에 나눕니다.</span></div></li>
         </ol>
       </div>
     </div>
   </section>
 </main>
-
-<footer>
-  <div class="wrap">
-    <span>365 기도동행 · <a data-link="home" href="#" style="text-decoration:none"><span class="t">목회자의 책상</span></a>에 놓인 도구</span>
-    <span>만든 사람 <strong>이세진 목사</strong></span>
-  </div>
-</footer>
-
+<footer><div class="wrap"><span>365 기도동행 · <a data-link='home' href='#' style='text-decoration:none'><span class='t'>목회자의 책상</span></a>에 놓인 도구</span><span>만든 사람 <strong>이세진 목사</strong></span></div></footer>
 <script>
 /* 주소는 이곳에서만 바꾸면 됩니다 */
 var LINKS = {
@@ -260,12 +237,11 @@ var LINKS = {
 (function(){
   document.querySelectorAll('[data-link]').forEach(function(a){
     var url = (LINKS[a.getAttribute('data-link')] || '').trim();
-    if(url){ a.href = url; }
-    else{
-      a.removeAttribute('href'); a.classList.add('pending'); a.setAttribute('aria-disabled','true');
-      var t = a.querySelector('.t'), p = a.getAttribute('data-pending'); if(t && p){ t.textContent = p; }
-      var i = a.querySelector('svg'); if(i){ i.remove(); }
-    }
+    if(url){ a.href = url; return; }
+    a.removeAttribute('href'); a.setAttribute('aria-disabled','true');
+    if(a.classList.contains('btn')) a.classList.add('pending');
+    var t = a.querySelector('.t'), p = a.getAttribute('data-pending'); if(t && p){ t.textContent = p; }
+    var i = a.querySelector('.ico'); if(i){ i.remove(); }
   });
 })();
 </script>

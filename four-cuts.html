@@ -2,229 +2,213 @@
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>오늘의 네컷</title>
 <meta name="description" content="교구 모임과 교회 행사에서 쓰는 포토부스 프로그램, 오늘의 네컷">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 
 :root{
-  /* 목회자의 책상: 짙은 가죽 책상판 위에 놓인 종이, 놋쇠 문진 한 점 */
-  --bg:#eceee8; --surface:#fafaf6; --ink:#1a221f; --muted:#56625c; --line:#d3d9d0;
-  --desk:#1c2824; --desk-2:#24332e; --desk-ink:#edf0e9; --desk-muted:#a9b6ae;
-  --brass:#977331; --brass-soft:#c7a463;
-  --display:"Gowun Batang","Noto Serif KR","AppleMyungjo",serif;
-  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  /* 밝은 흰 바탕 + 프로그램별 선명한 색 네 가지. 굵은 고딕 제목, 영문은 이탤릭 세리프로 포인트 */
+  --bg:#ffffff; --soft:#f4f5f7; --ink:#0c0e13; --muted:#5c6370; --line:#e6e8ec;
+  --lexio:#3156ff; --desk:#0b9a63; --cuts:#ff5440; --pray:#e07d06;
+  --sans:"Pretendard","Pretendard Variable","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --serif:"Instrument Serif","Times New Roman",serif;
   color-scheme:light;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#121916; --surface:#1a231f; --ink:#e5eae3; --muted:#9aa79f; --line:#2c3833;
-    --desk:#0d1311; --desk-2:#16201c; --desk-ink:#edf0e9; --desk-muted:#93a199;
-    --brass:#cfa95c; --brass-soft:#e0c07f; color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#121916; --surface:#1a231f; --ink:#e5eae3; --muted:#9aa79f; --line:#2c3833;
-  --desk:#0d1311; --desk-2:#16201c; --desk-ink:#edf0e9; --desk-muted:#93a199;
-  --brass:#cfa95c; --brass-soft:#e0c07f; color-scheme:dark;
-}
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.75;word-break:keep-all;overflow-wrap:break-word}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.7;letter-spacing:-.01em;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
 img,svg{max-width:100%}
 a{color:inherit}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.3;text-wrap:balance;margin:0}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-weight:800;line-height:1.18;letter-spacing:-.035em;text-wrap:balance;margin:0}
 p{margin:0}
-:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:4px}
+.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+:focus-visible{outline:3px solid var(--accent,var(--lexio));outline-offset:3px;border-radius:6px}
 
-/* 책상판 */
-.desk{background:
-  radial-gradient(120% 90% at 85% 0%, rgba(199,164,99,.10), transparent 55%),
-  repeating-linear-gradient(90deg, rgba(255,255,255,.018) 0 2px, transparent 2px 7px),
-  linear-gradient(180deg,var(--desk-2),var(--desk));
-  color:var(--desk-ink);border-bottom:3px solid var(--brass)}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:18px;letter-spacing:.01em}
-.brand svg{width:30px;height:30px;flex:none}
-.brand small{display:block;font-family:var(--body);font-size:11.5px;color:var(--desk-muted);letter-spacing:.08em;line-height:1.2}
-.toplink{font-size:14px;color:var(--desk-muted);text-decoration:none;border:1px solid rgba(237,240,233,.2);padding:6px 14px;border-radius:99px}
-.toplink:hover{color:var(--desk-ink);border-color:var(--brass-soft)}
-.eyebrow{font-size:13px;letter-spacing:.14em;color:var(--brass-soft);font-weight:500}
+/* 상단 바 */
+.nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:30px;height:30px;display:grid;grid-template-columns:1fr 1fr;gap:3px;flex:none}
+.brand-mark i{border-radius:4px}
+.brand-mark i:nth-child(1){background:var(--lexio)}.brand-mark i:nth-child(2){background:var(--desk)}
+.brand-mark i:nth-child(3){background:var(--cuts)}.brand-mark i:nth-child(4){background:var(--pray)}
+.brand-text{font-weight:700;font-size:16px;line-height:1.1}
+.brand-text .it{font-size:15px;color:var(--muted);margin-left:4px}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{font-size:14.5px;font-weight:500;text-decoration:none;color:var(--muted);padding:8px 12px;border-radius:99px}
+.nav-links a:hover{color:var(--ink);background:var(--soft)}
 
-.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px/1 var(--body);padding:14px 20px;border-radius:10px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s ease, background .15s ease}
-.btn:hover{transform:translateY(-1px)}
+/* 버튼 */
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 15.5px/1 var(--sans);letter-spacing:-.01em;padding:15px 22px;border-radius:99px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -10px rgba(12,14,19,.35)}
 .btn svg{width:18px;height:18px}
-.btn-primary{background:var(--accent,var(--brass));color:#fff}
-.btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
-.desk .btn-ghost{border-color:rgba(237,240,233,.25);color:var(--desk-ink)}
-.btn.pending{background:transparent;color:var(--muted);border:1px dashed var(--line);cursor:default;transform:none}
-.desk .btn.pending{color:var(--desk-muted);border-color:rgba(237,240,233,.3)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-color{background:var(--accent);color:#fff}
+.btn-line{border-color:var(--line);color:var(--ink);background:#fff}
+.btn-line:hover{border-color:var(--ink)}
+.btn.pending{background:var(--soft);color:var(--muted);border:1.5px dashed #cfd3da;cursor:default;transform:none;box-shadow:none}
 
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-size:12.5px;font-weight:500;padding:3px 10px;border-radius:99px;border:1px solid var(--line);color:var(--muted);background:var(--surface)}
+.chip{font-size:13px;font-weight:600;padding:5px 12px;border-radius:99px;background:#fff;color:var(--muted);border:1px solid var(--line)}
 
-section{padding:72px 0}
-.sec-head{display:grid;gap:10px;margin-bottom:32px;max-width:640px}
-.sec-head h2{font-size:clamp(24px,3.2vw,32px)}
-.sec-head p{color:var(--muted)}
-.label{font-size:13px;letter-spacing:.12em;color:var(--brass);font-weight:600}
+/* 앱 아이콘 타일 */
+.app{--c:var(--accent);width:72px;height:72px;border-radius:20px;display:grid;place-items:center;color:#fff;flex:none;
+  background:linear-gradient(150deg,color-mix(in srgb,var(--c) 78%,#fff),var(--c) 55%,color-mix(in srgb,var(--c) 82%,#000));
+  box-shadow:0 14px 30px -12px color-mix(in srgb,var(--c) 70%,transparent), inset 0 1px 0 rgba(255,255,255,.35)}
+.app svg{width:58%;height:58%}
 
-footer{border-top:1px solid var(--line);padding:32px 0 48px;color:var(--muted);font-size:14px}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
-footer strong{color:var(--ink);font-weight:600}
+section{padding:96px 0}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--accent,var(--ink));letter-spacing:-.005em}
+.kicker::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.sec-head{display:grid;gap:14px;margin-bottom:44px;max-width:680px}
+.sec-head h2{font-size:clamp(30px,4.4vw,48px)}
+.sec-head p{color:var(--muted);font-size:18px}
 
-@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+footer{border-top:1px solid var(--line);padding:36px 0 56px;color:var(--muted);font-size:14.5px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}
+footer strong{color:var(--ink);font-weight:700}
 
-:root{--accent:#b04e48}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--accent:#d0706a}}
-:root[data-theme="dark"]{--accent:#d0706a}
-
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:36px 0 72px}
-.hero h1{font-size:clamp(40px,6vw,64px);letter-spacing:-.01em;margin:14px 0 18px}
-.hero h1 em{font-style:normal;color:var(--brass-soft)}
-.lead{font-size:18px;color:var(--desk-muted);max-width:30em}
-.lead b{color:var(--desk-ink);font-weight:500}
-.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-
-/* 네컷 사진 견본 */
-.strip-stage{display:flex;justify-content:center}
-.strip{width:min(260px,70vw);background:#fbf8f2;padding:12px 12px 0;border-radius:4px;box-shadow:0 24px 50px rgba(0,0,0,.45),0 2px 0 rgba(255,255,255,.04);transform:rotate(3deg);color:#2b2522}
-.frame{aspect-ratio:4/3;border-radius:2px;margin-bottom:9px;position:relative;overflow:hidden}
-.frame svg{position:absolute;inset:0;width:100%;height:100%}
-.frame span{position:absolute;left:8px;top:6px;font:600 11px/1 var(--body);color:rgba(255,255,255,.9);letter-spacing:.05em}
-.f1{background:linear-gradient(135deg,#e9a99a,#c9706a)}
-.f2{background:linear-gradient(135deg,#f0cf8e,#d49a4b)}
-.f3{background:linear-gradient(135deg,#9fc3b4,#5f8f80)}
-.f4{background:linear-gradient(135deg,#a9b6d8,#6c7cae)}
-.strip-cap{text-align:center;padding:8px 0 14px;font-family:var(--display)}
-.strip-cap b{display:block;font-size:15px}
-.strip-cap small{font-family:var(--body);font-size:11px;color:#7a6f68;letter-spacing:.04em}
-.sample-note{text-align:center;font-size:12px;color:var(--desk-muted);margin-top:18px}
-
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
-.step{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 20px;display:grid;gap:8px;align-content:start}
-.step .n{font-family:var(--display);font-size:28px;color:var(--accent);line-height:1}
-.step h3{font-size:18px}
-.step p{color:var(--muted);font-size:15px}
-
-.used{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.used-card{border-left:3px solid var(--accent);background:var(--surface);padding:22px 24px;border-radius:0 14px 14px 0}
-.used-card h3{font-size:19px;margin-bottom:6px}
-.used-card p{color:var(--muted);font-size:15px}
-.places{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.places .chip{font-size:14px;padding:6px 14px}
-
-.get{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:36px;display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:start}
-.get h2{font-size:28px;margin:8px 0 12px}
-.get p{color:var(--muted)}
-.get .cta{margin-top:22px}
-.need{display:grid;gap:12px;margin:0;padding:0;list-style:none}
-.need li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;font-size:15px}
-.need li b{display:block;font-weight:600}
-.need li span{color:var(--muted)}
-.need svg{width:24px;height:24px;color:var(--accent);margin-top:3px}
-
-@media (max-width:860px){
-  .hero{grid-template-columns:1fr;gap:36px}
-  .steps{grid-template-columns:1fr 1fr}
-  .get{grid-template-columns:1fr;padding:26px 22px}
+@media (max-width:640px){
+  .nav-links a.hide-m{display:none}
+  section{padding:68px 0}
+  .wrap{padding:0 18px}
 }
-@media (max-width:520px){.steps,.used{grid-template-columns:1fr}}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+:root{--accent:var(--cuts)}
+
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 10%,#fff),#fff)}
+.hero::before{content:"";position:absolute;right:-180px;top:-140px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 30%,transparent),transparent 65%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-top:72px;padding-bottom:96px}
+.hero .app{width:76px;height:76px;border-radius:22px}
+.hero h1{font-size:clamp(46px,7vw,86px);font-weight:900;letter-spacing:-.055em;line-height:1.05;margin:26px 0 8px}
+.hero .en{font-family:var(--serif);font-style:italic;font-size:clamp(24px,2.6vw,32px);color:var(--accent);margin-bottom:22px;display:block}
+.hero .lead{font-size:clamp(17px,1.9vw,20px);color:var(--muted);max-width:30em}
+.hero .lead b{color:var(--ink);font-weight:700}
+.hero .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.sample-note{text-align:center;font-size:13px;color:var(--muted);margin-top:22px;font-weight:500}
+
+.cards{display:grid;gap:18px}
+.cards.c4{grid-template-columns:repeat(4,1fr)}
+.cards.c3{grid-template-columns:repeat(3,1fr)}
+.cards.c2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--soft);border-radius:24px;padding:28px 26px;display:grid;gap:10px;align-content:start}
+.card .n{width:38px;height:38px;border-radius:12px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800;font-size:16px;margin-bottom:6px}
+.card h3{font-size:21px;letter-spacing:-.03em}
+.card p{color:var(--muted);font-size:15.5px}
+.card svg.f{width:34px;height:34px;color:var(--accent);margin-bottom:4px}
+
+.get{border-radius:32px;padding:48px;display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;color:#fff;
+  background:linear-gradient(140deg,color-mix(in srgb,var(--accent) 85%,#fff),var(--accent) 45%,color-mix(in srgb,var(--accent) 75%,#000))}
+.get h2{font-size:clamp(30px,4vw,44px);font-weight:900;letter-spacing:-.05em;margin:12px 0 14px}
+.get p{color:rgba(255,255,255,.88);font-size:17px}
+.get .kicker{color:#fff}
+.get .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.get .btn-white{background:#fff;color:var(--ink)}
+.get .btn-glass{background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.4)}
+.get .btn.pending{background:rgba(255,255,255,.14);color:rgba(255,255,255,.85);border-color:rgba(255,255,255,.45)}
+.get-list{list-style:none;margin:0;padding:24px;display:grid;gap:16px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:22px}
+.get-list li{display:grid;grid-template-columns:34px 1fr;gap:12px;font-size:15.5px}
+.get-list .num{width:30px;height:30px;border-radius:50%;background:#fff;color:var(--accent);display:grid;place-items:center;font-weight:800;font-size:14px}
+.get-list b{display:block;font-weight:700}
+.get-list span{color:rgba(255,255,255,.85)}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;padding-top:52px;padding-bottom:72px}
+  .cards.c4{grid-template-columns:1fr 1fr}
+  .cards.c3{grid-template-columns:1fr}
+  .get{grid-template-columns:1fr;padding:32px 24px}
+}
+@media (max-width:560px){.cards.c4,.cards.c2{grid-template-columns:1fr}}
+
+
+.strip-stage{display:flex;justify-content:center;gap:0;position:relative}
+.strip{width:min(240px,62vw);background:#fff;padding:12px 12px 0;border-radius:6px;box-shadow:0 40px 70px -30px rgba(120,30,20,.5),0 0 0 1px rgba(0,0,0,.04);color:#1d1d1f;transform:rotate(4deg)}
+.strip.back{position:absolute;transform:rotate(-7deg) translate(-70px,18px);opacity:.9;filter:saturate(.85)}
+.frame{aspect-ratio:4/3;border-radius:3px;margin-bottom:9px;position:relative;overflow:hidden}
+.frame svg{position:absolute;inset:0;width:100%;height:100%}
+.f1{background:linear-gradient(135deg,#ffb4a2,#ff6b57)}
+.f2{background:linear-gradient(135deg,#ffe08a,#ffb020)}
+.f3{background:linear-gradient(135deg,#9ee6c4,#21b07a)}
+.f4{background:linear-gradient(135deg,#a9c0ff,#3d6bff)}
+.strip-cap{text-align:center;padding:8px 0 14px}
+.strip-cap b{display:block;font-size:14px;font-weight:800;letter-spacing:-.02em}
+.strip-cap small{font-size:10.5px;color:#7a7a80}
+.places{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.places .chip{font-size:14.5px;padding:8px 16px}
+
 </style></head>
 <body>
-<header class="desk">
+<nav class="nav" aria-label="상단 메뉴"><div class="wrap">
+  <a class="brand" data-link="home" href="#"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-text">목회자의 책상<span class="it">Shepherd's Desk</span></span></a>
+  <div class="nav-links"><a data-link="home" href="#"><span class="t">← 모든 도구</span></a></div>
+</div></nav>
+
+<header class="hero">
   <div class="wrap">
-    <div class="topbar">
-      <a class="brand" data-link="home" data-pending="" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-opacity=".35"/><path d="M11 25V11.5a4 4 0 0 1 8 0" fill="none" stroke="#c7a463" stroke-width="2" stroke-linecap="round"/><ellipse cx="20" cy="20.5" rx="4.6" ry="3.4" fill="currentColor" fill-opacity=".9"/><circle cx="24" cy="18.6" r="1.8" fill="currentColor"/></svg><span>목회자의 책상<small>SHEPHERD'S DESK</small></span></a>
-      <a class="toplink" data-link="home" data-pending="목회자의 책상" href="#"><span class="t">← 목회자의 책상</span></a>
+    <div>
+      <div class="app"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="15" y="5" width="18" height="38" rx="2"/><path d="M15 14h18M15 23h18M15 32h18"/></svg></div>
+      <h1>오늘의 네컷</h1>
+      <span class="en">Four Cuts Today</span>
+      <p class="lead">교구 모임, 여름성경학교, 교회 행사에서 쓰는 포토부스 프로그램입니다. 네 컷을 찍으면 <b>행사 이름과 말씀이 담긴 사진 한 장</b>이 되고, 그 자리에서 인화해 나눌 수 있습니다.</p>
+      <div class="cta">
+        <a class="btn btn-color" data-link="download" data-pending="다운로드 준비 중" href="#"><span class="t">프로그램 받기</span><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M6 9l4 4 4-4M4 17h12"/></svg></a>
+        <a class="btn btn-line" href="#how">사용 방법</a>
+      </div>
     </div>
-    <div class="hero">
-      <div>
-        <div class="eyebrow">교회 포토부스 프로그램</div>
-        <h1>오늘의 <em>네컷</em></h1>
-        <p class="lead">교구 모임, 여름성경학교, 교회 행사에서 쓰는 포토부스 프로그램입니다. 네 컷을 찍으면 <b>행사 이름과 말씀이 담긴 사진 한 장</b>으로 완성되고, 그 자리에서 인화해 나눌 수 있습니다.</p>
-        <div class="cta">
-          <a class="btn btn-primary" data-link="download" data-pending="다운로드 준비 중" href="#"><span class="t">프로그램 받기</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M6 9l4 4 4-4M4 17h12"/></svg></a>
-          <a class="btn btn-ghost" href="#how">사용 방법 보기</a>
-        </div>
+    <div>
+      <div class="strip-stage" role="img" aria-label="네 컷 사진 견본 두 장">
+        <div class="strip back" aria-hidden="true"><div class="frame f1"><svg viewBox="0 0 120 90"><circle cx="45" cy="52" r="15" fill="rgba(255,255,255,.6)"/><circle cx="78" cy="55" r="13" fill="rgba(255,255,255,.45)"/><path d="M38 54q7 6 14 0M72 57q6 5 12 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg></div><div class="frame f2"><svg viewBox="0 0 120 90"><circle cx="60" cy="50" r="17" fill="rgba(255,255,255,.6)"/><path d="M52 53q8 7 16 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M28 30l8 6M92 30l-8 6" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></div><div class="frame f3"><svg viewBox="0 0 120 90"><circle cx="35" cy="54" r="12" fill="rgba(255,255,255,.55)"/><circle cx="60" cy="48" r="14" fill="rgba(255,255,255,.65)"/><circle cx="86" cy="54" r="12" fill="rgba(255,255,255,.55)"/></svg></div><div class="frame f4"><svg viewBox="0 0 120 90"><path d="M60 66s-20-11-20-25a10 10 0 0 1 20-3 10 10 0 0 1 20 3c0 14-20 25-20 25z" fill="rgba(255,255,255,.75)"/></svg></div><div class="strip-cap"><b>5교구 가을 나들이</b><small>시 133:1</small></div></div>
+        <div class="strip"><div class="frame f1"><svg viewBox="0 0 120 90"><circle cx="45" cy="52" r="15" fill="rgba(255,255,255,.6)"/><circle cx="78" cy="55" r="13" fill="rgba(255,255,255,.45)"/><path d="M38 54q7 6 14 0M72 57q6 5 12 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg></div><div class="frame f2"><svg viewBox="0 0 120 90"><circle cx="60" cy="50" r="17" fill="rgba(255,255,255,.6)"/><path d="M52 53q8 7 16 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M28 30l8 6M92 30l-8 6" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></div><div class="frame f3"><svg viewBox="0 0 120 90"><circle cx="35" cy="54" r="12" fill="rgba(255,255,255,.55)"/><circle cx="60" cy="48" r="14" fill="rgba(255,255,255,.65)"/><circle cx="86" cy="54" r="12" fill="rgba(255,255,255,.55)"/></svg></div><div class="frame f4"><svg viewBox="0 0 120 90"><path d="M60 66s-20-11-20-25a10 10 0 0 1 20-3 10 10 0 0 1 20 3c0 14-20 25-20 25z" fill="rgba(255,255,255,.75)"/></svg></div><div class="strip-cap"><b>2026 여름성경학교</b><small>보라 형제가 연합하여 동거함이 · 시 133:1</small></div></div>
       </div>
-      <div>
-        <div class="strip-stage">
-          <div class="strip" role="img" aria-label="네 컷 사진 견본: 네 개의 사진 칸 아래에 행사 이름과 말씀 구절이 들어갑니다">
-            <div class="frame f1"><span>1</span><svg viewBox="0 0 120 90"><circle cx="45" cy="52" r="15" fill="rgba(255,255,255,.55)"/><circle cx="78" cy="55" r="13" fill="rgba(255,255,255,.4)"/><path d="M38 54q7 6 14 0M72 57q6 5 12 0" stroke="#8b3f3a" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div>
-            <div class="frame f2"><span>2</span><svg viewBox="0 0 120 90"><circle cx="60" cy="50" r="17" fill="rgba(255,255,255,.55)"/><path d="M52 53q8 7 16 0" stroke="#8a5a1c" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M28 30l8 6M92 30l-8 6" stroke="rgba(255,255,255,.7)" stroke-width="2" stroke-linecap="round"/></svg></div>
-            <div class="frame f3"><span>3</span><svg viewBox="0 0 120 90"><circle cx="35" cy="54" r="12" fill="rgba(255,255,255,.5)"/><circle cx="60" cy="48" r="14" fill="rgba(255,255,255,.6)"/><circle cx="86" cy="54" r="12" fill="rgba(255,255,255,.5)"/><path d="M54 51q6 5 12 0" stroke="#2f5a4d" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div>
-            <div class="frame f4"><span>4</span><svg viewBox="0 0 120 90"><path d="M60 66s-20-11-20-25a10 10 0 0 1 20-3 10 10 0 0 1 20 3c0 14-20 25-20 25z" fill="rgba(255,255,255,.65)"/></svg></div>
-            <div class="strip-cap"><b>2026 여름성경학교</b><small>보라 형제가 연합하여 동거함이 · 시 133:1</small></div>
-          </div>
-        </div>
-        <p class="sample-note">완성 사진 견본</p>
-      </div>
+      <p class="sample-note">완성 사진 견본</p>
     </div>
   </div>
 </header>
-
 <main>
   <section id="how">
     <div class="wrap">
-      <div class="sec-head">
-        <div class="label">사용 방법</div>
-        <h2>네 번 웃으면 한 장이 됩니다</h2>
-        <p>준비는 노트북 한 대면 충분합니다. 안내하는 사람 없이도 성도님들이 화면을 보며 스스로 찍을 수 있습니다.</p>
-      </div>
-      <div class="steps">
-        <div class="step"><div class="n">1</div><h3>행사 정하기</h3><p>행사 이름과 날짜, 함께 넣을 말씀 구절을 적습니다.</p></div>
-        <div class="step"><div class="n">2</div><h3>네 컷 찍기</h3><p>카운트다운에 맞춰 네 번 촬영합니다. 가족, 사랑방 식구들과 함께 서면 됩니다.</p></div>
-        <div class="step"><div class="n">3</div><h3>한 장으로 완성</h3><p>네 장의 사진이 행사 이름과 말씀이 담긴 틀 안에 한 장으로 정리됩니다.</p></div>
-        <div class="step"><div class="n">4</div><h3>인화해서 나누기</h3><p>사진 프린터로 바로 뽑아 한 분께 한 장씩 손에 쥐여 드립니다.</p></div>
+      <div class="sec-head"><span class="kicker">사용 방법</span><h2>네 번 웃으면 한 장이 됩니다</h2><p>노트북 한 대면 준비 끝. 성도님들이 화면을 보며 스스로 찍을 수 있습니다.</p></div>
+      <div class="cards c4">
+        <div class="card"><div class="n">1</div><h3>행사 정하기</h3><p>행사 이름과 날짜, 함께 넣을 말씀 구절을 적습니다.</p></div>
+        <div class="card"><div class="n">2</div><h3>네 컷 찍기</h3><p>카운트다운에 맞춰 네 번 촬영합니다. 가족, 사랑방 식구들과 함께 서면 됩니다.</p></div>
+        <div class="card"><div class="n">3</div><h3>한 장으로 완성</h3><p>네 장의 사진이 행사 이름과 말씀이 담긴 틀 안에 한 장으로 정리됩니다.</p></div>
+        <div class="card"><div class="n">4</div><h3>인화해서 나누기</h3><p>사진 프린터로 바로 뽑아 한 분께 한 장씩 손에 쥐여 드립니다.</p></div>
       </div>
     </div>
   </section>
-
   <section style="padding-top:0">
     <div class="wrap">
-      <div class="sec-head">
-        <div class="label">실제로 쓰인 자리</div>
-        <h2>할렐루야교회에서 먼저 써 보았습니다</h2>
+      <div class="sec-head"><span class="kicker">실제로 쓰인 자리</span><h2>할렐루야교회에서 먼저 써 보았습니다</h2></div>
+      <div class="cards c2">
+        <div class="card"><h3>교구 모임</h3><p>교구 성도님들이 함께 사진을 찍고, 인화지에 뽑아 한 분께 한 장씩 나눠 드렸습니다.</p></div>
+        <div class="card"><h3>초등부 여름성경학교</h3><p>아이들이 친구들, 선생님과 네 컷을 찍고 그날의 말씀이 담긴 사진을 집으로 가져갔습니다.</p></div>
       </div>
-      <div class="used">
-        <div class="used-card"><h3>교구 모임</h3><p>교구 성도님들이 함께 사진을 찍고, 인화지에 뽑아 한 분께 한 장씩 나눠 드렸습니다.</p></div>
-        <div class="used-card"><h3>초등부 여름성경학교</h3><p>아이들이 친구들, 선생님과 네 컷을 찍고 그날의 말씀이 담긴 사진을 집으로 가져갔습니다.</p></div>
-      </div>
-      <div class="places" aria-label="이런 자리에서도 쓸 수 있습니다">
-        <span class="chip">사랑방·구역 모임</span><span class="chip">새가족 환영회</span><span class="chip">수련회</span><span class="chip">성탄·부활절 행사</span><span class="chip">교회 창립 기념일</span>
-      </div>
+      <div class="places" aria-label="이런 자리에서도 쓸 수 있습니다"><span class="chip">사랑방·구역 모임</span><span class="chip">새가족 환영회</span><span class="chip">수련회</span><span class="chip">성탄·부활절 행사</span><span class="chip">교회 창립 기념일</span></div>
     </div>
   </section>
-
   <section style="padding-top:0" id="download">
     <div class="wrap">
       <div class="get">
         <div>
-          <div class="label">내려받기</div>
-          <h2>우리 교회 행사에서 써 보세요</h2>
-          <p>프로그램을 받아 행사 이름과 말씀만 바꾸면 어느 교회, 어느 모임에서든 쓸 수 있습니다.</p>
+          <span class="kicker">내려받기</span>
+          <h2>우리 교회 행사에서<br>써 보세요</h2>
+          <p>행사 이름과 말씀만 바꾸면 어느 교회, 어느 모임에서든 쓸 수 있습니다.</p>
           <div class="cta">
-            <a class="btn btn-primary" data-link="download" data-pending="다운로드 준비 중" href="#"><span class="t">프로그램 받기</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M6 9l4 4 4-4M4 17h12"/></svg></a>
-            <a class="btn btn-ghost" data-link="guide" data-pending="설명서 준비 중" href="#"><span class="t">사용 설명서</span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
+            <a class="btn btn-white" data-link="download" data-pending="다운로드 준비 중" href="#"><span class="t">프로그램 받기</span><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M6 9l4 4 4-4M4 17h12"/></svg></a>
+            <a class="btn btn-glass" data-link="guide" data-pending="설명서 준비 중" href="#"><span class="t">사용 설명서</span><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
           </div>
         </div>
-        <ul class="need" aria-label="준비물">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg><div><b>카메라가 있는 노트북</b><span>또는 웹캠을 연결한 컴퓨터</span></div></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg><div><b>사진 프린터</b><span>현장에서 바로 나눠 드리려면 필요합니다</span></div></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M5 6l2 2M19 6l-2 2M4 13h3M17 13h3"/><circle cx="12" cy="14" r="4"/></svg><div><b>밝은 자리 한 곳</b><span>창가나 조명 아래가 사진이 잘 나옵니다</span></div></li>
+        <ul class="get-list" aria-label="준비물">
+          <li><span class="num">1</span><div><b>카메라가 있는 노트북</b><span>또는 웹캠을 연결한 컴퓨터</span></div></li>
+          <li><span class="num">2</span><div><b>사진 프린터</b><span>현장에서 바로 나눠 드리려면 필요합니다</span></div></li>
+          <li><span class="num">3</span><div><b>밝은 자리 한 곳</b><span>창가나 조명 아래에서 사진이 잘 나옵니다</span></div></li>
         </ul>
       </div>
     </div>
   </section>
 </main>
-
-<footer>
-  <div class="wrap">
-    <span>오늘의 네컷 · <a data-link="home" data-pending="" href="#" style="text-decoration:none"><span class="t">목회자의 책상</span></a>에 놓인 도구</span>
-    <span>만든 사람 <strong>이세진 목사</strong></span>
-  </div>
-</footer>
-
+<footer><div class="wrap"><span>오늘의 네컷 · <a data-link='home' href='#' style='text-decoration:none'><span class='t'>목회자의 책상</span></a>에 놓인 도구</span><span>만든 사람 <strong>이세진 목사</strong></span></div></footer>
 <script>
 /* 주소는 이곳에서만 바꾸면 됩니다 */
 var LINKS = {
@@ -238,12 +222,11 @@ var LINKS = {
 (function(){
   document.querySelectorAll('[data-link]').forEach(function(a){
     var url = (LINKS[a.getAttribute('data-link')] || '').trim();
-    if(url){ a.href = url; }
-    else{
-      a.removeAttribute('href'); a.classList.add('pending'); a.setAttribute('aria-disabled','true');
-      var t = a.querySelector('.t'), p = a.getAttribute('data-pending'); if(t && p){ t.textContent = p; }
-      var i = a.querySelector('svg'); if(i){ i.remove(); }
-    }
+    if(url){ a.href = url; return; }
+    a.removeAttribute('href'); a.setAttribute('aria-disabled','true');
+    if(a.classList.contains('btn')) a.classList.add('pending');
+    var t = a.querySelector('.t'), p = a.getAttribute('data-pending'); if(t && p){ t.textContent = p; }
+    var i = a.querySelector('.ico'); if(i){ i.remove(); }
   });
 })();
 </script>
