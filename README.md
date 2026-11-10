@@ -16,6 +16,7 @@
 | 쉐퍼드 데스크 Shepherd's Desk | 메모 · 일정 · 심방 기록 | [홈페이지](https://shepherdsdesk.github.io/shepherds-desk/) |
 | 오늘의 네컷 | 교회 포토부스 | [소개](https://mokyangdesk.com/four-cuts.html) · [포토부스 열기](https://shepherdsdesk.github.io/photobooth/) |
 | 365 기도동행 | 기도제목 창구 | [소개](https://mokyangdesk.com/prayer-walk.html) |
+| 잇다 it,da | 사랑방 주일보고 | [소개](https://mokyangdesk.com/itda.html) · [설치 방법](https://mokyangdesk.com/itda-install.html) · [앱 열기](https://shepherdsdesk.github.io/itda/) |
 
 ## 파일 구성
 
@@ -24,6 +25,8 @@
 | index.html | 목양 데스크 (대문) |
 | four-cuts.html | 오늘의 네컷 소개 |
 | prayer-walk.html | 365 기도동행 소개 |
+| itda.html | 잇다 소개 |
+| itda-install.html | 잇다 설치 설명서 |
 | CNAME | 도메인 연결용 (mokyangdesk.com) — 지우지 마세요 |
 | robots.txt | 검색 로봇에게 사이트를 모두 읽어도 된다고 알림 |
 | sitemap.xml | 검색 엔진에 페이지 목록을 알려 주는 지도 |
@@ -35,6 +38,7 @@
 
 - four-cuts.html → `download`(포토부스 열기), `guide`(사용 설명서)
 - prayer-walk.html → `copy`(사본 만들기), `guide`(설치 설명서)
+- itda.html · itda-install.html → `copy`(잇다 배포용 시트 사본 주소)
 
 ## 검색 등록 확인 코드 넣기
 
