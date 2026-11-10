@@ -14,25 +14,32 @@
 |---|---|---|
 | 렉시오 Lexio | 설교 작성 · 성경 연구 | [홈페이지](https://shepherdsdesk.github.io/lexio/) |
 | 쉐퍼드 데스크 Shepherd's Desk | 메모 · 일정 · 심방 기록 | [홈페이지](https://shepherdsdesk.github.io/shepherds-desk/) |
-| 오늘의 네컷 | 교회 포토부스 | [소개 페이지](https://mokyangdesk.com/four-cuts.html) |
-| 365 기도동행 | 기도제목 창구 | [소개 페이지](https://mokyangdesk.com/prayer-walk.html) |
+| 오늘의 네컷 | 교회 포토부스 | [소개](https://mokyangdesk.com/four-cuts.html) · [포토부스 열기](https://shepherdsdesk.github.io/photobooth/) |
+| 365 기도동행 | 기도제목 창구 | [소개](https://mokyangdesk.com/prayer-walk.html) |
 
 ## 파일 구성
 
-| 파일 | 페이지 |
+| 파일 | 역할 |
 |---|---|
 | index.html | 목양 데스크 (대문) |
-| four-cuts.html | 오늘의 네컷 |
-| prayer-walk.html | 365 기도동행 |
+| four-cuts.html | 오늘의 네컷 소개 |
+| prayer-walk.html | 365 기도동행 소개 |
 | CNAME | 도메인 연결용 (mokyangdesk.com) — 지우지 마세요 |
+| robots.txt | 검색 로봇에게 사이트를 모두 읽어도 된다고 알림 |
+| sitemap.xml | 검색 엔진에 페이지 목록을 알려 주는 지도 |
 
 ## 주소 바꾸기
 
-각 파일 맨 아래 `var LINKS = { ... }` 부분만 고치면 됩니다.
+각 html 파일 맨 아래 `var LINKS = { ... }` 부분만 고치면 됩니다.
 주소가 비어 있는 버튼은 화면에 '준비 중'으로 표시됩니다.
 
-- four-cuts.html → `download`(프로그램 받기), `guide`(사용 설명서)
+- four-cuts.html → `download`(포토부스 열기), `guide`(사용 설명서)
 - prayer-walk.html → `copy`(사본 만들기), `guide`(설치 설명서)
+
+## 검색 등록 확인 코드 넣기
+
+네이버 서치어드바이저나 구글 서치 콘솔에서 받은 확인 코드는 각 html 파일 위쪽의
+`naver-site-verification`, `google-site-verification` 줄에 넣고 그 줄의 `<!--`, `-->`를 지우면 됩니다.
 
 ---
 

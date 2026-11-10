@@ -152,6 +152,19 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;ba
   .tbl td:first-child{white-space:normal}
   .step-sec{padding-top:52px}
 }
+
+/* 실제 화면 사진 */
+.shot{margin:12px 0 6px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 22px 40px -30px rgba(17,17,19,.35)}
+.shot img{display:block;width:100%;height:auto}
+.shot.narrow{max-width:380px}
+.steps .note{margin-top:10px}
+
+/* 배포 때 다시 나오는 경고 화면 */
+.again{display:grid;gap:8px;margin-top:12px;padding:16px 18px;border:1.5px dashed color-mix(in srgb,var(--accent) 45%,#fff);border-radius:18px;background:color-mix(in srgb,var(--accent) 5%,#fff)}
+.again-item{display:grid;grid-template-columns:24px 1fr;gap:8px;font-size:15.5px}
+.again-no{font-weight:800;color:color-mix(in srgb,var(--accent) 80%,#000)}
+.again .shot{margin:0 0 6px 32px}
+@media (max-width:640px){.again{padding:14px}.again .shot{margin-left:0}}
 </style></head>
 <body>
 <nav class="nav" aria-label="상단 메뉴"><div class="wrap">
@@ -200,59 +213,89 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;ba
     <ol class="steps">
       <li><span><b>「내 드라이브에 사본 만들기」</b>를 누릅니다.</span></li>
       <li><span>구글 계정을 확인합니다. 기도제목이 이 계정의 드라이브에 쌓이므로 <b>교회나 교구 공용 계정</b>을 권합니다. 사역자가 바뀌어도 기록이 교회에 남습니다.</span></li>
-      <li><span>「문서 사본을 만드시겠습니까?」 화면에서 <b>사본 만들기</b>를 누릅니다. 프로그램 코드도 함께 복사됩니다.</span></li>
+      <li><span>「문서 복사」 화면이 나오면 <b>사본 만들기</b>를 누릅니다. 노란 안내처럼 <b>프로그램 코드(Apps Script)도 함께 복사</b>됩니다.
+        <figure class="shot"><a href="img/install/00-copy.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/00-copy.png" alt="문서 복사 화면의 사본 만들기 버튼" loading="lazy"></a></figure></span></li>
+      <li><span>내 드라이브에 「…의 사본」이라는 이름의 시트가 열립니다. 왼쪽 위 제목을 눌러 <b>「365 기도동행」</b>처럼 알아보기 쉬운 이름으로 바꿔 두세요.</span></li>
     </ol>
   </section>
 
   <section class="step-sec" id="s2">
     <h2><span class="no">2</span>초기 설정</h2>
+    <p>처음 한 번만 하면 됩니다. 구글이 권한을 묻는 화면이 몇 번 나오는데, 아래 사진에서 <b style="color:#e12d2d">빨간 테두리</b>를 차례로 누르시면 됩니다.</p>
     <ol class="steps">
-      <li><span>복사된 시트가 열리면 <kbd>F5</kbd>(맥은 <kbd>⌘ R</kbd>)를 눌러 <b>새로고침</b>합니다.</span></li>
-      <li><span>5~10초 정도 기다리면 위쪽 메뉴 줄 끝, 「도움말」 오른쪽에 <b>「기도동행」</b> 메뉴가 생깁니다.
-        <span class="mock" style="display:block" aria-hidden="true">
-          <span class="bar"><i></i><i></i><i></i>&nbsp; 365 기도동행 - Google Sheets</span>
-          <span class="menu"><span>파일</span><span>수정</span><span>보기</span><span>삽입</span><span>서식</span><span>데이터</span><span>도구</span><span>확장 프로그램</span><span>도움말</span><span class="on">기도동행</span></span>
-          <span class="drop" style="display:block"><span class="hi" style="display:block;padding:8px 12px">① 초기 설정 (처음 한 번)</span><span style="display:block;padding:8px 12px">② 행사 주소·QR 새로 만들기</span><span style="display:block;padding:8px 12px">매일 알림 켜기</span><span style="display:block;padding:8px 12px">…</span></span>
-        </span>
-        <span class="cap" style="display:block">「도움말」 옆에 「기도동행」 메뉴가 생깁니다</span></span></li>
-      <li><span><b>기도동행 → ① 초기 설정</b>을 누릅니다.</span></li>
-      <li><span>「승인 필요」 창이 뜨면 <b>계속</b>을 누르고 계정을 고릅니다. 이어서 아래 경고 화면이 나옵니다.
-        <span class="mock" style="display:block" aria-hidden="true"><span class="body" style="display:block">
-          <h4>⚠ Google에서 확인하지 않은 앱</h4>
-          <span style="color:#5f6368;display:block">앱에서 Google 계정에 대한 액세스를 요청합니다…</span>
-          <span style="display:block;margin-top:10px">왼쪽 아래 <span class="lnk">고급</span> → <span class="lnk">(이동)안전하지 않음</span> → <b>허용</b></span>
-        </span></span></span></li>
-      <li><span>권한을 허용한 뒤 <b>기도동행 → ① 초기 설정을 한 번 더</b> 누릅니다. 「초기 설정이 끝났습니다」 안내와 함께 탭 9개가 만들어집니다.</span></li>
+      <li><span>복사된 시트가 열리면 <kbd>F5</kbd>(맥은 <kbd>⌘ R</kbd>)를 눌러 <b>새로고침</b>합니다. 5~10초 뒤 위쪽 메뉴 줄 끝, 「도움말」 오른쪽에 <b>「기도동행」</b> 메뉴가 생깁니다.
+        <figure class="shot"><a href="img/install/01-menu.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/01-menu.png" alt="시트 메뉴 줄 끝에 생긴 기도동행 메뉴" loading="lazy"></a></figure></span></li>
+      <li><span><b>기도동행 → ① 초기 설정 (처음 한 번)</b>을 누릅니다.
+        <figure class="shot"><a href="img/install/02-setup-menu.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/02-setup-menu.png" alt="기도동행 메뉴를 펼친 화면, ① 초기 설정" loading="lazy"></a></figure></span></li>
+      <li><span>「승인 필요」 창이 뜨면 <b>확인</b>을 누릅니다.
+        <figure class="shot"><a href="img/install/03-approve.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/03-approve.png" alt="승인 필요 창의 확인 버튼" loading="lazy"></a></figure></span></li>
+      <li><span>「Google에서 확인하지 않은 앱」 화면이 나오면 왼쪽 아래 <b>고급</b>을 누릅니다.
+        <figure class="shot narrow"><a href="img/install/04-unverified.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/04-unverified.png" alt="Google에서 확인하지 않은 앱 화면의 고급 링크" loading="lazy"></a></figure>
+        <span class="note tip" style="display:block"><b>놀라지 않으셔도 됩니다</b>내 드라이브에 복사한 내 코드라서 구글이 따로 심사하지 않았다는 안내입니다. 「개발자」 자리에는 사본을 만든 내 이메일이 보입니다.</span></span></li>
+      <li><span>아래에 나타난 <b>「365 기도동행 …(으)로 이동(안전하지 않음)」</b>을 누릅니다.
+        <figure class="shot narrow"><a href="img/install/05-advanced.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/05-advanced.png" alt="(으)로 이동(안전하지 않음) 링크" loading="lazy"></a></figure></span></li>
+      <li><span>로그인 화면에서 <b>계속</b>을 누릅니다. 계정이 여러 개라면 <b>사본을 만든 계정과 같은 계정</b>인지 꼭 확인하세요.
+        <figure class="shot narrow"><a href="img/install/06-login.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/06-login.png" alt="Google 계정으로 로그인 화면의 계속 버튼" loading="lazy"></a></figure></span></li>
+      <li><span>액세스 항목 화면에서 <b>「모두 선택」에 체크</b>한 뒤 <b>계속</b>을 누릅니다.
+        <figure class="shot narrow"><a href="img/install/07-access.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/07-access.png" alt="모두 선택 체크 후 계속" loading="lazy"></a></figure>
+        <span class="note warn" style="display:block"><b>「모두 선택」을 꼭 체크하세요</b>체크하지 않고 넘어가면 시트를 읽거나 알림 메일을 보내지 못해 프로그램이 작동하지 않습니다.</span></span></li>
+      <li><span>권한 창이 닫히면 <b>기도동행 → ① 초기 설정을 한 번 더</b> 누릅니다. 「초기 설정이 끝났습니다」 안내와 함께 아래쪽에 탭 9개(설정, 접수명단, 사역자명단 등)가 만들어집니다.</span></li>
     </ol>
-    <div class="note tip"><b>경고 화면은 걱정하지 않으셔도 됩니다</b>내 드라이브에 복사한 내 코드라서 구글이 따로 심사하지 않았다는 뜻입니다. 이 프로그램은 내 시트를 읽고 쓰는 권한과 알림 메일을 보내는 권한만 사용합니다.</div>
     <div class="note warn"><b>휴대폰에서는 메뉴가 보이지 않습니다</b>구글 시트 모바일 앱에는 이 메뉴가 나오지 않으니, 설치는 꼭 PC 브라우저에서 해 주세요.</div>
   </section>
 
   <section class="step-sec" id="s3">
     <h2><span class="no">3</span>교회 정보 입력</h2>
+    <p>「설정」 탭의 B열 값을 우리 교회에 맞게 고칩니다. 빨간 테두리 부분부터 바꾸시면 됩니다.</p>
+    <figure class="shot"><a href="img/install/08-settings.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/08-settings.png" alt="설정 탭: 교회 이름, 창구 이름, 부제, 조직 단위 이름, 조직 목록" loading="lazy"></a></figure>
     <table class="tbl">
       <tr><th>탭</th><th>입력할 내용</th></tr>
       <tr><td>설정</td><td>교회 이름, 창구 이름, 조직 단위 이름(교구·구역·목장·셀), 조직 목록(쉼표로 구분), 대표 색상, 관리자 이메일</td></tr>
       <tr><td>사역자명단</td><td>이름 · 직분 · 담당 조직 · 이메일 · 알림 받기(Y/N)<small>성도가 고른 소속과 담당 조직이 같으면 자동으로 배정됩니다. 모든 건을 받을 분은 담당 조직에 <code>전체</code>라고 적습니다.</small></td></tr>
       <tr><td>행사목록</td><td>행사코드(영문·숫자), 행사명, 기준 날짜(수능일 등), 기본 분야, 사용(Y/N)</td></tr>
     </table>
+    <h3 style="margin-top:22px">사역자명단 입력 예</h3>
+    <p style="color:var(--muted);font-size:15.5px">2번째 줄의 <code>(이름)</code>, <code>1교구, 2교구 (또는 전체)</code> 자리를 실제 사역자 이름과 담당 조직으로 바꿔 적습니다. 괄호로 시작하는 <code>(이름)</code> 줄은 견본이라 그대로 두면 배정되지 않습니다.</p>
+    <figure class="shot"><a href="img/install/09-staff.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/09-staff.png" alt="사역자명단 탭 입력 예" loading="lazy"></a></figure>
     <div class="note tip"><b>기본 내용이 들어 있습니다</b>말씀DB, 기도문DB, 연락기준, 분야 탭은 그대로 쓰셔도 되고, 교회에 맞게 고치셔도 됩니다.</div>
   </section>
 
   <section class="step-sec" id="s4">
     <h2><span class="no">4</span>웹앱으로 배포하기</h2>
+    <p>성도가 휴대폰으로 열 <b>접수 주소</b>를 만드는 단계입니다. 처음 한 번만 하면 됩니다.</p>
     <ol class="steps">
-      <li><span>시트 메뉴 <b>확장 프로그램 → Apps Script</b>를 엽니다.</span></li>
-      <li><span>오른쪽 위 파란 버튼 <b>배포 → 새 배포</b>를 누릅니다.</span></li>
-      <li><span>「유형 선택」 옆 톱니바퀴 ⚙ → <b>웹 앱</b>을 고르고 아래처럼 설정합니다.
-        <span class="mock" style="display:block" aria-hidden="true"><span class="body" style="display:block">
-          <span class="row"><span>설명</span><span>365 기도동행</span></span>
-          <span class="row"><span>다음 사용자 인증 정보로 실행</span><span class="sel">나</span></span>
-          <span class="row"><span>액세스 권한이 있는 사용자</span><span class="sel">모든 사용자</span></span>
-        </span></span></span></li>
-      <li><span><b>배포</b>를 누르고, 나오는 <b>웹 앱 URL</b>(끝이 <code>/exec</code>)을 복사합니다.</span></li>
+      <li><span>시트 메뉴 <b>확장 프로그램 → Apps Script</b>를 누릅니다. 새 탭에 코드 편집 화면이 열립니다.
+        <figure class="shot"><a href="img/install/10-ext-menu.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/10-ext-menu.png" alt="확장 프로그램 메뉴의 Apps Script" loading="lazy"></a></figure></span></li>
+      <li><span>오른쪽 위 파란 <b>배포</b> 버튼 → <b>새 배포</b>를 누릅니다.
+        <figure class="shot narrow"><a href="img/install/12-new-deploy.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/12-new-deploy.png" alt="배포 버튼을 눌러 새 배포 선택" loading="lazy"></a></figure></span></li>
+      <li><span>「유형 선택」 옆 <b>톱니바퀴 ⚙</b>를 누르고 <b>웹 앱</b>을 고릅니다.
+        <figure class="shot"><a href="img/install/13-webapp-type.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/13-webapp-type.png" alt="톱니바퀴를 눌러 웹 앱 선택" loading="lazy"></a></figure></span></li>
+      <li><span>아래처럼 설정하고 오른쪽 아래 <b>배포</b>를 누릅니다.
+        <span class="tbl-mini" style="display:block;margin-top:10px">
+          <span style="display:block">· <b>새 설명</b>: 365 기도동행 (아무 이름이나 괜찮습니다)</span>
+          <span style="display:block">· <b>다음 사용자 인증 정보로 실행</b>: <b>나(내 이메일)</b></span>
+          <span style="display:block">· <b>액세스 권한이 있는 사용자</b>: <b>모든 사용자</b></span>
+        </span>
+        <figure class="shot"><a href="img/install/14-webapp-settings.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/14-webapp-settings.png" alt="실행 계정 나, 액세스 모든 사용자로 설정 후 배포" loading="lazy"></a></figure>
+        <span class="note warn" style="display:block"><b>「모든 사용자」를 꼭 고르세요</b>「나만」이나 「Google 계정이 있는 모든 사용자」로 두면 성도 휴대폰에서 로그인 화면이나 권한 오류가 뜹니다.</span></span></li>
+      <li><span>「웹 앱에서 내 데이터에 대한 액세스 권한 부여를 나에게 요청합니다」가 나오면 <b>액세스 승인</b>을 누릅니다.
+        <figure class="shot"><a href="img/install/15-grant-access.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/15-grant-access.png" alt="액세스 승인 버튼" loading="lazy"></a></figure></span></li>
+      <li><span><b>2단계에서 본 경고 화면이 다시 나옵니다.</b> 당황하지 마시고, 그때와 똑같이 아래 순서대로 누르시면 됩니다.
+        <span class="again">
+          <span class="again-item"><span class="again-no">①</span><span><b>계정 선택</b>: 사본을 만든 계정을 누릅니다.</span></span>
+          <span class="again-item"><span class="again-no">②</span><span>「Google에서 확인하지 않은 앱」 화면 왼쪽 아래 <b>고급</b>을 누릅니다.</span></span>
+          <figure class="shot narrow"><a href="img/install/04-unverified.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/04-unverified.png" alt="고급 링크" loading="lazy"></a></figure>
+          <span class="again-item"><span class="again-no">③</span><span>아래에 나타난 <b>「…(으)로 이동(안전하지 않음)」</b>을 누릅니다.</span></span>
+          <figure class="shot narrow"><a href="img/install/05-advanced.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/05-advanced.png" alt="(으)로 이동(안전하지 않음) 링크" loading="lazy"></a></figure>
+          <span class="again-item"><span class="again-no">④</span><span>로그인 화면에서 <b>계속</b>을 누릅니다.</span></span>
+          <figure class="shot narrow"><a href="img/install/06-login.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/06-login.png" alt="계속 버튼" loading="lazy"></a></figure>
+          <span class="again-item"><span class="again-no">⑤</span><span><b>「모두 선택」에 체크</b>하고 <b>계속</b>을 누릅니다.</span></span>
+          <figure class="shot narrow"><a href="img/install/07-access.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/07-access.png" alt="모두 선택 체크 후 계속" loading="lazy"></a></figure>
+        </span>
+        <span class="note tip" style="display:block"><b>2단계에서 이미 허용했는데 또 나오나요?</b>웹앱은 성도 화면을 보여 주고 접수를 저장하는 권한을 한 번 더 확인하기 때문에 다시 나올 수 있습니다. 내 사본의 내 코드이니 같은 방법으로 허용하시면 됩니다. 경고 화면 없이 바로 다음으로 넘어가도 정상입니다.</span></span></li>
+      <li><span>「배포가 업데이트되었습니다」 화면이 나오면, <b>웹 앱 URL 아래의 복사</b>를 누르고 <b>완료</b>를 누릅니다. 이 주소가 성도에게 나눌 <b>접수 주소</b>입니다. 끝이 <code>/exec</code>로 끝납니다.
+        <figure class="shot"><a href="img/install/16-webapp-url.png" target="_blank" rel="noopener" title="크게 보기"><img src="img/install/16-webapp-url.png" alt="웹 앱 URL 복사" loading="lazy"></a></figure></span></li>
     </ol>
-    <div class="note warn"><b>「모든 사용자」가 꼭 필요합니다</b>「나만」이나 「Google 계정이 있는 모든 사용자」로 두면 성도 휴대폰에 로그인 화면이나 권한 오류가 뜹니다.</div>
   </section>
 
   <section class="step-sec" id="s5">
