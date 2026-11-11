@@ -382,6 +382,9 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);ba
 input.err,textarea.err{border-color:var(--rose)}
 form .btn{width:100%;height:56px;font-size:16px}
 .f-note{font-size:13px;color:var(--muted);text-align:center;margin-top:14px}
+.f-done{margin-top:16px;padding:18px;border-radius:14px;background:#E8F8F1;border:1px solid #BFEBD6}
+.f-done b{font-size:15px;color:#047857}.f-done p{font-size:13.5px;color:#334155;margin-top:4px;line-height:1.6}
+#cform{position:relative}
 .f-fallback{margin-top:16px;padding:18px;border-radius:14px;background:var(--blue-soft);border:1px solid #DBE5FB}
 .f-fallback b{font-size:14.5px}
 .f-fallback p{font-size:13.5px;color:var(--text);margin:4px 0 12px;line-height:1.6}
@@ -841,12 +844,15 @@ footer a:hover{color:#fff}
             <option value="개발">새 프로그램 개발 상의</option>
             <option value="등록">내가 만든 도구 마당에 올리기</option>
             <option value="알림">새 도구 공개·책 출간 알림 신청</option>
+            <option value="잇다">잇다 사용 요청 (사용키)</option>
             <option value="기타">기타 사역 협력 제안</option>
           </select>
         </div>
         <div class="fld"><label for="f-msg">상세 내용</label><textarea id="f-msg" placeholder="교회 규모, 사용하실 부서, 필요하신 내용을 적어 주세요."></textarea></div>
-        <button type="submit" class="btn btn-primary">문의 보내기 <i data-lucide="send"></i></button>
-        <p class="f-note">‘문의 보내기’를 누르면 작성하신 내용이 담긴 메일 창이 열립니다.</p>
+        <input type="text" name="website" id="f-website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <button type="submit" class="btn btn-primary" id="f-submit">문의 보내기 <i data-lucide="send"></i></button>
+        <p class="f-note" id="f-note">‘문의 보내기’를 누르면 작성하신 내용이 담긴 메일 창이 열립니다.</p>
+        <div class="f-done" id="f-done" hidden><b>문의가 전달되었습니다.</b><p>보내 주신 내용은 AI목양지원센터 메일로 바로 들어갔습니다. 2~3일 안에 적어 주신 연락처로 회신드리겠습니다.</p></div>
         <div class="f-fallback" id="f-fallback" hidden>
           <b>메일 창이 열리지 않았나요?</b>
           <p>메일 앱을 쓰지 않는 컴퓨터에서는 창이 열리지 않을 수 있습니다. 아래 버튼으로 내용을 복사해 <span class="f-addr"></span> 로 보내 주세요.</p>
@@ -907,6 +913,7 @@ footer a:hover{color:#fff}
    ═════════════════════════════════════════ */
 const CONFIG = {
   contactEmail: 'contact@mokyangdesk.com',   // 문의 메일 받을 주소 (mokyangdesk@gmail.com으로 전달됨)
+  formEndpoint: 'https://script.google.com/macros/s/AKfycbwNdLDG-OeORJwkKWbBRAlQ0dQv7UnKYDdRDf6V4FLgMDoENwGxwM20NZSptWhmNDfc/exec',   // 문의함 앱스크립트 웹 앱 주소(…/exec). 넣으면 [문의 보내기]가 메일 창 없이 바로 전송됩니다
   deskUrl: '/desk/',                       // 목양 데스크(프로그램 내려받는 곳) 주소
 };
 
@@ -1062,14 +1069,27 @@ document.getElementById('cform').addEventListener('submit',e=>{
   const miss = ['f-church','f-name','f-reply','f-msg'].filter(id=>!v(id));
   miss.forEach(id=>document.getElementById(id).classList.add('err'));
   if(miss.length){ document.getElementById(miss[0]).focus(); return; }
+  if (document.getElementById('f-website').value) return;   // 스팸 로봇
   const t = document.getElementById('f-topic'), tt = t.options[t.selectedIndex].text;
+  if (CONFIG.formEndpoint) {
+    const btn = document.getElementById('f-submit'); btn.disabled = true; const label = btn.innerHTML; btn.textContent = '보내는 중…';
+    const data = new URLSearchParams({ topic: tt, church: v('f-church'), name: v('f-name'), reply: v('f-reply'), msg: v('f-msg'), page: location.href, website: '' });
+    fetch(CONFIG.formEndpoint, { method: 'POST', mode: 'no-cors', body: data })
+      .then(() => { document.getElementById('f-done').hidden = false; document.getElementById('f-fallback').hidden = true; e.target.reset(); btn.innerHTML = label; btn.disabled = false; paintIcons(); })
+      .catch(() => { btn.innerHTML = label; btn.disabled = false; paintIcons(); sendByMail(tt); });
+    return;
+  }
+  sendByMail(tt);
+});
+function sendByMail(tt){
+  const v = id=>document.getElementById(id).value.trim();
   const subject = `[AI목양지원센터 문의] ${tt} - ${v('f-church')}`;
   const body = `교회/기관: ${v('f-church')}\n성함·직분: ${v('f-name')}\n회신 연락처: ${v('f-reply')}\n문의 분야: ${tt}\n\n${v('f-msg')}`;
   location.href = `mailto:${CONFIG.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   window.__lastMail = `받는 사람: ${CONFIG.contactEmail}\n제목: ${subject}\n\n${body}`;
   const fb = document.getElementById('f-fallback'); fb.hidden = false;
   fb.querySelector('.f-addr').textContent = CONFIG.contactEmail;
-});
+}
 function copyText(t, msg){
   const done = ()=>{ document.getElementById('f-copied').textContent = msg; };
   if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, ()=>fallbackCopy(t, done));
@@ -1101,6 +1121,12 @@ function paintIcons(){
 
 /* start */
 document.getElementById('c-email').textContent = CONFIG.contactEmail;
+if (CONFIG.formEndpoint) document.getElementById('f-note').textContent = '‘문의 보내기’를 누르면 AI목양지원센터로 바로 전송됩니다.';
+(function(){   // 다른 페이지에서 /?topic=잇다#contact 처럼 들어오면 분야를 미리 골라 둠
+  const q = new URLSearchParams(location.search).get('topic'); if (!q) return;
+  const sel = document.getElementById('f-topic'); if ([...sel.options].some(o=>o.value===q)) sel.value = q;
+  if (q === '잇다') document.getElementById('f-msg').value = '■ 교회이름(교구) — 시트 [설정] 교회이름과 똑같이:\n■ 사랑방(소그룹) 수 / 성도 수:\n■ 체험판 사용 여부: 예 / 아니요\n■ 하고 싶은 말:\n';
+})();
 document.getElementById('yr').textContent = new Date().getFullYear();
 document.querySelectorAll('[data-desk]').forEach(a=>a.setAttribute('href',CONFIG.deskUrl));
 renderWindow(); renderStat(); renderSeg(); renderPrograms(); renderFooter(); bindTopics(); paintIcons();
