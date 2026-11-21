@@ -236,7 +236,7 @@
       "name": "성탄 말씀 스탬프 여정",
       "en": "Advent Stamp",
       "cat": "event",
-      "status": "dev",
+      "status": "case",
       "icon": "stamp",
       "color": "#8b3a3a",
       "visible": true,
@@ -249,7 +249,7 @@
         "QR",
         "앱스크립트"
       ],
-      "page": ""
+      "page": "https://shepherdsdesk.github.io/xmas-stamp/"
     },
     {
       "id": "verse",
