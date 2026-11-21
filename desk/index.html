@@ -148,11 +148,41 @@ footer strong{color:var(--ink);font-weight:700}
   .about .wrap{grid-template-columns:1fr;gap:20px}
 }
 @media (max-width:520px){.tool{padding:26px 22px}}
-</style></head>
+
+/* 상단 바 줄바꿈 방지 (모바일) */
+.brand-text,.nav-links a{white-space:nowrap}
+@media (max-width:640px){
+  .brand-text .it{display:none}
+  .nav .wrap{gap:8px}
+  .nav-links{gap:2px}
+  .nav-links a{padding:8px 10px;font-size:14px}
+}
+
+/* 누르는 느낌과 터치 화면 정리 */
+.btn:active{transform:scale(.97);transition-duration:.08s}
+@media (hover:none){.btn:hover,.row:hover,.tool:hover{transform:none}}
+.st.dev{background:#f0f0f2;color:#6b6b73}.st.case{background:#eef2f7;color:#334155}
+.tool.share{background:transparent;border:1.5px dashed #d6d6dc;align-content:center}
+.tool.share:hover{transform:none;box-shadow:none;border-color:#9a9aa2}
+.tool.share .plus{width:52px;height:52px;border-radius:16px;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:300}
+.tool.share h3{font-size:clamp(24px,2.6vw,30px)}
+.tool .app svg.lucide{width:50%;height:50%;stroke-width:1.9}
+.row .app svg.lucide{width:50%;height:50%;stroke-width:2}
+
+/* 관리자 화면의 테마 색 */
+body{background:var(--brand-paper,var(--bg))}
+.brand-mark,.btn-dark,.btn-color,.get .btn-white,.card .n,.get-list .num{background:var(--brand,var(--ink))}
+.about{background:var(--brand-soft,var(--soft))}
+.app:has(img){padding:0;border:0;overflow:hidden}
+</style>
+<script src="/assets/icons.js"></script>
+<link rel="stylesheet" href="/assets/polish.css">
+<link rel="stylesheet" href="/assets/motion.css">
+<script src="/assets/site.js"></script></head>
 <body>
 <nav class="nav" aria-label="상단 메뉴"><div class="wrap">
   <a class="brand" data-link="home" href="#"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M8 21V8a4 4 0 0 1 8 0"/></svg></span><span class="brand-text">목양 데스크<span class="it">Mokyang Desk</span></span></a>
-  <div class="nav-links"><a href="#tools">도구</a><a class="hide-m" href="#about">소개</a><a href="/" style="color:var(--ink);font-weight:700">AI목양지원센터 ↗</a></div>
+  <div class="nav-links"><a class="hide-m" href="#tools">도구</a><a href="/screens.html">실제 화면</a><a class="hide-m" href="#about">소개</a><a href="/" style="color:var(--ink);font-weight:700">AI목양지원센터 ↗</a></div>
 </div></nav>
 
 <header class="hero">
@@ -163,10 +193,10 @@ footer strong{color:var(--ink);font-weight:700}
       <p class="lead">설교 준비, 성도 기록, 행사 사진, 기도제목 관리까지. 교구 목회자가 현장에서 직접 쓰며 만든 도구들을 한 책상 위에 모았습니다.</p>
       <div class="cta">
         <a class="btn btn-dark" href="#tools">도구 둘러보기<svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
-        <a class="btn btn-line" href="#about">만든 이야기</a>
+        <a class="btn btn-line" href="/screens.html">실제 화면 보기</a>
       </div>
     </div>
-    <nav class="panel" aria-label="프로그램 바로가기">
+    <nav class="panel" id="panel" aria-label="프로그램 바로가기">
       <div class="panel-head"><span>목양 데스크의 도구</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
       <a class="row" href="#lexio" style="--accent:var(--lexio)"><span class="app"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 13c-4-3-10-4-17-3v25c7-1 13 0 17 3 4-3 10-4 17-3V10c-7-1-13 0-17 3z"/><path d="M24 13v25"/></svg></span><span class="row-txt"><b>렉시오</b><span>설교 작성 · 성경 연구</span></span><span class="row-go" aria-hidden="true"><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></span></a><a class="row" href="#desk" style="--accent:var(--desk)"><span class="app"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 41V16a7 7 0 0 1 14 0"/><ellipse cx="30" cy="32" rx="8" ry="6" fill="currentColor" stroke="none"/><circle cx="37" cy="28.5" r="3.2" fill="currentColor" stroke="none"/></svg></span><span class="row-txt"><b>셰퍼드 데스크</b><span>메모 · 일정 · 심방 기록</span></span><span class="row-go" aria-hidden="true"><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></span></a><a class="row" href="#nekeot" style="--accent:var(--cuts)"><span class="app"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="15" y="5" width="18" height="38" rx="2"/><path d="M15 14h18M15 23h18M15 32h18"/></svg></span><span class="row-txt"><b>오늘의 네컷</b><span>교회 포토부스</span></span><span class="row-go" aria-hidden="true"><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></span></a><a class="row" href="#prayer" style="--accent:var(--pray)"><span class="app"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 5c4 5 6 8 6 11.5a6 6 0 0 1-12 0C18 13 20 10 24 5z" fill="currentColor" stroke="none"/><rect x="18" y="25" width="12" height="16" rx="2"/><path d="M13 41h22"/></svg></span><span class="row-txt"><b>365 기도동행</b><span>기도제목 창구</span></span><span class="row-go" aria-hidden="true"><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></span></a><a class="row" href="#itda" style="--accent:var(--itda)"><span class="app"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 22 24 8l17 14"/><path d="M11 19v20h26V19"/><path d="M24 34s-6-3.6-6-7.6a3.4 3.4 0 0 1 6-2.1 3.4 3.4 0 0 1 6 2.1c0 4-6 7.6-6 7.6z" fill="currentColor" stroke="none"/></svg></span><span class="row-txt"><b>잇다</b><span>사랑방 주일보고</span></span><span class="row-go" aria-hidden="true"><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></span></a>
     </nav>
@@ -180,9 +210,9 @@ footer strong{color:var(--ink);font-weight:700}
         <span class="kicker">Tools</span>
         <h2>필요한 도구를 골라 보세요</h2>
         <p>모두 무료입니다. 각 프로그램 소개 페이지에서 자세히 보고 내려받으세요.</p>
-        <div class="legend"><span><span class="st live">바로 받기</span>신청 없이 바로</span><span><span class="st reg">등록 후 무료</span>사용 요청 후 무료 키 발급</span></div>
+        <div class="legend"><span><span class="st live">바로 받기</span>신청 없이 바로</span><span><span class="st reg">등록 후 무료</span>사용 요청 후 무료 키 발급</span><span><span class="st case">교회 적용 사례</span>소개만</span><span><span class="st dev">개발 중</span>곧 공개</span></div>
       </div>
-      <div class="tools">
+      <div class="tools" id="tools-grid">
       <article class="tool" id="lexio" style="--accent:var(--lexio)">
         <div class="tool-top"><div class="app"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 13c-4-3-10-4-17-3v25c7-1 13 0 17 3 4-3 10-4 17-3V10c-7-1-13 0-17 3z"/><path d="M24 13v25"/></svg></div><div class="tool-role">설교 작성 · 성경 연구</div></div>
         <div class="tool-name"><h3>렉시오</h3><span class="it">Lexio</span></div>
@@ -270,4 +300,47 @@ var LINKS = {
 })();
 </script>
 
+
+<script>
+/* 프로그램 목록은 /data/site.json에서 읽어 그립니다 (관리자 화면에서 수정) */
+(function(){
+  var ARROW = '<svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg>';
+  var ST = {live:'바로 받기', reg:'등록 후 무료', 'case':'교회 적용 사례', dev:'개발 중'};
+  var own = {};   // 기존 손그림 아이콘 보존
+  document.querySelectorAll('#tools-grid .tool').forEach(function(a){ var i=a.querySelector('.app'); if(i) own[a.id]=i.innerHTML; });
+  function esc(t){ return String(t==null?'':t); }
+  function ico(p){ if(own[p.id]) return own[p.id]; if(p.logo) return '<img src="'+p.logo+'" alt="" style="width:100%;height:100%;display:block;border-radius:inherit">'; return window.iconSVG ? iconSVG(p.icon||'sparkles') : ''; }
+  function card(p){
+    var link = (p.page||'').trim();
+    var btn = p.status==='dev'
+      ? (link ? '<a class="btn btn-dark" href="'+link+'"><span class="t">미리 보기</span>'+ARROW+'</a>'
+              : '<a class="btn btn-dark pending" aria-disabled="true"><span class="t">공개 준비 중</span></a>')
+      : (link ? '<a class="btn btn-dark" href="'+link+'"><span class="t">자세히 보기</span>'+ARROW+'</a>'
+              : '<a class="btn btn-dark pending" aria-disabled="true"><span class="t">소개 페이지 준비 중</span></a>');
+    return '<article class="tool" id="'+p.id+'" style="--accent:'+(p.color||'#111113')+'">'
+      + '<div class="tool-top"><div class="app">'+ico(p)+'</div>'+(p.role?'<div class="tool-role">'+esc(p.role)+'</div>':'')+'</div>'
+      + '<div class="tool-name"><h3>'+esc(p.name)+'</h3>'+(p.en?'<span class="it">'+esc(p.en)+'</span>':'')+'</div>'
+      + '<span class="st '+p.status+'">'+ST[p.status]+'</span>'
+      + (p.head?'<p class="tool-head">'+esc(p.head)+'</p>':'')
+      + '<p class="tool-desc">'+esc(p.desc)+'</p>'
+      + ((p.tags&&p.tags.length)?'<div class="chips">'+p.tags.map(function(t){return '<span class="chip">'+esc(t)+'</span>';}).join('')+'</div>':'')
+      + btn + '</article>';
+  }
+  function row(p){
+    return '<a class="row" href="#'+p.id+'" style="--accent:'+(p.color||'#111113')+'"><span class="app">'+ico(p)+'</span>'
+      + '<span class="row-txt"><b>'+esc(p.name)+'</b><span>'+esc(p.role||'')+'</span></span><span class="row-go" aria-hidden="true">'+ARROW+'</span></a>';
+  }
+  function render(list){
+    var shown = list.filter(function(p){ return p.visible!==false; });
+    var html = shown.map(card).join('');
+    if(shown.length % 2 === 1){   // 2열 칸이 비지 않도록
+      html += '<article class="tool share"><div class="plus" aria-hidden="true">+</div><h3>우리 교회 도구도<br>함께 나눠요</h3><p class="tool-desc">교회에서 만들어 쓰는 프로그램이 있다면 목양 데스크에서 다른 교회와 나눌 수 있습니다.</p><a class="btn btn-line" href="/?topic=등록#contact"><span class="t">도구 등록 신청</span>'+ARROW+'</a></article>';
+    }
+    document.getElementById('tools-grid').innerHTML = html;
+    var ready = shown.filter(function(p){ return p.status==='live'||p.status==='reg'; });
+    document.getElementById('panel').innerHTML = '<div class="panel-head"><span>목양 데스크의 도구</span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span></div>' + ready.map(row).join('');
+  }
+  if(window.SITE) SITE.ready.then(function(d){ if(d && Array.isArray(d.programs)) render(d.programs); });
+})();
+</script>
 </body></html>

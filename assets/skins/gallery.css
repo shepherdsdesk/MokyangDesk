@@ -1,0 +1,31 @@
+/* 시안 A · 갤러리형 — 어썸 디자인의 Apple 분석에서 원칙만 가져옴
+   한 가지 강조색은 누를 수 있는 것에만 / 카드·버튼에 그림자 없음 / 장식 그라데이션 없음 / 흰 바탕과 진주빛 회색 면을 번갈아 / 본문 17px */
+html.skin-gallery{--brand:#1d1d1f;--brand-2:#333336;--brand-soft:#f5f5f7;--link:#0066cc;
+  --shadow-sm:none;--shadow:none;--shadow-lg:0 30px 60px -40px rgba(0,0,0,.35);--line:#e0e0e0;--line-2:#d2d2d7}
+html.skin-gallery body{font-size:17px;letter-spacing:-.022em}
+html.skin-gallery .btn{border-radius:980px!important}
+html.skin-gallery .btn-primary,html.skin-gallery .btn-dark{background:#1d1d1f!important}
+html.skin-gallery .kicker{color:var(--link)!important}html.skin-gallery .kicker::before{display:none}
+html.skin-gallery .pcard,html.skin-gallery .jcard,html.skin-gallery .svc-card,html.skin-gallery .wcard,html.skin-gallery .bento > *{box-shadow:none!important}
+html.skin-gallery .pcard:hover,html.skin-gallery .wcard:hover,html.skin-gallery .jcard:hover{transform:none!important;border-color:var(--line-2)!important}
+html.skin-gallery .programs,html.skin-gallery .faq,html.skin-gallery .about-strip{background:#f5f5f7!important}
+html.skin-gallery .pcard{border:0!important;border-radius:28px!important}
+html.skin-gallery .door{border-radius:28px!important}
+html.skin-gallery .hero h1{letter-spacing:-.045em}
+html.skin-gallery .jcard .lnk,html.skin-gallery .pcard .acts .btn-line{color:var(--link)!important}
+/* 목양 데스크 */
+html.skin-gallery .tool{border:0!important;background:#f5f5f7!important}
+html.skin-gallery .tool:hover{transform:none!important;box-shadow:none!important}
+html.skin-gallery .panel{background:#f5f5f7}
+
+/* 보조 버튼은 파란 글자 링크처럼 */
+html.skin-gallery .btn-line{background:transparent!important;border-color:transparent!important;color:var(--link)!important;padding-left:8px!important;padding-right:8px!important}
+html.skin-gallery .btn-line::after{content:" ›";font-weight:600}
+html.skin-gallery .hero{background:#fff}
+html.skin-gallery .hero h1{font-weight:700!important}
+html.skin-gallery .window{border-radius:20px 20px 0 0!important;border-color:#e0e0e0!important}
+html.skin-gallery .wcard{border:0!important;background:#f5f5f7!important;border-radius:18px!important}
+html.skin-gallery .door{background:#000!important}
+html.skin-gallery .chip{border-radius:980px}
+html.skin-gallery .pcard .ico,html.skin-gallery .wcard .ico{background:#fff!important;color:#1d1d1f!important}
+html.skin-gallery .pcard .tags span{background:#fff!important;border-radius:980px!important}

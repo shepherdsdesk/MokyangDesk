@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>교회 셔틀버스 · 목양 데스크</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="description" content="셔틀버스가 지금 어디쯤 왔는지, 언제 도착하는지 성도님 휴대폰과 로비 TV에 알려 주는 교회 셔틀 웹앱. 성도님·기사님·관리자·TV 현황판 네 화면.">
+<meta name="author" content="이세진 목사">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://mokyangdesk.com/shuttle.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="목양 데스크">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="교회 셔틀버스 · 목양 데스크">
+<meta property="og:description" content="셔틀버스 위치와 도착 시간을 휴대폰과 로비 TV로. 성도님·기사님·관리자·TV 현황판 네 화면.">
+<meta property="og:url" content="https://mokyangdesk.com/shuttle.html">
+<meta property="og:image" content="https://mokyangdesk.com/og-desk.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  /* 흑백 바탕, 프로그램 색은 아이콘에만 은은하게. 굵은 고딕 제목 */
+  --bg:#ffffff; --soft:#f5f5f7; --ink:#111113; --muted:#6b6b73; --line:#e8e8ec;
+  --lexio:#4257b2; --desk:#2c7a5f; --cuts:#c0566a; --pray:#a97d27;
+  --sans:"Pretendard","Pretendard Variable","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --serif:"Instrument Serif","Times New Roman",serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.7;letter-spacing:-.01em;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-weight:800;line-height:1.18;letter-spacing:-.035em;text-wrap:balance;margin:0}
+p{margin:0}
+.it{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+:focus-visible{outline:3px solid var(--accent,var(--lexio));outline-offset:3px;border-radius:6px}
+
+/* 상단 바 */
+.nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-mark{width:30px;height:30px;border-radius:9px;background:var(--ink);color:#fff;display:grid;place-items:center;flex:none}
+.brand-mark svg{width:20px;height:20px}
+.brand-text{font-weight:700;font-size:16px;line-height:1.1}
+.brand-text .it{font-size:15px;color:var(--muted);margin-left:4px}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{font-size:14.5px;font-weight:500;text-decoration:none;color:var(--muted);padding:8px 12px;border-radius:99px}
+.nav-links a:hover{color:var(--ink);background:var(--soft)}
+
+/* 버튼 */
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 15.5px/1 var(--sans);letter-spacing:-.01em;padding:15px 22px;border-radius:99px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -10px rgba(12,14,19,.35)}
+.btn svg{width:18px;height:18px}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-color{background:var(--ink);color:#fff}
+.btn-line{border-color:var(--line);color:var(--ink);background:#fff}
+.btn-line:hover{border-color:var(--ink)}
+.btn.pending{background:var(--soft);color:var(--muted);border:1.5px dashed #cfd3da;cursor:default;transform:none;box-shadow:none}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:13px;font-weight:600;padding:5px 12px;border-radius:99px;background:#fff;color:var(--muted);border:1px solid var(--line)}
+
+/* 앱 아이콘 타일 */
+.app{--c:var(--accent);width:64px;height:64px;border-radius:18px;display:grid;place-items:center;color:var(--c);flex:none;
+  background:color-mix(in srgb,var(--c) 9%,#fff);border:1px solid color-mix(in srgb,var(--c) 16%,#fff)}
+.app svg{width:52%;height:52%}
+
+section{padding:96px 0}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.kicker::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent,var(--ink))}
+.sec-head{display:grid;gap:14px;margin-bottom:44px;max-width:680px}
+.sec-head h2{font-size:clamp(30px,4.4vw,48px)}
+.sec-head p{color:var(--muted);font-size:18px}
+
+footer{border-top:1px solid var(--line);padding:36px 0 56px;color:var(--muted);font-size:14.5px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}
+footer strong{color:var(--ink);font-weight:700}
+
+@media (max-width:640px){
+  .nav-links a.hide-m{display:none}
+  section{padding:68px 0}
+  .wrap{padding:0 18px}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+:root{--bus:#1f5f8b;--accent:var(--bus)}
+
+.hero{position:relative;overflow:hidden}
+.visual{background:var(--soft);border-radius:32px;padding:48px 24px 28px}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-top:72px;padding-bottom:96px}
+.hero .app{width:76px;height:76px;border-radius:22px}
+.hero h1{font-size:clamp(44px,6.6vw,80px);font-weight:800;letter-spacing:-.055em;line-height:1.05;margin:26px 0 8px}
+.hero .en{font-family:var(--serif);font-style:italic;font-size:clamp(24px,2.6vw,32px);color:#9a9aa2;margin-bottom:22px;display:block}
+.hero .lead{font-size:clamp(17px,1.9vw,20px);color:var(--muted);max-width:30em}
+.hero .lead b{color:var(--ink);font-weight:700}
+.hero .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.sample-note{text-align:center;font-size:13px;color:var(--muted);margin-top:22px;font-weight:500}
+
+.cards{display:grid;gap:18px}
+.cards.c4{grid-template-columns:repeat(4,1fr)}
+.cards.c3{grid-template-columns:repeat(3,1fr)}
+.cards.c2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--soft);border-radius:24px;padding:28px 26px;display:grid;gap:10px;align-content:start}
+.card .n{width:38px;height:38px;border-radius:12px;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:16px;margin-bottom:6px}
+.card h3{font-size:21px;letter-spacing:-.03em}
+.card p{color:var(--muted);font-size:15.5px}
+.card svg.f{width:34px;height:34px;color:var(--accent);margin-bottom:4px}
+
+.get{border-radius:32px;padding:48px;display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;background:var(--soft)}
+.get h2{font-size:clamp(30px,4vw,42px);font-weight:800;letter-spacing:-.05em;margin:12px 0 14px}
+.get p{color:var(--muted);font-size:17px}
+.get .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.get .btn-white{background:var(--ink);color:#fff}
+.get .btn-glass{background:#fff;color:var(--ink);border-color:var(--line)}
+.get .btn.pending{background:#fff}
+.get-list{list-style:none;margin:0;padding:26px;display:grid;gap:18px;background:#fff;border-radius:22px}
+.get-list li{display:grid;grid-template-columns:34px 1fr;gap:12px;font-size:15.5px}
+.get-list .num{width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px}
+.get-list b{display:block;font-weight:700}
+.get-list span{color:var(--muted)}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;padding-top:52px;padding-bottom:72px}
+  .cards.c4{grid-template-columns:1fr 1fr}
+  .cards.c3{grid-template-columns:1fr}
+  .get{grid-template-columns:1fr;padding:32px 24px}
+}
+@media (max-width:560px){.cards.c4,.cards.c2{grid-template-columns:1fr}}
+
+
+
+
+
+/* 상단 바 줄바꿈 방지 (모바일) */
+.brand-text,.nav-links a{white-space:nowrap}
+@media (max-width:640px){
+  .brand-text .it{display:none}
+  .nav .wrap{gap:8px}
+  .nav-links{gap:2px}
+  .nav-links a{padding:8px 10px;font-size:14px}
+}
+
+/* 누르는 느낌과 터치 화면 정리 */
+.btn:active{transform:scale(.97);transition-duration:.08s}
+@media (hover:none){.btn:hover{transform:none}}
+
+/* 관리자 화면의 테마 색 */
+body{background:var(--brand-paper,var(--bg))}
+.brand-mark,.btn-dark,.btn-color,.get .btn-white,.card .n,.get-list .num{background:var(--brand,var(--ink))}
+.about{background:var(--brand-soft,var(--soft))}
+
+.phone-stage{display:flex;justify-content:center}
+.phone{width:min(300px,80vw);background:#0c0e13;border-radius:44px;padding:10px;box-shadow:0 40px 70px -36px rgba(17,17,19,.5)}
+.phone-in{background:#fff;border-radius:35px;padding:30px 16px 18px;display:grid;gap:10px;position:relative}
+.phone-in::before{content:"";position:absolute;top:9px;left:50%;width:86px;height:22px;border-radius:99px;background:#0c0e13;transform:translateX(-50%)}
+.b-top{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.b-top b{font-size:15px;font-weight:800;letter-spacing:-.03em}
+.b-live{font-size:10.5px;font-weight:800;color:#059669;display:inline-flex;align-items:center;gap:5px}
+.b-live::before{content:"";width:6px;height:6px;border-radius:50%;background:#059669}
+.b-eta{background:#111113;color:#fff;border-radius:18px;padding:16px 16px 14px}
+.b-eta small{display:block;font-size:11px;opacity:.65;font-weight:600}
+.b-eta .n{font-size:40px;font-weight:900;letter-spacing:-.05em;line-height:1.05;margin-top:4px}
+.b-eta .n span{font-size:16px;font-weight:700;margin-left:2px}
+.b-eta .m{font-size:11.5px;opacity:.7;margin-top:4px}
+.b-map{height:118px;border-radius:14px;background:#eef1f4;position:relative;overflow:hidden}
+.b-map svg{position:absolute;inset:0;width:100%;height:100%}
+.b-row{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;padding:8px 2px;border-top:1px solid #eef0f4}
+.b-row b{font-weight:700}
+.b-row small{display:block;color:#8a909c;font-size:10.5px;font-weight:500}
+.b-row .t{font-weight:800;font-size:13px}
+.b-btns{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.b-btns span{font-size:11.5px;font-weight:700;text-align:center;border:1.5px solid #e6e8ec;border-radius:10px;padding:9px 4px;color:#3a3a40;white-space:nowrap}
+.b-btns span.on{background:var(--bus);border-color:var(--bus);color:#fff}
+.screens{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.screen{border:1px solid var(--line);border-radius:24px;padding:26px 24px;background:#fff;display:grid;gap:10px;align-content:start}
+.screen svg.lucide{width:30px;height:30px;color:var(--bus);stroke-width:1.8}
+.screen h3{font-size:20px}
+.screen .who{font-size:13px;font-weight:700;color:var(--muted)}
+.screen ul{margin:4px 0 0;padding-left:18px;color:var(--muted);font-size:15px;display:grid;gap:4px}
+.card svg.lucide{width:28px;height:28px;color:var(--bus);stroke-width:1.8;margin-bottom:4px}
+@media (max-width:1000px){.screens{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.screens{grid-template-columns:1fr}}
+</style>
+<script src="/assets/icons.js"></script>
+<link rel="stylesheet" href="/assets/polish.css">
+<link rel="stylesheet" href="/assets/motion.css">
+<script src="/assets/site.js"></script></head>
+<body>
+<nav class="nav" aria-label="상단 메뉴"><div class="wrap">
+  <a class="brand" href="/desk/"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M8 21V8a4 4 0 0 1 8 0"/></svg></span><span class="brand-text">목양 데스크<span class="it">Mokyang Desk</span></span></a>
+  <div class="nav-links"><a class="hide-m" href="#screens">네 화면</a><a href="/desk/">← 모든 도구</a></div>
+</div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="app"><i data-i="bus"></i></div>
+      <h1>교회 셔틀버스</h1>
+      <span class="en">실시간 셔틀 안내</span>
+      <p class="lead">정류장에서 “버스가 지금 어디쯤 왔을까?” 하며 기다리지 않도록. 셔틀버스가 <b>지금 어디를 지나고 있는지, 언제 도착하는지</b> 성도님 휴대폰과 로비 TV에 바로 알려 드립니다.</p>
+      <div class="cta">
+        <a class="btn btn-color" href="https://shepherdsdesk.github.io/hcc-shuttle-bus/"><span class="t">성도님 화면 열어 보기</span><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
+        <a class="btn btn-line" href="#try">직접 체험해 보기</a>
+      </div>
+    </div>
+    <div>
+      <div class="visual"><div class="phone-stage">
+        <div class="phone" role="img" aria-label="성도님 휴대폰 화면 견본">
+          <div class="phone-in shot"><img src="/img/screens/shuttle-saint.webp" alt="셔틀버스 성도님 화면 실제 모습: 지도 위 노선과 정류장별 도착 시간" width="600" height="1298" loading="eager"></div>
+        </div>
+      </div>
+      <p class="sample-note">실제 화면 · 시연 모드로 띄운 모습</p></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="screens">
+    <div class="wrap">
+      <div class="sec-head"><span class="kicker">네 화면</span><h2>성도님부터 로비 TV까지<br>한 버스를 함께 봅니다</h2><p>주소 하나에 네 화면이 있습니다. 설치 없이 열리고, 홈 화면에 추가하면 앱처럼 씁니다.</p></div>
+      <div class="screens">
+        <div class="screen"><i data-i="smartphone"></i><span class="who">셔틀을 타는 성도님</span><h3>성도님 화면</h3><ul><li>지도 위 버스 위치와 도착 예상 시간</li><li>버스가 2~3분 거리에 오면 도착 알림</li><li>“여기서 기다려요”로 기다리는 인원 알리기</li><li>공지와 교회 소식</li></ul></div>
+        <div class="screen"><i data-i="bus"></i><span class="who">운행하는 기사님</span><h3>기사님 화면</h3><ul><li>문자로 받은 링크 한 번이면 준비 끝</li><li>운행 시작을 누르면 위치가 자동으로 올라감</li><li>종점에서 회차·방향 자동 전환</li><li>정류장마다 기다리는 분 인원 표시</li></ul></div>
+        <div class="screen"><i data-i="shield"></i><span class="who">셔틀 담당자</span><h3>관리자 화면</h3><ul><li>기사님 등록·배차, 문자로 배차 보내기</li><li>정류장·노선·시간표를 지도에서 조정</li><li>공지, 교회 소식 자막, 비·눈 예보 공지</li><li>기간별 탑승·운행 통계와 엑셀 받기</li></ul></div>
+        <div class="screen"><i data-i="tv"></i><span class="who">로비·주차장 TV</span><h3>TV 현황판</h3><ul><li>노선별 도착 시간과 오늘 시간표</li><li>운행 없는 날엔 행사 포스터와 다음 운행 안내</li><li>예배 실황 유튜브 영상 연결</li><li>절기·계절 테마, 날씨, 휴대폰 안내 QR</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><span class="kicker">세심한 부분</span><h2>어르신도 기사님도<br>헤매지 않도록</h2></div>
+      <div class="cards c3">
+        <div class="card"><i data-i="bell"></i><h3>딩동 소리와 목소리 안내</h3><p>“셔틀버스 곧 도착합니다” 안내를 목소리로 읽어 드립니다. 소리가 나지 않으면 기기에 맞는 설정 방법을 알려 줍니다.</p></div>
+        <div class="card"><i data-i="route"></i><h3>반대편 버스는 도착으로 치지 않음</h3><p>미리 그려 둔 노선 줄을 따라 도착 시간을 계산합니다. 반대편 도로로 지나가는 버스는 도착으로 알리지 않습니다.</p></div>
+        <div class="card"><i data-i="users"></i><h3>기다리는 인원을 기사님께</h3><p>정류장에서 기다리는 인원이 기사님 화면에 나옵니다. 달리는 중에는 작게, 정차하면 크게 보여 운전에 방해가 되지 않습니다.</p></div>
+        <div class="card"><i data-i="shield"></i><h3>이름과 위치는 남기지 않음</h3><p>정류장 자동 알림은 동의한 분만, 이름이나 위치 없이 인원 숫자로만 알립니다. 버스를 타거나 정류장을 떠나면 빠집니다.</p></div>
+        <div class="card"><i data-i="chart"></i><h3>기간별 이용 통계</h3><p>주간부터 연간까지 탑승 인원과 운행 횟수, 요일별·출발 시각별 이용을 보고 엑셀로 받을 수 있습니다.</p></div>
+        <div class="card"><i data-i="palette"></i><h3>코드 없이 우리 교회 것으로</h3><p>셔틀 이름, 교회 이름, 로고, 정류장, 노선, 시간표, TV 테마를 모두 관리자 화면에서 바꿉니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><span class="kicker">실제로 쓰는 자리</span><h2>할렐루야교회에서<br>매주 달리고 있습니다</h2></div>
+      <div class="cards c2">
+        <div class="card"><h3>야탑역 셔틀</h3><p>야탑역과 교회 사이를 오가는 노선입니다. 주일과 화~토요일에 운행합니다.</p></div>
+        <div class="card"><h3>파킹엔젤스</h3><p>교회와 주변 주차장을 도는 주일 노선입니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0" id="real">
+    <div class="wrap">
+      <div class="sec-head"><h2>실제로 이렇게 보입니다</h2><p>시연 모드로 띄운 실제 화면입니다. 실제 운행 기록에는 아무것도 남지 않습니다.</p></div>
+      <div class="shots">
+        <div class="shot-card"><figure><img src="/img/screens/shuttle-tv.webp" alt="로비 TV 현황판 실제 화면" width="800" height="500" loading="lazy"></figure><h3>로비 TV 현황판</h3><p>왼쪽은 두 노선의 지도, 가운데는 정류장마다 남은 시간과 기다리는 인원, 오른쪽은 예배 실황 영상입니다. 아래 띠에는 교회 소식이 흐르고, 휴대폰으로 볼 수 있는 QR이 붙어 있습니다.</p></div>
+        <div class="shot-card"><figure><img src="/img/screens/shuttle-demo.webp" alt="한 화면 시연: TV, 기사님 화면, 성도님 화면" width="800" height="500" loading="lazy"></figure><h3>한 화면에 모두</h3><p>TV, 기사님 화면, 성도님 화면이 같은 시계로 함께 움직입니다. 가상 버스가 노선을 따라 달리며 도착 알림이 바뀌는 모습을 한눈에 볼 수 있습니다.</p></div>
+      </div>
+    </div>
+  </section>
+  <section style="padding-top:0" id="try">
+    <div class="wrap">
+      <div class="try">
+        <h2>직접 체험해 보기</h2>
+        <p>가상 버스와 가상 성도로 움직이는 시연 화면입니다. 위쪽 단추로 TV 1대·2대, 노선 전용 화면을 바꿔 볼 수 있습니다.</p>
+        <div class="try-frame wide"><iframe src="https://shepherdsdesk.github.io/hcc-shuttle-bus/demo.html" title="셔틀버스 시연 화면" loading="lazy" allow="autoplay; fullscreen"></iframe></div>
+        <div class="row-btn"><a class="btn btn-dark" href="https://shepherdsdesk.github.io/hcc-shuttle-bus/demo.html" target="_blank" rel="noopener"><span class="t">새 창에서 크게 보기</span><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a><a class="btn btn-line" href="https://shepherdsdesk.github.io/hcc-shuttle-bus/index.html?demo=1&amp;d=0&amp;t=10:20&amp;sp=2&amp;y=1&amp;p=1&amp;w=1" target="_blank" rel="noopener"><span class="t">성도님 화면만 보기</span></a></div>
+      </div>
+    </div>
+  </section>
+  <section style="padding-top:0" id="download">
+    <div class="wrap">
+      <div class="get">
+        <div>
+          <span class="kicker">우리 교회에서 쓰려면</span>
+          <h2>사용 요청을 주시면<br>설치를 도와 드립니다</h2>
+          <p>실시간 위치를 주고받는 저장소(Firebase)를 교회 계정으로 만들어야 해서, 처음 한 번은 함께 준비합니다. 그다음부터는 관리자 화면에서 모두 바꿀 수 있습니다.</p>
+          <div class="cta">
+            <a class="btn btn-white" href="/?topic=사용#contact"><span class="t">사용 요청하기</span><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
+            <a class="btn btn-glass" href="https://shepherdsdesk.github.io/hcc-shuttle-bus/tv.html"><span class="t">TV 현황판 보기</span><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
+          </div>
+        </div>
+        <ul class="get-list" aria-label="준비 순서">
+          <li><span class="num">1</span><div><b>사용 요청</b><span>노선 수, 차량 수, 교회 이름을 알려 주세요</span></div></li>
+          <li><span class="num">2</span><div><b>교회 계정으로 설치</b><span>교회 구글 계정에 저장소를 만들고 화면 주소를 엽니다</span></div></li>
+          <li><span class="num">3</span><div><b>정류장과 시간표 넣기</b><span>관리자 화면에서 정류장·노선·시간표·기사님을 등록합니다</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span>교회 셔틀버스 · <a href="/desk/" style="text-decoration:none">목양 데스크</a>의 도구</span><span>만든 사람 <strong>이세진 목사</strong></span></div></footer>
+<script>document.querySelectorAll('i[data-i]').forEach(function(el){ el.outerHTML = iconSVG(el.getAttribute('data-i')); });</script>
+</body></html>

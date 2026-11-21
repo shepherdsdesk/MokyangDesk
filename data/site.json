@@ -1,0 +1,298 @@
+{
+  "theme": {
+    "preset": "mono",
+    "accent": "#111113",
+    "accent2": "#3a3a40",
+    "soft": "#f5f5f7",
+    "paper": "#ffffff",
+    "skin": "mono"
+  },
+  "programs": [
+    {
+      "id": "lexio",
+      "name": "렉시오",
+      "en": "Lexio",
+      "cat": "word",
+      "status": "live",
+      "icon": "book-open-text",
+      "color": "#4257b2",
+      "feature": true,
+      "visible": true,
+      "role": "설교 작성 · 성경 연구",
+      "head": "본문 곁에서 쓰는 설교",
+      "desc": "설교 종류와 구조를 고르고, 본문·문맥·원어·관주를 펼쳐 놓고 설교문을 씁니다. AI와 함께 쓸 수도 있습니다.",
+      "story": "주일·수요·새벽 설교부터 심방·장례·절기 설교까지",
+      "tags": [
+        "웹앱",
+        "맥 앱",
+        "AI와 함께"
+      ],
+      "page": "https://shepherdsdesk.github.io/lexio/",
+      "get": [
+        "mac",
+        "google"
+      ]
+    },
+    {
+      "id": "desk",
+      "name": "셰퍼드 데스크",
+      "en": "Shepherd's Desk",
+      "cat": "care",
+      "status": "live",
+      "icon": "notebook-pen",
+      "color": "#2c7a5f",
+      "visible": true,
+      "role": "메모 · 일정 · 심방 기록",
+      "head": "성도를 기억하는 메모장",
+      "desc": "전화나 회의 중에도 바로 적고, 심방과 일정을 기억합니다. 출근과 퇴근 시간에는 오늘 하루를 함께 점검해 줍니다.",
+      "story": "심방 기록·기도제목·사역 일정을 한 책상 위에",
+      "tags": [
+        "맥 앱",
+        "웹앱",
+        "아이폰·아이패드"
+      ],
+      "page": "https://shepherdsdesk.github.io/shepherds-desk/",
+      "get": [
+        "mac",
+        "google"
+      ]
+    },
+    {
+      "id": "nekeot",
+      "name": "오늘의 네컷",
+      "en": "Four Cuts",
+      "cat": "event",
+      "status": "live",
+      "icon": "camera",
+      "color": "#c0566a",
+      "visible": true,
+      "role": "교회 포토부스",
+      "head": "함께 웃은 날을 한 장에",
+      "desc": "교구 모임과 여름성경학교에서 네 컷 사진을 찍어, 행사 이름과 말씀이 담긴 한 장으로 인화해 나눕니다.",
+      "story": "<b>새가족 환영회·수련회·성경학교·소그룹 모임</b>에 잘 어울림",
+      "tags": [
+        "태블릿",
+        "바로 인화",
+        "프레임 맞춤"
+      ],
+      "page": "/four-cuts.html",
+      "get": [
+        "web"
+      ]
+    },
+    {
+      "id": "prayer",
+      "name": "365 기도동행",
+      "en": "365 Prayer Companion",
+      "cat": "care",
+      "status": "live",
+      "icon": "hand-heart",
+      "color": "#a97d27",
+      "visible": true,
+      "role": "기도제목 창구",
+      "head": "끝까지 함께하는 기도",
+      "desc": "성도가 링크나 QR로 기도제목을 올리면, 목회자가 기억하고 기도하며 성도가 원하는 방식으로 찾아갑니다.",
+      "story": "<b>중보기도팀·교구·수험생 기도회</b> 등 기도 사역에",
+      "tags": [
+        "웹앱",
+        "구글 시트",
+        "QR 접수"
+      ],
+      "page": "/prayer-walk.html",
+      "get": [
+        "google"
+      ]
+    },
+    {
+      "id": "itda",
+      "name": "잇다",
+      "en": "it,da",
+      "cat": "care",
+      "status": "reg",
+      "icon": "home",
+      "color": "#4f46e5",
+      "visible": true,
+      "role": "사랑방 주일보고",
+      "head": "사랑방과 목자를 잇는 주일보고",
+      "desc": "사랑방장이 휴대폰으로 출석과 기도제목을 올리면, 교구 목회자가 바로 확인하고 코멘트·전화·문자·심방으로 응답합니다.",
+      "story": "<b>교구·사랑방·구역·목장</b>의 주일보고와 돌봄에",
+      "tags": [
+        "웹앱",
+        "구글 시트",
+        "홈 화면 설치"
+      ],
+      "page": "/itda.html",
+      "get": [
+        "request"
+      ]
+    },
+    {
+      "id": "care",
+      "name": "함께 돌봄",
+      "en": "",
+      "cat": "care",
+      "status": "dev",
+      "icon": "users",
+      "color": "#315B48",
+      "visible": true,
+      "role": "심방 · 새가족 사역",
+      "head": "한 사람을 함께 돌보는 사역자의 수첩",
+      "desc": "심방사역자와 새가족위원이 맡은 분을 놓치지 않도록 연락과 기록과 보고를 한곳에서 돕습니다. 교구 목사님과 새가족팀은 같은 현황을 보며 보고를 받습니다.",
+      "story": "<b>심방사역자·새가족위원·교구 목사</b>가 한 프로그램에서",
+      "tags": [
+        "웹앱",
+        "홈 화면 설치",
+        "교회 서버"
+      ],
+      "page": "/care.html",
+      "logo": "/img/hamkke.svg"
+    },
+    {
+      "id": "tokktalk",
+      "name": "톡톡",
+      "en": "ttok-talk",
+      "cat": "admin",
+      "status": "live",
+      "icon": "message-circle",
+      "color": "#6b4226",
+      "visible": true,
+      "role": "교역자실 안부 톡",
+      "head": "버튼 하나로 건네는 작은 안부",
+      "desc": "“같이 커피 마셔요”, “기도 부탁해요” 같은 말을 버튼 하나로 동료에게 보내고, 받은 사람도 버튼 하나로 답합니다. 기도 나눔, 점심 고르기, 알림판까지 교역자실에 필요한 것을 담았습니다.",
+      "story": "<b>교역자실·교회 사무실·사역팀</b>의 작은 연락에",
+      "tags": [
+        "웹앱",
+        "푸시 알림",
+        "초대 코드"
+      ],
+      "page": "/ttok-talk.html",
+      "logo": "/img/ttok-talk.svg",
+      "get": [
+        "web"
+      ]
+    },
+    {
+      "id": "shuttle",
+      "name": "교회 셔틀버스",
+      "en": "",
+      "cat": "admin",
+      "status": "case",
+      "icon": "bus",
+      "color": "#1f5f8b",
+      "visible": true,
+      "role": "실시간 셔틀 안내",
+      "head": "정류장에서 마냥 기다리지 않도록",
+      "desc": "셔틀버스가 지금 어디쯤 왔는지, 언제 도착하는지 성도님 휴대폰과 로비 TV에 바로 알려 드립니다. 기사님 화면과 관리자 화면이 함께 있습니다.",
+      "story": "<b>성도님·기사님·관리자·TV 현황판</b> 네 화면이 하나로",
+      "tags": [
+        "웹앱",
+        "TV 현황판",
+        "홈 화면 설치"
+      ],
+      "page": "/shuttle.html"
+    },
+    {
+      "id": "vacation",
+      "name": "목회자 휴가 관리표",
+      "en": "SELAH",
+      "cat": "admin",
+      "status": "dev",
+      "icon": "clock",
+      "color": "#3d5a6b",
+      "visible": true,
+      "role": "교역자 연간 휴가",
+      "head": "날짜만 고르면 끝",
+      "desc": "날짜만 고르면 공휴일과 휴무 요일을 뺀 휴가일수가 계산되고, 주일이 끼면 승인 대기로 올라갑니다. 겹치는 날도 미리 보입니다.",
+      "story": "<b>교역자실</b>의 한 해 휴가를 한 장에",
+      "tags": [
+        "웹앱",
+        "자동 계산",
+        "백업 파일"
+      ],
+      "page": "/vacation.html"
+    },
+    {
+      "id": "board",
+      "name": "성도 심방 보드",
+      "en": "",
+      "cat": "care",
+      "status": "dev",
+      "icon": "bell",
+      "color": "#8a5a2b",
+      "visible": true,
+      "role": "돌봄 알림판",
+      "head": "챙길 날이 먼저 찾아옵니다",
+      "desc": "명단 엑셀을 올리면 생일·기념일·심방 알림이 바로 만들어집니다. 오래 못 뵌 가정과 정착 중인 새가족, 이름을 불러 드리는 인사 문자까지 한 화면에서.",
+      "story": "<b>교구 목회자</b>의 생일·문안·심방 챙기기에",
+      "tags": [
+        "구글 시트",
+        "인사 문자",
+        "상황별 말씀"
+      ],
+      "page": "/visit-board.html"
+    },
+    {
+      "id": "stamp",
+      "name": "성탄 말씀 스탬프 여정",
+      "en": "Advent Stamp",
+      "cat": "event",
+      "status": "dev",
+      "icon": "stamp",
+      "color": "#8b3a3a",
+      "visible": true,
+      "role": "절기 행사",
+      "head": "교회 곳곳을 걷는 성탄 순례",
+      "desc": "교회 곳곳을 순례하며 QR과 숫자로 스탬프를 모으고, 마지막 장소에서 기도를 봉헌하는 절기 행사 웹앱입니다.",
+      "story": "전 세대가 함께 — 어르신도 쉽게 참여하는 절기 행사",
+      "tags": [
+        "절기 행사",
+        "QR",
+        "앱스크립트"
+      ],
+      "page": ""
+    },
+    {
+      "id": "verse",
+      "name": "신년 말씀 카드 뽑기",
+      "en": "New Year Verse",
+      "cat": "event",
+      "status": "dev",
+      "icon": "sparkles",
+      "color": "#4b5563",
+      "visible": true,
+      "role": "신년 말씀",
+      "head": "한 해를 여는 말씀 한 장",
+      "desc": "새해 첫 예배와 소그룹 모임에서 성도 한 사람 한 사람이 한 해의 말씀을 뽑아 받는 카드 웹앱입니다.",
+      "story": "신년 예배·교회학교·소그룹 모임에서 한 해 말씀 나눔",
+      "tags": [
+        "신년",
+        "말씀 카드",
+        "구글 시트"
+      ],
+      "page": ""
+    },
+    {
+      "id": "footprint",
+      "name": "성경발자국",
+      "en": "Bible Footsteps",
+      "cat": "word",
+      "status": "live",
+      "icon": "map-pin",
+      "color": "#6b5b3d",
+      "visible": true,
+      "role": "성경 지도",
+      "head": "성경의 길을 지도 위에서 따라갑니다",
+      "desc": "아브라함의 길, 출애굽과 광야 길, 예수님의 발자취, 바울의 세 차례 전도 여행과 로마행까지 일곱 갈래 여정을 지도 위에서 한 곳씩 따라갑니다. 위성사진으로 바꿔 볼 수도 있습니다.",
+      "story": "<b>주일학교·성경공부·설교</b>에서 성경 지리를 함께 보기에",
+      "tags": [
+        "웹앱",
+        "성경 지도",
+        "설치 없음"
+      ],
+      "page": "https://shepherdsdesk.github.io/biblefootsteps/",
+      "get": [
+        "web"
+      ]
+    }
+  ]
+}

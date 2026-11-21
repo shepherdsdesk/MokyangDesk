@@ -1,0 +1,38 @@
+/* 시안 B · 따뜻한 종이형 — 어썸 디자인의 Notion 분석에서 원칙만 가져옴
+   따뜻한 회색 잉크(#37352f) / 미색 면(#f6f5f4) / 가는 선(#e5e3df) / 작은 모서리(8~12px) / 분류마다 옅은 파스텔 면 */
+html.skin-paper{--brand:#37352f;--brand-2:#4a4740;--brand-soft:#f6f5f4;
+  --ink:#1a1a1a;--text:#37352f;--muted:#66645e;--faint:#6f6d67;--line:#e5e3df;--line-2:#c8c4be;
+  --shadow-sm:0 1px 2px rgba(15,15,15,.05);--shadow:0 1px 3px rgba(15,15,15,.06);--shadow-lg:0 24px 48px -8px rgba(15,15,15,.2)}
+html.skin-paper body{color:#37352f}
+html.skin-paper .btn{border-radius:8px!important}
+html.skin-paper .btn-primary,html.skin-paper .btn-dark{background:#37352f!important}
+html.skin-paper .pcard,html.skin-paper .jcard,html.skin-paper .svc-card,html.skin-paper .wcard,html.skin-paper .window,html.skin-paper .door,html.skin-paper .contact-box{border-radius:12px!important}
+html.skin-paper .programs,html.skin-paper .faq{background:#f6f5f4!important}
+html.skin-paper .hero h1{letter-spacing:-.04em;font-weight:700}
+html.skin-paper .h2{font-weight:700}
+html.skin-paper .pcard .ico,html.skin-paper .wcard .ico{border-radius:8px!important}
+/* 분류별 파스텔 */
+html.skin-paper .pcard:nth-of-type(6n+1) .ico{background:#ffe8d4!important;color:#793400!important}
+html.skin-paper .pcard:nth-of-type(6n+2) .ico{background:#d9f3e1!important;color:#1a6b2f!important}
+html.skin-paper .pcard:nth-of-type(6n+3) .ico{background:#e6e0f5!important;color:#391c57!important}
+html.skin-paper .pcard:nth-of-type(6n+4) .ico{background:#dcecfa!important;color:#0b4a85!important}
+html.skin-paper .pcard:nth-of-type(6n+5) .ico{background:#fef7d6!important;color:#6b5300!important}
+html.skin-paper .pcard:nth-of-type(6n+6) .ico{background:#fde0ec!important;color:#a02e6d!important}
+/* 목양 데스크 */
+html.skin-paper .tool{border-radius:12px!important;border-color:#e5e3df!important}
+html.skin-paper .tool-role,html.skin-paper .chip{border-radius:6px!important}
+html.skin-paper .panel{background:#f6f5f4;border-radius:14px}
+html.skin-paper .row{border-radius:10px}
+
+html.skin-paper .hero,html.skin-paper .hero-bg{background:#fbfaf8!important}
+html.skin-paper header{background:rgba(251,250,248,.9)!important}
+html.skin-paper .door{background:#37352f!important}
+html.skin-paper .wcard:nth-child(6n+1) .ico{background:#ffe8d4!important;color:#793400!important}
+html.skin-paper .wcard:nth-child(6n+2) .ico{background:#d9f3e1!important;color:#1a6b2f!important}
+html.skin-paper .wcard:nth-child(6n+3) .ico{background:#e6e0f5!important;color:#391c57!important}
+html.skin-paper .wcard:nth-child(6n+4) .ico{background:#dcecfa!important;color:#0b4a85!important}
+html.skin-paper .wcard:nth-child(6n+5) .ico{background:#fef7d6!important;color:#6b5300!important}
+html.skin-paper .wcard:nth-child(6n+6) .ico{background:#fde0ec!important;color:#a02e6d!important}
+html.skin-paper .window{box-shadow:0 24px 48px -8px rgba(15,15,15,.14)!important;border-color:#e5e3df!important}
+html.skin-paper .pill{border-radius:8px!important}
+html.skin-paper .pcard .tags span{border-radius:4px!important;background:#f1efec!important}

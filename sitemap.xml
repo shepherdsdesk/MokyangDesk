@@ -11,4 +11,10 @@
   <url><loc>https://mokyangdesk.com/news.html</loc><lastmod>2026-11-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://mokyangdesk.com/privacy.html</loc><lastmod>2026-11-11</lastmod><priority>0.5</priority></url>
   <url><loc>https://mokyangdesk.com/terms.html</loc><lastmod>2026-11-11</lastmod><priority>0.5</priority></url>
+  <url><loc>https://mokyangdesk.com/shuttle.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://mokyangdesk.com/care.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://mokyangdesk.com/ttok-talk.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://mokyangdesk.com/visit-board.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://mokyangdesk.com/vacation.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://mokyangdesk.com/screens.html</loc><changefreq>monthly</changefreq></url>
 </urlset>

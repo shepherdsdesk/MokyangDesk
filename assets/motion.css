@@ -1,0 +1,30 @@
+/* ── 움직임 다듬기 · 에밀 코알스키 review-animations 기준 ──
+   1) 'ease' 대신 강한 ease-out 곡선  2) 화면 UI는 300ms 안쪽  3) transition: all 금지
+   4) 마우스가 있는 기기에서만 hover 움직임  5) 누를 때 scale(.97), 누르는 순간은 빠르게
+   6) 모션 줄이기 설정은 '없앰'이 아니라 '부드럽게(투명도만)' */
+:root{--ease-out:cubic-bezier(.23,1,.32,1)}
+.seg button,.tabs button{transition:background-color .16s var(--ease-out),color .16s var(--ease-out)!important}
+.btn{transition:transform .16s var(--ease-out),background-color .2s var(--ease-out),box-shadow .2s var(--ease-out),border-color .2s var(--ease-out)!important}
+.btn:active{transform:scale(.97)!important;transition-duration:.1s!important}
+.pcard,.tool,.row,.wcard,.jcard,.door,a.pill,.card,.screen{transition:transform .24s var(--ease-out),box-shadow .24s var(--ease-out),border-color .24s var(--ease-out),background-color .24s var(--ease-out)!important}
+@media (hover:hover) and (pointer:fine){
+  .pcard:hover,.tool:hover,.jcard:hover,.door:hover{transform:translateY(-2px)!important}
+  .wcard:hover{transform:translateY(-1px)!important}
+  .row:hover{transform:translateX(3px)!important}
+  .btn:hover{transform:translateY(-1px)}
+}
+@media not all and (hover:hover) and (pointer:fine){
+  .pcard:hover,.tool:hover,.row:hover,.wcard:hover,.jcard:hover,.door:hover,.btn:hover,a.pill:hover{transform:none!important;box-shadow:inherit}
+}
+/* 테이스트 기준: 스크롤할 때마다 섹션이 떠오르는 효과는 쓰지 않는다. 첫 화면만 한 번 들어온다 */
+.rv,.rv:not(.in){opacity:1!important;transform:none!important;transition:none!important}
+@keyframes md-enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.hero .rv{animation:md-enter .5s var(--ease-out) both}
+.hero .rv:nth-child(2){animation-delay:.05s}.hero .rv:nth-child(3){animation-delay:.1s}.hero .rv:nth-child(4){animation-delay:.15s}.hero .rv:nth-child(5){animation-delay:.2s}
+/* 손가락으로 누르는 기기에서는 버튼 높이 44px 이상 */
+@media (pointer:coarse){.btn-sm,.btn.sm{min-height:44px}}
+@media (prefers-reduced-motion:reduce){
+  .hero .rv{animation:none!important}
+  .pcard,.tool,.row,.wcard,.jcard,.door,.card,.screen,.btn{transition:opacity .15s linear,background-color .15s linear,border-color .15s linear!important}
+  .pcard:hover,.tool:hover,.row:hover,.wcard:hover,.jcard:hover,.door:hover,.btn:hover,.btn:active{transform:none!important}
+}

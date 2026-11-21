@@ -1,0 +1,82 @@
+/* ─────────────────────────────────────────────
+   흑백 절제형 테마 (AI목양지원센터 · 목양 데스크 공통)
+   색은 관리자 화면(/admin.html)에서 바꾸면 --accent 등으로 들어옵니다.
+   ───────────────────────────────────────────── */
+html:not(.skin-original){
+  --accent:var(--brand,#111113); --accent-2:var(--brand-2,#3a3a40); --accent-soft:var(--brand-soft,#f2f2f4); --accent-ink:#ffffff;
+  --paper:var(--brand-paper,#ffffff); --soft:var(--brand-soft,#f5f5f7);
+  /* 메인 페이지 변수 덮어쓰기 */
+  --bg:var(--paper); --surface:var(--soft); --surface-2:#ececef;
+  --navy:#111113; --navy-2:#2a2a2f; --navy-3:#0b0b0c;
+  --ink:#111113; --text:#3a3a40; --muted:#6b6b73; --faint:#9a9aa2;
+  --line:#e8e8ec; --line-2:#d6d6dc;
+  --blue:var(--accent); --blue-2:var(--accent-2); --blue-soft:var(--accent-soft);
+  --indigo:var(--accent); --indigo-soft:var(--accent-soft);
+  --shadow-sm:0 1px 2px rgba(17,17,19,.05);
+  --shadow:0 1px 2px rgba(17,17,19,.04),0 14px 34px -16px rgba(17,17,19,.18);
+  --shadow-lg:0 2px 4px rgba(17,17,19,.04),0 40px 80px -40px rgba(17,17,19,.35);
+}
+/* 그라데이션·색 번짐 걷어내기 */
+html:not(.skin-original) .grad{background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;color:#a3a3ab!important}
+html:not(.skin-original) .logo-mark{background:var(--accent)!important;box-shadow:none!important;color:var(--accent-ink)!important}
+html:not(.skin-original) .logo-text small{color:var(--muted)!important}
+html:not(.skin-original) .hero-bg{background:var(--paper)!important}
+html:not(.skin-original) .hero-bg::after{display:none}
+html:not(.skin-original) .hero h1 .gold-u::after{background:var(--ink);opacity:.12;height:.34em;bottom:.06em;border-radius:3px}
+html:not(.skin-original) .pill .dot{background:var(--ink);box-shadow:0 0 0 4px rgba(17,17,19,.08)}
+html:not(.skin-original) a.pill:hover{border-color:var(--ink);box-shadow:var(--shadow-sm)}
+html:not(.skin-original) .hero-note .lucide{color:var(--ink)}
+html:not(.skin-original) .btn-primary{background:var(--accent);color:var(--accent-ink);box-shadow:none}
+html:not(.skin-original) .btn-primary:hover{background:var(--accent-2)}
+html:not(.skin-original) .window::before{display:none}
+html:not(.skin-original) .window{box-shadow:var(--shadow-lg)}
+html:not(.skin-original) .win-side a.on{background:var(--soft);color:var(--ink)}
+html:not(.skin-original) .wcard:hover{border-color:var(--line-2)}
+html:not(.skin-original) .nav-desk{color:var(--ink)!important;background:var(--soft)!important}
+html:not(.skin-original) .door{background:var(--accent)!important;box-shadow:0 30px 60px -36px rgba(17,17,19,.55)!important}
+html:not(.skin-original) .door::before{display:none}
+html:not(.skin-original) .door:hover{box-shadow:0 34px 64px -34px rgba(17,17,19,.6)!important}
+html:not(.skin-original) .door-mark{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16)}
+html:not(.skin-original) .door-text small{color:rgba(255,255,255,.6)!important}
+html:not(.skin-original) .door-btn{color:var(--ink)!important}
+html:not(.skin-original) .kicker{color:var(--muted)!important}
+html:not(.skin-original) .b-mission::after,html:not(.skin-original) .academy::before,html:not(.skin-original) .academy::after,html:not(.skin-original) .contact-box::before{display:none!important}
+html:not(.skin-original) .b-founder{background:var(--soft)!important;border-color:var(--line)!important}
+html:not(.skin-original) .creds .lucide,html:not(.skin-original) .svc-card .n,html:not(.skin-original) .svc-card li .lucide,html:not(.skin-original) .jcard .lnk,html:not(.skin-original) .f-fallback .f-addr{color:var(--ink)!important}
+html:not(.skin-original) .svc-card.hl .n,html:not(.skin-original) .svc-card.hl li .lucide{color:#fff!important}
+html:not(.skin-original) .svc-card .hl-badge{background:#fff;color:var(--ink)}
+html:not(.skin-original) .preview .pv-bar i{background:var(--ink)!important}
+html:not(.skin-original) .steps ol::before{background:var(--line-2)!important;opacity:1!important}
+html:not(.skin-original) .steps li::before{border-color:var(--ink)!important;color:var(--ink)!important}
+html:not(.skin-original) .semi-item .ico{background:rgba(255,255,255,.08)!important;color:#fff!important}
+html:not(.skin-original) .cover{background:linear-gradient(150deg,#fff 0%,#e9e9ec 100%)!important}
+html:not(.skin-original) input:focus,html:not(.skin-original) select:focus,html:not(.skin-original) textarea:focus{border-color:var(--ink)!important;box-shadow:0 0 0 4px rgba(17,17,19,.08)!important}
+html:not(.skin-original) .f-fallback{background:var(--soft)!important;border-color:var(--line)!important}
+html:not(.skin-original) footer{background:var(--navy-3)!important;color:#8e8e96!important}
+html:not(.skin-original) footer .logo-mark{background:#fff!important;color:#111113!important}
+html:not(.skin-original) .b-stat .big,html:not(.skin-original) .b-stat .big *{background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;color:var(--ink)!important}
+html:not(.skin-original) .ico:has(img){overflow:hidden}
+
+/* ── 임팩커블 점검 반영 (센터 메인) ── */
+/* 읽기 어려운 옅은 글자 진하게 (명도 대비 4.5:1 이상) */
+html:not(.skin-original){--faint:#6e6e76;--muted:#606068}
+html:not(.skin-original) .hero h1 .grad,html:not(.skin-original) .grad{color:#86868e!important}
+html:not(.skin-original) .chip.live{color:#047857!important}html:not(.skin-original) .chip.reg{color:#b45309!important}
+html:not(.skin-original) input::placeholder,html:not(.skin-original) textarea::placeholder{color:#6b6b73!important;opacity:1}
+html:not(.skin-original) .c-info small,html:not(.skin-original) .f-bottom,html:not(.skin-original) footer{color:#a1a1aa!important}
+html:not(.skin-original) .logo-text small{font-size:11px!important;letter-spacing:.14em!important}
+/* 아이콘을 네모 상자에 가두지 않고 제목과 나란히 */
+html:not(.skin-original) .b-p .ico,html:not(.skin-original) .ico-lg{background:none!important;width:auto!important;height:auto!important;margin:0 0 12px!important;display:block!important;color:var(--ink)!important}
+html:not(.skin-original) .b-p .ico .lucide,html:not(.skin-original) .ico-lg .lucide{width:26px!important;height:26px!important;stroke-width:1.6!important}
+html:not(.skin-original) .svc-card.hl .ico-lg{color:#fff!important}
+html:not(.skin-original) .academy .kicker,html:not(.skin-original) .contact-box .kicker,html:not(.skin-original) footer small,html:not(.skin-original) .logo-text small{color:#a1a1aa!important}
+html:not(.skin-original) footer .logo-text small{color:#a1a1aa!important}
+html:not(.skin-original) header .logo-text small{color:#606068!important}
+html:not(.skin-original) .pcard.share .ico{background:none!important;color:var(--ink)!important;width:auto!important;height:auto!important;margin-bottom:14px!important}
+html:not(.skin-original) .pcard.share .ico .lucide{width:28px!important;height:28px!important}
+/* 원래 파란색 값이 남아 있는 곳 덮기 */
+html:not(.skin-original) .b-mission .q em{color:#a1a1aa!important}
+html:not(.skin-original) .book-link,html:not(.skin-original) .c-info .ico{color:#d4d4d8!important}
+html:not(.skin-original) .academy .ico{color:#e4e4e7!important;background:rgba(255,255,255,.08)!important}
+html:not(.skin-original) #f-programs a[style]{color:#d4d4d8!important}
+html:not(.skin-original) .b-founder{background:var(--soft)!important}

@@ -174,7 +174,28 @@ footer strong{color:var(--ink);font-weight:700}
 .copyr{font-size:13px;color:var(--muted);margin-top:4px}
 @media (max-width:900px){.role,.free{grid-template-columns:1fr}}
 
-</style></head>
+
+/* 상단 바 줄바꿈 방지 (모바일) */
+.brand-text,.nav-links a{white-space:nowrap}
+@media (max-width:640px){
+  .brand-text .it{display:none}
+  .nav .wrap{gap:8px}
+  .nav-links{gap:2px}
+  .nav-links a{padding:8px 10px;font-size:14px}
+}
+
+/* 누르는 느낌과 터치 화면 정리 */
+.btn:active{transform:scale(.97);transition-duration:.08s}
+@media (hover:none){.btn:hover{transform:none}}
+
+/* 관리자 화면의 테마 색 */
+body{background:var(--brand-paper,var(--bg))}
+.brand-mark,.btn-dark,.btn-color,.get .btn-white,.card .n,.get-list .num{background:var(--brand,var(--ink))}
+.about{background:var(--brand-soft,var(--soft))}
+</style>
+<link rel="stylesheet" href="/assets/polish.css">
+<link rel="stylesheet" href="/assets/motion.css">
+<script src="/assets/site.js"></script></head>
 <body>
 <nav class="nav" aria-label="상단 메뉴"><div class="wrap">
   <a class="brand" data-link="home" href="#"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M8 21V8a4 4 0 0 1 8 0"/></svg></span><span class="brand-text">목양 데스크<span class="it">Mokyang Desk</span></span></a>
@@ -197,24 +218,10 @@ footer strong{color:var(--ink);font-weight:700}
     <div>
       <div class="visual"><div class="phone-stage">
         <div class="phone" role="img" aria-label="사랑방장이 보는 주일보고 화면 견본">
-          <div class="phone-in">
-            <div class="p-title">11월 8일 주일</div>
-            <div class="p-sub">이매1 사랑방 · 사랑방장 홍길동</div>
-            <div class="p-stats"><div><b>4/5</b>주일예배</div><div><b style="color:#059669">3</b>사랑방</div><div><b style="color:#7c3aed">1</b>새가족</div></div>
-            <div class="p-cmt"><small>💬 교구 목사님 코멘트</small>수고 많으셨습니다. 김은혜 권사님은 목요일에 병원으로 찾아뵙겠습니다.</div>
-            <div class="p-field" style="padding:6px 10px">
-              <div class="p-row"><b>홍길동<small>집사</small></b><span class="pp on">예배</span><span class="pp g on">사랑방</span></div>
-              <div class="p-row"><b>김은혜<small>권사</small></b><span class="pp">예배</span><span class="pp g">사랑방</span></div>
-              <div class="p-row"><b>박소망<small>성도</small></b><span class="pp on">예배</span><span class="pp g on">사랑방</span></div>
-            </div>
-            <div class="p-field"><small>김은혜 권사 · 기도제목</small>무릎 수술 후 입원 중입니다. 빠른 회복을 위해
-              <div class="p-req"><span>📞 심방전화</span><span>🙏 기도부탁</span><span class="on">🏠 심방부탁</span></div>
-              <span class="p-ack">✓ 목회자 확인</span></div>
-            <div class="p-send">주일 보고 제출</div>
-          </div>
+          <div class="phone-in shot"><img src="/img/screens/itda-leader.webp" alt="잇다 사랑방장 주일보고 실제 화면: 출석 체크와 새가족·방문자" width="600" height="1298" loading="eager"></div>
         </div>
       </div>
-      <p class="sample-note">사랑방장이 보는 화면 견본 · 예시 내용</p></div>
+      <p class="sample-note">실제 화면 · 체험 모드(가상 사랑방)</p></div>
     </div>
   </div>
 </header>

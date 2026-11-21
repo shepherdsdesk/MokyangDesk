@@ -1,0 +1,28 @@
+/* 시안 C · 에디토리얼형 — 어썸 디자인의 에디토리얼(크림 바탕 + 명조 제목) 분석에서 원칙만 가져옴
+   크림 바탕(#faf9f5) / 제목은 명조, 본문은 고딕 / 테라코타 한 가지 강조 / 어두운 면은 먹색(#181715) */
+html.skin-editorial{--brand:#2b2622;--brand-2:#9c5a40;--brand-soft:#f3eee5;--brand-paper:#faf9f5;--terra:#9a5232;
+  --ink:#141413;--text:#3d3d3a;--muted:#5f5d58;--faint:#6f6c66;--line:#e6dfd8;--line-2:#d8cfc4;
+  --navy:#181715;--navy-2:#252320;--navy-3:#141311;
+  --shadow-sm:none;--shadow:0 1px 2px rgba(20,20,19,.04);--shadow-lg:0 30px 60px -40px rgba(20,20,19,.4)}
+html.skin-editorial body{background:#faf9f5!important}
+html.skin-editorial .hero-bg{background:#faf9f5!important}
+html.skin-editorial header{background:rgba(250,249,245,.86)!important}
+html.skin-editorial .hero h1,html.skin-editorial .h2,html.skin-editorial .sec-head h2,html.skin-editorial .hero-in h1,html.skin-editorial .tool-name h3,html.skin-editorial .about h2,html.skin-editorial .door-text b,html.skin-editorial .pcard h3,html.skin-editorial .get h2{font-family:"Noto Serif KR","Nanum Myeongjo",serif!important;font-weight:600!important;letter-spacing:-.03em!important}
+html.skin-editorial .hero h1{font-size:clamp(38px,6.2vw,74px)!important;line-height:1.16!important}
+html.skin-editorial .grad{color:var(--terra)!important}
+html.skin-editorial .hero h1 .gold-u::after{background:var(--terra)!important;opacity:.18!important}
+html.skin-editorial .btn{border-radius:10px!important}
+html.skin-editorial .btn-primary{background:var(--terra)!important}
+html.skin-editorial .btn-primary:hover{background:#9c5a40!important}
+html.skin-editorial .kicker{color:var(--terra)!important}
+html.skin-editorial .programs,html.skin-editorial .faq{background:#f3eee5!important}
+html.skin-editorial .pcard,html.skin-editorial .window,html.skin-editorial .wcard,html.skin-editorial .jcard{background:#fffdf8!important}
+html.skin-editorial .pcard{border-color:#e6dfd8!important}
+html.skin-editorial .it,html.skin-editorial .tool-name .it,html.skin-editorial .hero .en{color:var(--terra)!important}
+/* 목양 데스크 */
+html.skin-editorial .tool{background:#fffdf8!important;border-color:#e6dfd8!important}
+html.skin-editorial .panel{background:#f3eee5}
+html.skin-editorial .about{background:#f3eee5!important}
+html.skin-editorial .hero-in h1 span,html.skin-editorial .hero .wrap > div > h1 span{color:#8b867c}
+html.skin-editorial .hero h1 span:not(.grad):not(.gold-u){color:#8b867c}
+html.skin-editorial .hero h1 .grad{color:var(--terra)!important}
