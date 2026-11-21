@@ -1172,7 +1172,7 @@ async function loadStats(){
 /* hero window */
 function renderWindow(){
   const ready = PROGRAMS.filter(p=>p.status!=='dev'), dev = PROGRAMS.filter(p=>p.status==='dev');
-  document.getElementById('win-grid').innerHTML = ready.slice(0,5).map(p=>`
+  document.getElementById('win-grid').innerHTML = ready.slice(0, dev.length?5:6).map(p=>`
     <a class="wcard" href="${canGet(p)?CONFIG.deskUrl+'#'+p.id:'#'+p.id}">
       <div class="ico" style="${tone(p)}">${pic(p)}</div>
       <b>${p.name}</b><small>${CAT_NAME[p.cat]}</small>
@@ -1183,7 +1183,7 @@ function renderWindow(){
       <b>개발 중 ${dev.length}개</b><small>${dev.map(p=>p.name).join(' · ')}</small>
       <div class="row">${chip('dev')}</div>
     </a>` : '');
-  document.getElementById('win-count').textContent = `받아 쓰는 도구 ${PROGRAMS.filter(canGet).length}개 · 개발 중 ${dev.length}개`;
+  document.getElementById('win-count').textContent = `받아 쓰는 도구 ${PROGRAMS.filter(canGet).length}개` + (dev.length?` · 개발 중 ${dev.length}개`:` · 교회 적용 사례 ${PROGRAMS.filter(p=>p.status==='case').length}개`);
   const dt=document.getElementById('door-tools'); if(dt){ const g=PROGRAMS.filter(canGet).map(p=>p.name); dt.textContent = g.length>4 ? `${g.slice(0,3).join(' · ')} 등 ${g.length}가지 도구를 한곳에서 받으세요` : `${g.join(' · ')}를 한곳에서 받으세요`; }
 }
 
@@ -1191,7 +1191,7 @@ function renderWindow(){
 function renderStat(){
   const nReady = PROGRAMS.filter(canGet).length, nDev = PROGRAMS.filter(p=>p.status==='dev').length;
   document.getElementById('stat-num').textContent = nReady;
-  document.getElementById('stat-label').innerHTML = `지금 받아 쓰는 목양 도구<br><span style="font-size:13.5px">개발 중 ${nDev}개 더 준비하고 있습니다</span>`;
+  document.getElementById('stat-label').innerHTML = `지금 받아 쓰는 목양 도구<br><span style="font-size:13.5px">${nDev?`개발 중 ${nDev}개 더 준비하고 있습니다`:`교회에서 쓰는 적용 사례 ${PROGRAMS.filter(p=>p.status==='case').length}개도 함께 소개합니다`}</span>`;
   document.getElementById('stat-mini').innerHTML = PROGRAMS.map(p=>`<span>${p.name}</span>`).join('');
 }
 
